@@ -46,7 +46,7 @@ class Post
      * @var \DateTime
      *
      * @JMS\Groups({"post-list", "post-view"})
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
@@ -54,9 +54,9 @@ class Post
      * @var \DateTime
      *
      * @JMS\Groups({"post-list", "post-view"})
-     * @ORM\Column(name="modifiedAt", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      */
-    private $modifiedAt;
+    private $updatedAt;
 
     /**
      * @ORM\PrePersist
@@ -64,7 +64,7 @@ class Post
      */
     public function updatedTimestamps()
     {
-        $this->setModifiedAt(new \DateTime(date(self::DATETIME_FORMAT)));
+        $this->setUpdatedAt(new \DateTime(date(self::DATETIME_FORMAT)));
 
         if($this->getCreatedAt() == null) {
             $this->setCreatedAt(new \DateTime(date(self::DATETIME_FORMAT)));
@@ -154,27 +154,27 @@ class Post
     }
 
     /**
-     * Set modifiedAt
+     * Set updatedAt
      *
-     * @param \DateTime $modifiedAt
+     * @param \DateTime $updatedAt
      *
      * @return Post
      */
-    public function setModifiedAt($modifiedAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->modifiedAt = $modifiedAt;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get modifiedAt
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getModifiedAt()
+    public function getUpdatedAt()
     {
-        return $this->modifiedAt;
+        return $this->updatedAt;
     }
 }
 

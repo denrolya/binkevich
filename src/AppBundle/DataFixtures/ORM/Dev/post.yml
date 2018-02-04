@@ -3,4 +3,4 @@ AppBundle\Entity\Post:
         title: <sentence()>
         body: <randomHtml(2,3)>
         createdAt: <dateTimeBetween('-3 years', '-1 year')>
-        modifiedAt: <dateTimeBetween('-1 year', 'now')>
+        updatedAt: <dateTimeBetween('-1 year', 'now')>
