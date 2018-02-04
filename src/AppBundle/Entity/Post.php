@@ -15,7 +15,6 @@ use JMS\Serializer\Annotation as JMS;
  */
 class Post
 {
-    const DATETIME_FORMAT = 'Y-m-d H:i:s';
     /**
      * @var int
      *
@@ -64,10 +63,10 @@ class Post
      */
     public function updatedTimestamps()
     {
-        $this->setUpdatedAt(new \DateTime(date(self::DATETIME_FORMAT)));
+        $this->setUpdatedAt(new \DateTime());
 
         if($this->getCreatedAt() == null) {
-            $this->setCreatedAt(new \DateTime(date(self::DATETIME_FORMAT)));
+            $this->setCreatedAt(new \DateTime());
         }
     }
 

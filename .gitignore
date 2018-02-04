@@ -33,3 +33,6 @@
 
 # Deployer conf
 deploy.php
+
+# Uploads
+/web/uploads
