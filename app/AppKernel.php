@@ -23,12 +23,12 @@ class AppKernel extends Kernel
 
             new ApiBundle\ApiBundle(),
             new AppBundle\AppBundle(),
-            new UserBundle\UserBundle(),
 
             // These are the bundles the SonataAdminBundle relies on
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\UserBundle\SonataUserBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
 
             new Sonata\AdminBundle\SonataAdminBundle(),
