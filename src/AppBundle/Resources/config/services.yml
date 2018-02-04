@@ -1,0 +1,4 @@
+services:
+    app.search:
+        class: AppBundle\Service\SearchService
+        arguments: ["@fos_elastica.finder.example.post"]

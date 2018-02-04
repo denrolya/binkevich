@@ -1,0 +1,18 @@
+AppBundle\Entity\User:
+  user_base (template):
+    username (unique): <username()>
+    email (unique): <email()>
+    plainPassword: <password()>
+    enabled: true
+    roles: ['ROLE_USER']
+
+  user_admin (extends user_base):
+    username: admin
+    email: admin@budget.loc
+    plainPassword: password
+    roles: ['ROLE_ADMIN']
+  user_drolya (extends user_base):
+      username: drolya
+      email: denrolya@gmail.loc
+      plainPassword: password
+      roles: ['ROLE_ADMIN']

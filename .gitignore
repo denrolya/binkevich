@@ -1,0 +1,35 @@
+# System & IDE files
+.DS_Store
+/.idea
+
+# Symfony3 Files
+/.web-server-pid
+/app/config/parameters.yml
+/build/
+/phpunit.xml
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+/vendor/
+/web/bundles/
+
+# Assets vendors
+/web/assets/vendor/
+
+# Compiled assets
+/web/css/
+/web/js/
+
+# Test Coverage Reports
+/report/
+
+# Deployer conf
+deploy.php

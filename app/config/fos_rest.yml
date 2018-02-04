@@ -1,0 +1,17 @@
+fos_rest:
+    serializer:
+        groups: ["default"]
+        serialize_null: true
+    format_listener:
+        rules:
+            - { path: '^/api/v1', priorities: ['json'] }
+            - { path: '^/', stop: true }
+            - { path: '^/sitemap', priorities: ['xml'], fallback_format: xml, prefer_extension: true }
+    param_fetcher_listener: force
+    routing_loader:
+        include_format: false
+    view:
+        view_response_listener: 'force'
+        formats:
+            json: true
+            xml: false

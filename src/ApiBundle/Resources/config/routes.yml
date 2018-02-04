@@ -1,0 +1,10 @@
+api:
+    type:           rest
+    resource:       ApiBundle\Controller\ApiController
+    name_prefix:    api_
+
+api_post:
+    type:           rest
+    resource:       ApiBundle\Controller\PostApiController
+    name_prefix:    api_post_
+    prefix:         /post

@@ -1,0 +1,32 @@
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        example:
+            settings:
+                index:
+                    analysis:
+                        analyzer:
+                            test_analyzer:
+                                type: custom
+                                tokenizer: lowercase
+                                filter: [my_ngram, snowball]
+                        filter:
+                            my_ngram:
+                                type: "nGram"
+                                min_gram: 2
+                                max_gram: 20
+            index_name: example_%kernel.environment%
+            types:
+                post:
+                    properties:
+                        title: { analyzer: test_analyzer }
+                        body: ~
+                        createdAt: ~
+                        modifiedAt: ~
+                    persistence:
+                        driver: orm
+                        model: AppBundle\Entity\Post
+                        provider: ~
+                        listener: ~
+                        finder: ~
