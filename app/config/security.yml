@@ -18,34 +18,6 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        login:
-          pattern:  ^/api/v1/login
-          stateless: true
-          anonymous: true
-          form_login:
-            check_path:               /api/v1/login
-            username_parameter:       _username
-            password_parameter:       _password
-            success_handler:          lexik_jwt_authentication.handler.authentication_success
-            failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-            require_previous_session: false
-
-        api:
-          pattern:   ^/api/v1
-          provider:  fos_userbundle
-          anonymous: true
-          stateless: true
-          lexik_jwt:
-            authorization_header:
-              enabled: true
-              prefix:  Bearer
-            query_parameter:
-              enabled: true
-              name:    bearer
-            throw_exceptions:        false
-            create_entry_point:      true
-
     access_control:
-        - { path: ^/api/v1/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/v1/doc, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/v1/, role: ROLE_USER }
+        - { path: ^/api/v1/, role: IS_AUTHENTICATED_ANONYMOUSLY }

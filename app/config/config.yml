@@ -2,7 +2,6 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: fos_elastica.yml }
     - { resource: fos_rest.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -79,9 +78,3 @@ fos_user:
     from_email:
         address: '%mailer_user%'
         sender_name: '%mailer_user%'
-
-lexik_jwt_authentication:
-    private_key_path: '%jwt_private_key_path%'
-    public_key_path: '%jwt_public_key_path%'
-    pass_phrase: '%jwt_key_pass_phrase%'
-    token_ttl: '%jwt_token_ttl%'
