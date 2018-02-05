@@ -8,3 +8,8 @@ api_post:
     resource:       ApiBundle\Controller\PostApiController
     name_prefix:    api_post_
     prefix:         /post
+
+api_product:
+    type:           rest
+    resource:       ApiBundle\Controller\ProductApiController
+    name_prefix:    api_product_

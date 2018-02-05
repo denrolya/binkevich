@@ -2,23 +2,25 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Traits\UpdatableTrait;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * BaseFile
+ * File
  *
  * @JMS\ExclusionPolicy("none")
  * @ORM\Table(name="file")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\BaseFileRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\FileRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"slider" = "SliderPicture"})
+ * @ORM\DiscriminatorMap({"slider" = "SliderPicture", "product_image" = "ProductImage"})
  * @ORM\HasLifecycleCallbacks()
  */
-abstract class BaseFile
+abstract class File
 {
+    use UpdatableTrait;
+
     /**
      * @var int
      *
@@ -34,20 +36,6 @@ abstract class BaseFile
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $path;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="datetime")
-     */
-    private $updatedAt;
 
 //    public function __construct(UploadedFile $file)
 //    {
@@ -84,19 +72,6 @@ abstract class BaseFile
     }
 
     /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
-    public function updatedTimestamps()
-    {
-        $this->setUpdatedAt(new \DateTime());
-
-        if($this->getCreatedAt() == null) {
-            $this->setCreatedAt(new \DateTime());
-        }
-    }
-
-    /**
      * Get id
      *
      * @return int
@@ -111,7 +86,7 @@ abstract class BaseFile
      *
      * @param string $path
      *
-     * @return BaseFile
+     * @return File
      */
     public function setPath($path)
     {
@@ -169,53 +144,5 @@ abstract class BaseFile
     protected function getUploadDir()
     {
         return 'uploads/files';
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Post
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Post
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 }

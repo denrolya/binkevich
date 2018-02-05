@@ -9,6 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SliderPictureRepository")
  */
-class SliderPicture extends BaseFile
+class SliderPicture extends File
 {
 }
