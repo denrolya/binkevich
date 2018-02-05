@@ -56,6 +56,11 @@ abstract class Product
      */
     private $productImages;
 
+    /**
+     * @var array
+     */
+    private $files;
+
     public function __construct()
     {
         $this->productImages = new ArrayCollection();
@@ -155,5 +160,17 @@ abstract class Product
     public function getProductImages()
     {
         return $this->productImages;
+    }
+
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    public function setFiles($files)
+    {
+        $this->files = $files;
+
+        return $this;
     }
 }

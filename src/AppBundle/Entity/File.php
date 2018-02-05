@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use AppBundle\Traits\UpdatableTrait;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * File
@@ -24,6 +25,7 @@ abstract class File
     /**
      * @var int
      *
+     * @JMS\Groups({"product-list", "product-view"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -37,15 +39,21 @@ abstract class File
      */
     private $path;
 
-//    public function __construct(UploadedFile $file)
-//    {
-//        // set the path property to the filename where you've saved the file
-//        $this->path = $file->getClientOriginalName();
-//    }
+    /**
+     * @var UploadedFile
+     */
+    private $file;
+
+    public function __construct(UploadedFile $file)
+    {
+        // set the path property to the filename where you've saved the file
+        $this->path = $file->getClientOriginalName();
+        $this->file = $file;
+    }
 
     /**
-     * ORM\PostPersist()
-     * ORM\PostUpdate()
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
      */
     public function upload()
     {
@@ -116,6 +124,9 @@ abstract class File
     }
 
     /**
+     * @JMS\Groups({"product-list", "product-view"})
+     * @JMS\VirtualProperty()
+     * @JMS\SerializedName("path")
      * @return null|string
      */
     public function getWebPath()
@@ -132,7 +143,12 @@ abstract class File
      */
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getFile()
+    {
+        return $this->file;
     }
 
     /**
@@ -143,6 +159,6 @@ abstract class File
      */
     protected function getUploadDir()
     {
-        return 'uploads/files';
+        return 'uploads';
     }
 }

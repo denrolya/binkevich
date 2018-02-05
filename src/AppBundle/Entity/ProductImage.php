@@ -40,4 +40,12 @@ class ProductImage extends File
     {
         return $this->product;
     }
+
+    /**
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        return 'uploads/products/' . $this->getProduct()->getId();
+    }
 }
