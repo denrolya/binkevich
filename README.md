@@ -5,6 +5,10 @@
     * Set only the database parameters, skip the others
 2. $: `bin/console d:d:c && bin/console d:s:c && bin/console f:l -n`
     * This creates the database, populates it with test data
+
+## Running frontend:
+1. Make sure your backend is served as expected
+2. Run `yarn run encore dev-server --hot` for development
     
 ## Description
 
