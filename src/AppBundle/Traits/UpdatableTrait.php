@@ -42,7 +42,7 @@ trait UpdatableTrait
      *
      * @param \DateTime $createdAt
      *
-     * @return Post
+     * @return $this
      */
     public function setCreatedAt($createdAt)
     {
@@ -66,7 +66,7 @@ trait UpdatableTrait
      *
      * @param \DateTime $updatedAt
      *
-     * @return Post
+     * @return $this
      */
     public function setUpdatedAt($updatedAt)
     {

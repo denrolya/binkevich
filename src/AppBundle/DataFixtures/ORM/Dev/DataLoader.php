@@ -14,7 +14,6 @@ class DataLoader extends AbstractLoader
     public function getFixtures()
     {
         return  [
-//            __DIR__ . '/post.yml',
             __DIR__ . '/user.yml',
 //            __DIR__ . '/slider_picture.yml',
             __DIR__ . '/ring.yml',

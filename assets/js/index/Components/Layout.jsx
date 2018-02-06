@@ -12,13 +12,13 @@ export default class Layout extends Component {
     }
 
     componentDidMount() {
-        fetch('http://budget.loc/app_dev.php/api/v1/post', {
+        fetch('http://localhost:8000/api/v1/product/ring', {
             method: 'GET',
             mode: 'CORS'
         }).then(res => res.json())
           .then(json => {
               this.setState({
-                  blogPosts: json.posts
+                  rings: json.data
               })
           })
     }
@@ -37,11 +37,11 @@ export default class Layout extends Component {
                     </thead>
                     <tbody>
 
-                        {this.state.blogPosts && this.state.blogPosts.map((post, i) => {
+                        {this.state.rings && this.state.rings.map((ring, i) => {
                             return (
                                 <tr key={i}>
-                                    <td>{post.id}</td>
-                                    <td>{post.title}</td>
+                                    <td>{ring.id}</td>
+                                    <td>{ring.name}</td>
                                 </tr>
                             )
                         })}

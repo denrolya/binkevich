@@ -1,7 +1,7 @@
 services:
     admin.post:
-        class: AppBundle\Admin\PostAdmin
-        arguments: [~, AppBundle\Entity\Post, ~]
+        class: AppBundle\Admin\RingAdmin
+        arguments: [~, AppBundle\Entity\Ring, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Post }
+            - { name: sonata.admin, manager_type: orm, label: Product }
         public: true

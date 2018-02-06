@@ -1,6 +1,0 @@
-AppBundle\Entity\Post:
-    post{1..500}:
-        title: <sentence()>
-        body: <randomHtml(2,3)>
-        createdAt: <dateTimeBetween('-3 years', '-1 year')>
-        updatedAt: <dateTimeBetween('-1 year', 'now')>

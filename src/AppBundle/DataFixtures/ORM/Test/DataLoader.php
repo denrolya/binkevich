@@ -11,8 +11,6 @@ class DataLoader extends AbstractLoader
     */
     public function getFixtures()
     {
-        return [
-            __DIR__ . '/post.yml'
-        ];
+        return [];
     }
 }

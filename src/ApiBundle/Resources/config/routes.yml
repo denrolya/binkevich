@@ -3,12 +3,6 @@ api:
     resource:       ApiBundle\Controller\ApiController
     name_prefix:    api_
 
-api_post:
-    type:           rest
-    resource:       ApiBundle\Controller\PostApiController
-    name_prefix:    api_post_
-    prefix:         /post
-
 api_product:
     type:           rest
     resource:       ApiBundle\Controller\ProductApiController

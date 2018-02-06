@@ -86,7 +86,7 @@ class ProductApiController extends FOSRestController
      *     },
      *     tags={"stable"="#93c00b"}
      * )
-     * @Rest\View(serializerGroups={"post-view"})
+     * @Rest\View(serializerGroups={"product-view"})
      * @Rest\Post("/product/ring")
      */
     public function createRingAction(Request $request)
