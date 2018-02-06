@@ -23,10 +23,12 @@
 
 # Assets vendors
 /web/assets/vendor/
+/node_modules/
 
 # Compiled assets
 /web/css/
 /web/js/
+/web/build/
 
 # Test Coverage Reports
 /report/

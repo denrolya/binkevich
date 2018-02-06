@@ -23,6 +23,9 @@ framework:
     #serializer: { enable_annotations: true }
     templating:
         engines: ['twig']
+    assets:
+        # feature is supported in Symfony 3.3 and higher
+        json_manifest_path: '%kernel.project_dir%/web/build/manifest.json'
     default_locale: '%locale%'
     trusted_hosts: ~
     session:
@@ -31,7 +34,6 @@ framework:
         save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
     fragments: ~
     http_method_override: true
-    assets: ~
     php_errors:
         log: true
 
