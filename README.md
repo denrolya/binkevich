@@ -7,7 +7,7 @@
     * This creates the database, populates it with test data
 
 ## Running frontend:
-1. Make sure your backend is served as expected
+1. Make sure your backend is served as expected `php bin/console server:run`
 2. Run `yarn run encore dev-server --hot` for development
 
 ## GIT Workflow

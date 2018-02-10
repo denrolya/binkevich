@@ -3,25 +3,11 @@ import fetch from 'isomorphic-fetch';
 import {Button} from 'reactstrap';
 
 export default class Layout extends Component {
-
     constructor(props) {
         super(props);
-
         this.state = {
             blogPosts: []
         }
-    }
-
-    componentDidMount() {
-        fetch('http://localhost:8000/api/v1/product/ring', {
-            method: 'GET',
-            mode: 'CORS'
-        }).then(res => res.json())
-          .then(json => {
-              this.setState({
-                  rings: json.data
-              })
-          })
     }
 
     render() {
@@ -41,21 +27,21 @@ export default class Layout extends Component {
 
                 <table>
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                        </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                    </tr>
                     </thead>
                     <tbody>
 
-                        {this.state.rings && this.state.rings.map((ring, i) => {
-                            return (
-                                <tr key={i}>
-                                    <td>{ring.id} <Button color="danger">Test</Button></td>
-                                    <td>{ring.name}</td>
-                                </tr>
-                            )
-                        })}
+                    {this.state.rings && this.state.rings.map((ring, i) => {
+                        return (
+                            <tr key={i}>
+                                <td>{ring.id} <Button color="danger">Test</Button></td>
+                                <td>{ring.name}</td>
+                            </tr>
+                        )
+                    })}
                     </tbody>
                 </table>
             </div>

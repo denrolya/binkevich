@@ -24,4 +24,12 @@ class DefaultController extends Controller
     {
         return $this->render('AppBundle:Default:product.html.twig');
     }
+
+    /**
+     * @Route("/product/1", name="product_view")
+     */
+    public function productViewAction()
+    {
+        return $this->render('AppBundle:Default:product_view.html.twig');
+    }
 }
