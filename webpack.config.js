@@ -10,6 +10,7 @@ Encore
     .setPublicPath('/build')
 
     // will create web/build/app.js and web/build/app.css
+    .addEntry('common', './assets/js/common.jsx')
     .addEntry('index', './assets/js/index/app.jsx')
     .addEntry('product', './assets/js/product/app.jsx')
 
