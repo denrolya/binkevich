@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -26,9 +27,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/product/1", name="product_view")
+     * @Route("/product/{id}", name="product_view")
      */
-    public function productViewAction()
+    public function productViewAction(Product $product)
     {
         return $this->render('AppBundle:Default:product_view.html.twig');
     }
