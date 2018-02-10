@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
+import {Button} from 'reactstrap';
 
 export default class Layout extends Component {
 
@@ -28,6 +29,16 @@ export default class Layout extends Component {
             <div>
                 <h1>Big big table!</h1>
 
+                <p>
+                    <Button color="primary">primary</Button>
+                    <Button color="secondary">secondary</Button>
+                    <Button color="success">success</Button>
+                    <Button color="info">info</Button>
+                    <Button color="warning">warning</Button>
+                    <Button color="danger">danger</Button>
+                    <Button color="link">link</Button>
+                </p>
+
                 <table>
                     <thead>
                         <tr>
@@ -40,7 +51,7 @@ export default class Layout extends Component {
                         {this.state.rings && this.state.rings.map((ring, i) => {
                             return (
                                 <tr key={i}>
-                                    <td>{ring.id}</td>
+                                    <td>{ring.id} <Button color="danger">Test</Button></td>
                                     <td>{ring.name}</td>
                                 </tr>
                             )

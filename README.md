@@ -9,7 +9,12 @@
 ## Running frontend:
 1. Make sure your backend is served as expected
 2. Run `yarn run encore dev-server --hot` for development
-    
+
+## GIT Workflow
+feature/<feature-name> for feature branches
+bugfix/<feature-name> for feature branches
+refactor/<feature-name> for feature branches
+
 ## Description
 
    #### Third party bundles used:

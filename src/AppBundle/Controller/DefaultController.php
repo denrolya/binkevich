@@ -16,4 +16,12 @@ class DefaultController extends Controller
     {
         return [];
     }
+
+    /**
+     * @Route("/product", name="product_list")
+     */
+    public function productListAction()
+    {
+        return $this->render('AppBundle:Default:index.html.twig');
+    }
 }
