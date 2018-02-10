@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button} from 'reactstrap';
+import HeaderLight from '../../../common/Components/HeaderLight';
 import ProductList from './ProductList';
 
 export default class Layout extends Component {
@@ -7,7 +7,10 @@ export default class Layout extends Component {
     render() {
         return (
             <div>
-                <ProductList/>
+                <HeaderLight/>
+                <div className="container">
+                    <ProductList/>
+                </div>
             </div>
         );
     }
