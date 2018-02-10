@@ -48,7 +48,7 @@ export default class ImageCarousel extends Component {
         const slides = this.props.items.map((item) => {
             return (
                 <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.path}>
-                    <img src={item.path} />
+                    <img src={'/' + item.path} />
                 </CarouselItem>
             );
         });
