@@ -1,3 +1,0 @@
-AppBundle\Entity\SliderPicture:
-    slider_pricture-{1..20}:
-        path: <image('/Users/drolya/Public/binkevich.loc/web/uploads', 200, 200, 'cats')>

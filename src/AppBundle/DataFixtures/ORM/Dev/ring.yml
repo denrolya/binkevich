@@ -1,4 +1,0 @@
-AppBundle\Entity\Ring:
-    ring-{1..25}:
-        name: <word()>
-        description: <sentence()>

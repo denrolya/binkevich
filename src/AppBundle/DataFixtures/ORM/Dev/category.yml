@@ -1,0 +1,9 @@
+AppBundle\Entity\Category:
+    category-ring:
+        name: Rings
+    category-earring:
+        name: Earrings
+    category-bangle:
+        name: Bangles
+    category-pendant:
+        name: Pendants

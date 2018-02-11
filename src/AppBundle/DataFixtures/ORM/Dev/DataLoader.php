@@ -15,8 +15,8 @@ class DataLoader extends AbstractLoader
     {
         return  [
             __DIR__ . '/user.yml',
-//            __DIR__ . '/slider_picture.yml',
-            __DIR__ . '/ring.yml',
+            __DIR__ . '/category.yml',
+            __DIR__ . '/product.yml',
             __DIR__ . '/product_image.yml'
         ];
     }
