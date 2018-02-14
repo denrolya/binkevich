@@ -1,6 +1,8 @@
+import {parse} from 'url';
 import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
 import {Button} from 'reactstrap';
+import ImageCarousel from '../../../common/Components/ImageCarousel';
 
 export default class Content extends Component {
 
@@ -11,11 +13,28 @@ export default class Content extends Component {
         }
     }
 
+    getProductID() {
+        // get URL
+        const URL = window.location.href;
+        // parse URL
+        const parseUrl = parse(URL.toString());
+
+        // TODO path or pathname
+        const path = parseUrl.path;
+
+        // get ID
+        // split parsed url path (" " / "product" / "1") and get 3-rd piece
+        return path.split('/')[2];
+    }
+
     componentDidMount() {
-        fetch('http://localhost:8000/api/v1/product/ring/26', {
-            method: 'GET',
-            mode: 'CORS'
-        }).then(res => res.json())
+        const productID = this.getProductID();
+        fetch(
+            ('http://localhost:8000/api/v1/product/ring/' + productID), {
+                method: 'GET',
+                mode: 'CORS'
+            }
+        ).then(res => res.json())
             .then(json => {
                 console.log(json);
                 this.setState({
@@ -51,7 +70,7 @@ export default class Content extends Component {
                 </div>
                 <div className="col col-md-6">
                     {this.state.ring && this.state.ring.productImages && this.state.ring.productImages.length > 0 &&
-                    <img src={'/' + this.state.ring.productImages[0].path} alt=""/>
+                    <ImageCarousel items={this.state.ring.productImages}/>
                     }
                 </div>
 
@@ -64,3 +83,10 @@ export default class Content extends Component {
 //ring + name
 // ring.description
 
+//{this.state.ring && this.state.ring.productImages && this.state.ring.productImages.length > 0 &&
+// <img src={'/' + this.state.ring.productImages[0].path} alt=""/>
+//}
+
+
+//TODO how to extract a number from url
+//Javascript window.location parse url
