@@ -1,4 +1,4 @@
 AppBundle\Entity\ProductImage:
     product_image-{1..200}:
         __construct: [<uploadedFile()>]
-        product: '@ring-*'
+        product: '@product_ring-*'

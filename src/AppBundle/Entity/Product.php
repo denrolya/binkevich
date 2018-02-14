@@ -13,12 +13,9 @@ use JMS\Serializer\Annotation as JMS;
  * @JMS\ExclusionPolicy("none")
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"ring" = "Ring"})
  * @ORM\HasLifecycleCallbacks()
  */
-abstract class Product
+class Product
 {
     use UpdatableTrait;
 
@@ -55,6 +52,12 @@ abstract class Product
      * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product")
      */
     private $productImages;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
 
     /**
      * @var array
@@ -160,6 +163,29 @@ abstract class Product
     public function getProductImages()
     {
         return $this->productImages;
+    }
+
+    /**
+     * Set category
+     *
+     * @param Category $category
+     * @return $this
+     */
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     public function getFiles()

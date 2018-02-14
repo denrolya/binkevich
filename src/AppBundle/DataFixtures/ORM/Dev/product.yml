@@ -1,0 +1,20 @@
+AppBundle\Entity\Product:
+    product_ring-{1..25}:
+        name: <word()>
+        description: <sentence()>
+        category: '@category-ring'
+
+    product_earring-{1..25}:
+        name: <word()>
+        description: <sentence()>
+        category: '@category-earring'
+
+    product_bangle-{1..25}:
+        name: <word()>
+        description: <sentence()>
+        category: '@category-bangle'
+
+    product_pendant-{1..25}:
+        name: <word()>
+        description: <sentence()>
+        category: '@category-pendant'
