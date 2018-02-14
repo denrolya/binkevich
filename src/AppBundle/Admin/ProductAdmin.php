@@ -7,13 +7,13 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class RingAdmin extends AbstractAdmin
+class ProductAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name', 'text')
-            ->add('productImages')
+            ->add('category')
         ;
     }
 
@@ -25,7 +25,6 @@ class RingAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('updatedAt');
+            ->addIdentifier('name');
     }
 }

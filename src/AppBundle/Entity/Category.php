@@ -13,6 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+    const CATEGORY_RING = 1;
+
+    const CATEGORY_EARRING = 2;
+
+    const CATEGORY_BANGLE = 3;
+
+    const CATEGORY_PENDANT = 4;
+
     /**
      * @var int
      *
@@ -37,6 +45,11 @@ class Category
     public function __construct()
     {
         $this->products = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     /**

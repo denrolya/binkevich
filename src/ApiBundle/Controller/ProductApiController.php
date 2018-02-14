@@ -2,8 +2,9 @@
 
 namespace ApiBundle\Controller;
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\ProductImage;
-use AppBundle\Entity\Ring;
+use AppBundle\Entity\Product;
 use AppBundle\Form\ProductType;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -21,7 +22,7 @@ class ProductApiController extends FOSRestController
      *      section="Product",
      *      description="Get a list of rings",
      *      output = {
-     *          "class"="array<AppBundle\Entity\Ring>",
+     *          "class"="array<AppBundle\Entity\Product>",
      *          "groups"={"product-list"}
      *      },
      *      statusCodes={
@@ -35,7 +36,12 @@ class ProductApiController extends FOSRestController
      */
     public function getRingsAction()
     {
-        $rings = $this->getDoctrine()->getRepository(Ring::class)->findAll();
+        $rings = $this
+            ->getDoctrine()
+            ->getRepository(Product::class)
+            ->findBy([
+                'category' => Category::CATEGORY_RING
+            ]);
 
         return [
             'data' => $rings
@@ -46,9 +52,9 @@ class ProductApiController extends FOSRestController
      * @ApiDoc(
      *      resource=true,
      *      section="Product",
-     *      description="Get one ring",
+     *      description="Get one product",
      *      output = {
-     *          "class"="<AppBundle\Entity\Ring>",
+     *          "class"="<AppBundle\Entity\Product>",
      *          "groups"={"product-view"}
      *      },
      *      statusCodes={
@@ -57,13 +63,13 @@ class ProductApiController extends FOSRestController
      *     },
      *     tags={"stable"="#93c00b"}
      * )
-     * @Rest\Get("/product/ring/{id}")
+     * @Rest\Get("/product/{id}")
      * @Rest\View(serializerGroups={"product-view"})
      */
-    public function getRingByIdAction(Ring $ring)
+    public function getRingByIdAction(Product $product)
     {
         return [
-            'data' => $ring
+            'data' => $product
         ];
     }
 
@@ -87,11 +93,11 @@ class ProductApiController extends FOSRestController
      *     tags={"stable"="#93c00b"}
      * )
      * @Rest\View(serializerGroups={"product-view"})
-     * @Rest\Post("/product/ring")
+     * @Rest\Post("/product")
      */
-    public function createRingAction(Request $request)
+    public function createProductAction(Request $request)
     {
-        $product = new Ring();
+        $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 

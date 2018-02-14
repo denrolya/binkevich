@@ -1,7 +1,21 @@
 services:
-    admin.post:
-        class: AppBundle\Admin\RingAdmin
-        arguments: [~, AppBundle\Entity\Ring, ~]
+    admin.category:
+        class: AppBundle\Admin\CategoryAdmin
+        arguments: [~, AppBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Category }
+        public: true
+
+    admin.product:
+        class: AppBundle\Admin\ProductAdmin
+        arguments: [~, AppBundle\Entity\Product, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Product }
+        public: true
+
+    admin.product_image:
+        class: AppBundle\Admin\ProductImageAdmin
+        arguments: [~, AppBundle\Entity\ProductImage, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Image }
         public: true
