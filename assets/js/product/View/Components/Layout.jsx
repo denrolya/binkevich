@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import HeaderLight from './HeaderLight.jsx';
+import Header from '../../../common/Components/Header.jsx';
+import HeaderLight from '../../../common/Components/HeaderLight.jsx';
 import Footer from './Footer.jsx';
 import Content from './Content.jsx';
-
 
 export default class Layout extends Component {
     constructor(props) {
@@ -13,11 +13,11 @@ export default class Layout extends Component {
         }
     }
 
+    //<HeaderLight/>
 
     render() {
         return (
             <div>
-
                 <HeaderLight/>
                 <Content/>
                 <Footer/>

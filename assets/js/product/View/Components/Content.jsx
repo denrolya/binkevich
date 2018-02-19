@@ -13,6 +13,7 @@ export default class Content extends Component {
         }
     }
 
+
     getProductID() {
         // get URL
         const URL = window.location.href;
@@ -30,7 +31,8 @@ export default class Content extends Component {
     componentDidMount() {
         const productID = this.getProductID();
         fetch(
-            ('http://localhost:8000/api/v1/product/ring/' + productID), {
+            //TODO I was forced to delete "ring/" from path. Did Dan change that??
+            ('http://localhost:8000/api/v1/product/' + productID), {
                 method: 'GET',
                 mode: 'CORS'
             }

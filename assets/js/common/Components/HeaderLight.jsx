@@ -29,34 +29,50 @@ export default class HeaderLight extends Component {
         });
     }
 
+
     render() {
+
+        //TODO whats the first button <button className="navbar-toggler navbar-toggler-right"
+        //TODO buttons on the right need to be in the middle of the navbar(horizontally)
         return (
             <div>
                 <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-                    <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <a className="navbar-brand" href="#">Navbar</a>
+
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto">
+                        <a href="#" className="navbar-left"><img
+                            src="https://www.purelondon.com/__resource/companyProfiles/E662098F-5056-B762-909BEEE63F4C8BF2-logo.png"
+                            width="150" height="70"/></a>
+                        <ul className="navbar-nav ml-auto">
+
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                                <a className="nav-link" href="#">HOME<span className="sr-only">(current)</span></a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Link</a>
+                            <li className="nav-item active">
+                                <a className="nav-link" href="#">JEWELLERY<span className="sr-only">(current)</span></a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link disabled" href="#">Disabled</a>
+                            <li className="nav-item active">
+                                <a className="nav-link" href="#">BESPOKE<span
+                                    className="sr-only">(current)</span></a>
                             </li>
+                            <li className="nav-item active">
+                                <a className="nav-link" href="#">CONTACT<span
+                                    className="sr-only">(current)</span></a>
+                            </li>
+
                         </ul>
-                        <form className="form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
                     </div>
+                    <hr/>
                 </nav>
             </div>
         );
     }
 }
+
+
