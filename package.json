@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "node-sass": "^4.7.2",
-    "reactstrap": "^5.0.0-beta",
     "sass-loader": "^6.0.6"
   }
 }
