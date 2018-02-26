@@ -69,6 +69,8 @@ doctrine:
             default:
                 mappings:
                     SonataUserBundle: ~
+                    SonataMediaBundle: ~
+                    ApplicationSonataMediaBundle: ~
                     FOSUserBundle: ~
                     AppBundle: ~
 
