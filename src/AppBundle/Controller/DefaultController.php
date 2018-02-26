@@ -5,17 +5,15 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
-     * @Template()
      */
     public function indexAction()
     {
-        return [];
+        return $this->render('AppBundle:Default:product.html.twig');
     }
 
     /**
@@ -32,5 +30,13 @@ class DefaultController extends Controller
     public function productViewAction(Product $product)
     {
         return $this->render('AppBundle:Default:product_view.html.twig');
+    }
+
+    /**
+     * @Route("/contact", name="contact_form")
+     */
+    public function contactFormAction()
+    {
+        return $this->render('AppBundle:Default:product.html.twig');
     }
 }
