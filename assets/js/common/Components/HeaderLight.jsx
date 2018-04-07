@@ -23,13 +23,13 @@ export default class HeaderLight extends Component {
                         <ul className="navbar-nav ml-auto">
 
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">HOME<span className="sr-only">(current)</span></a>
+                                <a className="nav-link" href="/">HOME<span className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">JEWELLERY<span className="sr-only">(current)</span></a>
+                                <a className="nav-link" href="/jewellery">JEWELLERY<span className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">BESPOKE<span
+                                <a className="nav-link" href="/bespoke">BESPOKE<span
                                     className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item active">
