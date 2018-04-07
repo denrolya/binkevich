@@ -33,7 +33,7 @@ export default class HeaderLight extends Component {
                                     className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">CONTACT<span
+                                <a className="nav-link" href="/contact">CONTACT<span
                                     className="sr-only">(current)</span></a>
                             </li>
 

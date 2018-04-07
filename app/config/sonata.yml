@@ -19,11 +19,7 @@ sonata_media:
     contexts:
         default:  # the default context is mandatory
             providers:
-                - sonata.media.provider.dailymotion
-                - sonata.media.provider.youtube
                 - sonata.media.provider.image
-                - sonata.media.provider.file
-                - sonata.media.provider.vimeo
 
             formats:
                 small: { width: 100 , quality: 70}
@@ -33,9 +29,9 @@ sonata_media:
         server:
             path: /uploads/media # http://media.sonata-project.org/
     class:
-        media: App\Application\Sonata\MediaBundle\Entity\Media
-        gallery: App\Application\Sonata\MediaBundle\Entity\Gallery
-        gallery_has_media: App\Application\Sonata\MediaBundle\Entity\GalleryHasMedia
+        media: Application\Sonata\MediaBundle\Entity\Media
+        gallery: Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media: Application\Sonata\MediaBundle\Entity\GalleryHasMedia
 
     filesystem:
         local:

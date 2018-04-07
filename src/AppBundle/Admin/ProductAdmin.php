@@ -14,6 +14,7 @@ class ProductAdmin extends AbstractAdmin
         $formMapper
             ->add('name', 'text')
             ->add('category')
+            ->add('productImages')
         ;
     }
 
