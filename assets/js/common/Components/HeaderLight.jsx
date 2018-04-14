@@ -110,7 +110,7 @@ export default class HeaderLight extends Component {
                         <a href="#">Bespoke</a>
                     </li>
                     <li className="item first">
-                        <a href="#">Contact</a>
+                        <a href="/contact">Contact</a>
                     </li>
                     <li className="first lock-icon">
                         <a href="#"></a>
