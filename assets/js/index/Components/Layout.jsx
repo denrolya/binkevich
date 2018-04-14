@@ -4,6 +4,8 @@ import HeaderLight from '../../common/Components/HeaderLight';
 import Footer from '../../common/Components/Footer';
 import HomeProductBlock from './HomeProductBlock';
 import HomeTopBlock from "./HomeTopBlock";
+import HomeWhiteCarousel from "./HomeWhiteCarousel";
+import HomeBlackCarousel from "./HomeBlackCarousel";
 
 export default class Layout extends Component {
     constructor(props) {
@@ -16,6 +18,8 @@ export default class Layout extends Component {
                 <HeaderLight/>
                 <HomeTopBlock/>
                 <HomeProductBlock/>
+                <HomeWhiteCarousel/>
+                <HomeBlackCarousel/>
                 <Footer/>
             </div>
         );
