@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+const logo = require('../../../img/carousel-black-img.jpg');
+
 export default class HomeBlackCarousel extends Component {
     render() {
 
@@ -24,13 +26,13 @@ export default class HomeBlackCarousel extends Component {
 
                                     <div className="carousel-inner">
                                         <div className="carousel-item active">
-                                            <img src="img/carousel-black-img.jpg" alt="Los Angeles"/>
+                                            <img src={logo} alt="Los Angeles"/>
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="img/carousel-black-img.jpg" alt="Chicago"/>
+                                            <img src={logo} alt="Chicago"/>
                                         </div>
                                         <div className="carousel-item">
-                                            <img src="img/carousel-black-img.jpg" alt="New York"/>
+                                            <img src={logo} alt="New York"/>
                                         </div>
                                     </div>
 
