@@ -1,0 +1,164 @@
+//urls
+$path-to-img : '../img/';
+$path-to-font : '../fonts/';
+
+//vars
+$white: #fff;
+$black: #000;
+
+
+$pad_marg_list: (
+        0: 0,
+        5: 5px,
+        8: 8px,
+        10: 10px,
+        15: 15px,
+        20: 20px,
+        25: 25px,
+        30: 30px,
+        35: 35px,
+        40: 40px,
+  //50: 50px,
+  //60: 60px,
+  //75: 75px,
+  //90: 90px,
+        auto: auto
+);
+
+//@extends
+%bg-re-cont {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+// Mixin
+$tablet-width: 1139px;
+$smart-phone: 767px;
+$phone: 0px;
+
+@mixin large {
+  @media (min-width: #{$tablet-width + 1px}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: #{$smart-phone + 1px}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (min-width: #{$phone}) and (max-width: #{$smart-phone}) {
+    @content;
+  }
+}
+
+@mixin tab-mob {
+  @media (min-width: #{$phone}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+
+@include large {
+  .container {
+    max-width: 1140px;
+  }
+}
+@include tablet {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@mixin hover {
+  &:hover, &:active, &:focus {
+    @content;
+  }
+}
+
+// Palaceholder color mixin
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+
+@mixin paragraph($color) {
+  color: $color;
+  font-family: $mon;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+@mixin btn($bgC, $textC, $borderC, $hoverText) {
+  display: block;
+  max-width: 260px;
+  width: 100%;
+  min-height: 60px;
+  border: 1px solid $borderC;
+  text-align: center;
+  padding-top: 23px;
+  color: $textC;
+  font-family: $mon;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: $bgC;
+
+  @include mobile {
+    max-width: 162px;
+    min-height: 40px;
+    font-size: 12px;
+    padding-top: 14px;
+  }
+
+  @include hover-focus-active {
+    background-color: $textC;
+    color: $hoverText;
+    border: 1px solid $bgC;
+
+  }
+}
+//functions
+@each $name, $val in $pad_marg_list {
+  .pad-#{$name} {
+    padding: #{$val} !important;
+  }
+
+  .pad-l-#{$name} {
+    padding-left: #{$val} !important;
+  }
+
+  .pad-r-#{$name} {
+    padding-right: #{$val} !important;
+  }
+
+  .pad-t-#{$name} {
+    padding-top: #{$val} !important;
+  }
+
+  .pad-b-#{$name} {
+    padding-bottom: #{$val} !important;
+  }
+
+  .marg-#{$name} {
+    margin: #{$val} !important;
+  }
+
+  .marg-b-#{$name} {
+    margin-bottom: #{$val} !important;
+  }
+
+  .marg-t-#{$name} {
+    margin-top: #{$val} !important;
+  }
+
+  .marg-l-#{$name} {
+    margin-left: #{$val} !important;
+  }
+
+  .marg-r-#{$name} {
+    margin-right: #{$val} !important;
+  }
+}

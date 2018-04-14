@@ -1,0 +1,19 @@
+//fonts
+$abrFat: 'AbrilFatface-Regular';
+$mon: 'Montserrat', sans-serif;
+
+//urls
+$url_0: url(#{$path-to-font}AbrilFatface-Regular.eot);
+$url_1: url(#{$path-to-font}AbrilFatface-Regular.eot?#iefix);
+$url_2: url(#{$path-to-font}AbrilFatface-Regular.woff2);
+$url_3: url(#{$path-to-font}AbrilFatface-Regular.woff);
+$url_4: url(#{$path-to-font}AbrilFatface-Regular.ttf);
+
+
+@font-face {
+    font-family: $abrFat;
+    src: $url_0;
+    src: local('Abril Fatface'), local('AbrilFatface-Regular'), $url_1 format('embedded-opentype'), $url_2 format('woff2'), $url_3 format('woff'), $url_4 format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
