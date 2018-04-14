@@ -37,6 +37,6 @@ class DefaultController extends Controller
      */
     public function contactFormAction()
     {
-        return $this->render('AppBundle:Default:product.html.twig');
+        return $this->render('AppBundle:Default:contact.html.twig');
     }
 }

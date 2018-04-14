@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 
+const product1 = require('../../../img/product-1.png');
+const product2 = require('../../../img/product-2.png');
+const product3 = require('../../../img/product-3.png');
+const product4 = require('../../../img/product-4.png');
+
 export default class HomeProductBlock extends Component {
     render() {
         return (
@@ -15,7 +20,7 @@ export default class HomeProductBlock extends Component {
 
                         <div className="product-item left-item">
                             <div className="wrap">
-                                <img src="img/product-1.png" alt=""/>
+                                <img src={product1} alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">Earrings</h3>
                                         <p className="description">Beautifully elegant cascade earrings.</p>
@@ -27,7 +32,7 @@ export default class HomeProductBlock extends Component {
                     <div className="col-xl-7 col-sm-12 pad-r-custom bg-custom">
                         <div className="product-item right-item first">
                             <div className="wrap">
-                                <img src="img/product-2.png" alt=""/>
+                                <img src={product2} alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">BANGLE</h3>
                                         <p className="description">
@@ -39,7 +44,7 @@ export default class HomeProductBlock extends Component {
                         </div>
                         <div className="product-item right-item second">
                             <div className="wrap">
-                                <img src="img/product-3.png" alt=""/>
+                                <img src={product3} alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">RING</h3>
                                         <p className="description">
@@ -51,7 +56,7 @@ export default class HomeProductBlock extends Component {
                         </div>
                         <div className="product-item right-item third">
                             <div className="wrap">
-                                <img src="img/product-4.png" alt=""/>
+                                <img src={product4} alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">PENDANT</h3>
                                         <p className="description">
