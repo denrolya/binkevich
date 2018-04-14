@@ -21,13 +21,11 @@ export default class HomeWhiteCarousel extends Component {
 
                             <div id="white-carousel" className="carousel slide" data-ride="carousel">
 
-
                                 <ul className="carousel-indicators">
                                     <li data-target="#white-carousel" data-slide-to="0" className="active"></li>
                                     <li data-target="#white-carousel" data-slide-to="1"></li>
                                     <li data-target="#white-carousel" data-slide-to="2"></li>
                                 </ul>
-
 
                                 <div className="carousel-inner">
                                     <div className="carousel-item active">
@@ -41,7 +39,6 @@ export default class HomeWhiteCarousel extends Component {
                                     </div>
                                 </div>
 
-
                                 <a className="carousel-control-prev" href="#white-carousel" data-slide="prev">
                                     <span className="carousel-control-prev-icon"></span>
                                 </a>
@@ -51,11 +48,11 @@ export default class HomeWhiteCarousel extends Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
         );
     }
 }
+
 
 
