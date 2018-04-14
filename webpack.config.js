@@ -15,6 +15,7 @@ Encore
     .addEntry('product_list', './assets/js/product/List/app.jsx')
     .addEntry('product_collection', './assets/js/product/Collection/app.jsx')
     .addEntry('product_view', './assets/js/product/View/app.jsx')
+    .addStyleEntry('main', './assets/css/main.scss')
 
     // allow sass/scss files to be processed
     .enableSassLoader()

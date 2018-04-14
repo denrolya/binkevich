@@ -32,7 +32,6 @@ class ProductApiController extends FOSRestController
      *     tags={"stable"="#93c00b"}
      * )
      * @Rest\Get("/product/ring")
-     * @Rest\View(serializerGroups={"product-list"})
      */
     public function getRingsAction()
     {

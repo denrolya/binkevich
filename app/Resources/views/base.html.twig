@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock title %}</title>
+        <meta charset="UTF-8">
+        <title>{% block title %}Home{% endblock title %}</title>
+
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('build/common.css') }}">
+            <link rel="stylesheet" href="{{ asset('build/main.css') }}" />
+            <link rel="stylesheet" href="{{ asset('build/common.css') }}" />
         {% endblock stylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
+
     <body>
         <div id="content"></div>
+
         {% block javascripts %}
             <script type="text/javascript" src="{{ asset('build/common.js') }}"></script>
         {% endblock javascripts %}
     </body>
+
 </html>
