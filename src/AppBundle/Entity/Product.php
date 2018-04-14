@@ -22,6 +22,7 @@ class Product
     /**
      * @var int
      *
+     * @JMS\Groups({"product-list", "product-view"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -31,6 +32,7 @@ class Product
     /**
      * @var string
      *
+     * @JMS\Groups({"product-list", "product-view"})
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -38,6 +40,7 @@ class Product
     /**
      * @var string
      *
+     * @JMS\Groups({"product-view"})
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -45,6 +48,7 @@ class Product
     /**
      * One Product has many Images
      *
+     * @JMS\Groups({"product-list", "product-view"})
      * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinTable(name="product_images",
      *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
