@@ -1,0 +1,690 @@
+.home-top-block {
+  min-height: 768px;
+  padding-top: 260px;
+  background-image: linear-gradient(45deg, #1a2837 10%, #9fc6c6 86%);
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    padding-top: 218px;
+  }
+  @include mobile {
+    padding-top: 94px;
+    min-height: auto;
+    padding-bottom: 115px;
+  }
+
+  .top-img {
+    width: 100%;
+    height: 100%;
+    background-image: url("#{$path-to-img}home-top-img.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    right: 0;
+    top: 0;
+    background-size: 58vh;
+
+    @include tablet {
+      background-size: 45vh;
+      top: 45px;
+    }
+    @include mobile {
+      background-size: 165px;
+    }
+  }
+
+  p {
+    @include paragraph($white);
+    max-width: 420px;
+    width: 100%;
+    margin-bottom: 60px;
+  }
+  h1 {
+    position: relative;
+    margin-bottom: 40px;
+
+    @include mobile {
+      margin-bottom: 20px;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      max-width: 319px;
+      width: 100%;
+      height: 35px;
+      background-color: #c59c71;
+      opacity: 0.3;
+      top: 25px;
+      left: -15px;
+
+      @include tablet {
+        max-width: 295px;
+        left: -7px;
+      }
+      @include mobile {
+        max-width: 80px;
+        height: 2px;
+        background-color: $white;
+        opacity: 1;
+        display: block;
+        position: static;
+        margin-top: 17px;
+      }
+    }
+  }
+  .btn {
+    @include btn(tranparete, $white, $white, $black);
+  }
+  .section-img {
+    position: absolute;
+  }
+}
+
+.home-product-block {
+  max-width: 1360px;
+  margin: 0 auto 180px auto;
+  position: relative;
+  box-shadow: 0 3px 35px rgba(0, 0, 0, 0.14);
+  z-index: 10;
+
+  @include large {
+    .bg-custom {
+      background-color: #f3f9f9;
+    }
+
+    .pad-l-custom {
+      padding: 140px 0 140px 125px;
+    }
+    .pad-r-custom {
+      padding: 155px 125px 150px 0;
+    }
+  }
+  @include tablet {
+    margin: 0 auto 125px auto;
+  }
+  @include mobile {
+    padding-top: 50px;
+    margin-bottom: 0;
+    box-shadow: none;
+    text-align: center;
+  }
+
+  h5 {
+    margin-bottom: 12px;
+    display: inline-block;
+    &:after {
+      content: '';
+      display: block;
+      margin-top: 8px;
+      width: 100%;
+      height: 3px;
+      background-color: $black;
+    }
+
+    @include tab-mob {
+      &:after {
+        height: 1px;
+      }
+    }
+  }
+
+  h2 {
+    margin-bottom: 15px;
+    letter-spacing: 2.1px;
+
+    @include tablet {
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        max-width: 366px;
+        width: 100%;
+        height: 35px;
+        background-color: rgba(243, 235, 227, 0.8);
+        top: 25px;
+        left: -15px;
+      }
+    }
+
+    & + p {
+      margin-bottom: 60px;
+
+      @include mobile {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  p {
+    @include paragraph($black);
+  }
+
+  .btn {
+    box-shadow: 0 3px 24px rgba(0, 0, 0, 0.1);
+    @include btn(#16252a, $white, $black, $black);
+    @include large {
+      margin-left: 18px;
+      margin-bottom: 140px;
+    }
+    @include tablet {
+      margin-bottom: 82px;
+    }
+    @include mobile {
+      margin-bottom: 75px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .product-item {
+    box-shadow: 0 5px 13px rgba(0, 0, 0, 0.08);
+    border: 20px solid $white;
+    position: relative;
+
+    @include mobile {
+      border: 10px solid $white;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .wrap {
+      box-shadow: inset 0 0 13px -3px rgba(0, 0, 0, 0.2);
+      height: 100%;
+    }
+
+    img {
+      z-index: 1000;
+      position: absolute;
+    }
+
+    .wrap-text {
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+      background-color: $white;
+      position: relative;
+      z-index: 100;
+
+      h3 {
+        margin-bottom: 17px;
+
+        @include mobile {
+          margin-bottom: 8px;
+        }
+      }
+
+      p {
+        @include paragraph($black);
+        @include tablet {
+          font-size: 18px;
+          margin-bottom: 0;
+        }
+        @include mobile {
+          font-size: 12px;
+          margin-bottom: 0;
+          line-height: 20px;
+          text-align: left;
+        }
+      }
+    }
+
+    &.left-item {
+      margin-right: 30px;
+
+      img {
+        left: -60px;
+        top: -60px;
+      }
+
+      .wrap-text {
+        padding: 40px 20px 45px 80px;
+        top: -20px;
+        right: -85px;
+      }
+
+      @include tablet {
+        max-width: 362px;
+        width: 100%;
+        max-height: 160px;
+        height: 100%;
+        margin-bottom: 160px;
+
+        .wrap-text {
+          padding: 40px;
+          max-height: 135px;
+          width: 125%;
+          max-width: 400px;
+          top: -35px;
+        }
+
+        img {
+          max-width: 204px;
+          width: 100%;
+        }
+
+        h3 {
+          margin-bottom: 5px;
+        }
+      }
+      @include mobile {
+        max-width: 189px;
+        margin: 0 auto 80px auto;
+        width: 100%;
+        max-height: 118px;
+        height: 100%;
+
+        .wrap-text {
+          padding: 30px;
+          max-width: 197px;
+          width: 115%;
+          max-height: 120px;
+          top: -30px;
+          right: -30px;
+        }
+
+        img {
+          max-width: 102px;
+          width: 100%;
+          height: 132px;
+          top: 0;
+          left: -50px;
+        }
+      }
+    }
+
+    &.right-item {
+      margin-left: 190px;
+      max-width: 460px;
+
+      .wrap-text {
+        padding: 45px 95px 50px 45px;
+        right: 122px;
+        top: -30px;
+      }
+
+      &.first {
+        margin-bottom: 70px;
+        img {
+          right: 25px;
+          top: -50px;
+        }
+      }
+
+      &.second {
+        margin-left: 90px;
+        margin-bottom: 90px;
+        img {
+          top: -20px;
+          left: -10px;
+        }
+        .wrap-text {
+          padding: 45px;
+          right: -80px;
+          top: 30px;
+        }
+      }
+
+      &.third {
+        @include large {
+          max-width: 490px;
+        }
+        img {
+          top: 0;
+          right: 0;
+          width: 105px;
+        }
+        .wrap-text {
+          top: 30px;
+        }
+      }
+
+      @include tablet {
+        max-width: 424px;
+        margin-left: 110px;
+        width: 100%;
+
+        .wrap-text {
+          padding: 38px;
+        }
+        &.first {
+          min-height: 200px;
+
+          img {
+            right: -25px;
+          }
+
+          .wrap-text {
+            width: 440px;
+            min-height: 166px;
+          }
+        }
+
+        &.second {
+          margin-left: 0;
+          min-height: 188px;
+
+          img {
+            width: 126px;
+            height: 146px;
+          }
+
+          .wrap-text {
+            width: 495px;
+            min-height: 155px;
+            padding: 38px;
+          }
+        }
+        &.third {
+          min-height: 215px;
+          margin-bottom: 155px;
+
+          .wrap-text {
+            width: 448px;
+            min-height: 182px;
+          }
+        }
+      }
+      @include mobile {
+        max-width: 240px;
+        margin-left: auto;
+        width: 100%;
+
+        .wrap-text {
+          padding: 30px;
+        }
+
+        &.first {
+          margin-left: auto;
+          max-height: 160px;
+
+          img {
+            right: -25px;
+            width: 96px;
+            height: 180px;
+          }
+
+          .wrap {
+            max-height: 140px;
+          }
+
+          .wrap-text {
+            width: 242px;
+            min-height: 160px;
+            top: -40px;
+            right: 45px;
+            padding-right: 60px;
+          }
+        }
+
+        &.second {
+          margin-left: auto;
+          min-height: 140px;
+          max-height: 140px;
+          max-width: 239px;
+
+          .wrap {
+            max-height: 120px;
+          }
+
+          img {
+            width: 126px;
+            height: 146px;
+            top: -65px;
+            left: -20px;
+          }
+
+          .wrap-text {
+            width: 247px;
+            min-height: 139px;
+            padding: 25px;
+            right: -10px;
+            top: 15px;
+          }
+        }
+        &.third {
+          max-height: 162px;
+          max-width: 237px;
+          margin-bottom: 60px;
+
+          .wrap {
+            max-height: 142px;
+          }
+
+          img {
+            width: 75px;
+            top: 0;
+            right: 1px;
+          }
+
+          .wrap-text {
+            width: 245px;
+            min-height: 164px;
+            top: 10px;
+            right: 60px;
+            padding: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  @include tablet {
+    max-width: 690px;
+    margin: 0 auto 125px auto;
+    padding: 0 15px;
+
+    .pad-l-custom {
+      padding: 100px 45px 0 45px;
+    }
+    .pad-r-custom {
+      padding: 0 45px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+  }
+
+}
+
+.home-white-carousel {
+  padding: 85px 0;
+
+  @include tablet {
+    padding: 113px 0;
+  }
+
+  @include mobile {
+    padding: 50px 0;
+  }
+
+  h3 {
+    display: inline-block;
+    margin-top: 80px;
+    position: relative;
+    margin-bottom: 20px;
+
+    @include large {
+      &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 107%;
+        height: 16px;
+        background-color: #f3ebe3;
+        opacity: 0.7;
+        top: 11px;
+        left: -15px;
+      }
+    }
+
+    @include tablet {
+      font-size: 42px;
+      margin: 0 0 25px 0;
+    }
+    @include mobile {
+      margin-top: 0;
+      font-size: 32px;
+    }
+  }
+  p {
+    @include paragraph($black);
+    margin-bottom: 40px;
+
+    @include tablet {
+      font-size: 18px;
+      max-width: 477px;
+      width: 100%;
+
+    }
+  }
+  .btn {
+    @include btn(tranparete, $black, $black, $white);
+
+    @include tablet {
+      margin-bottom: 70px;
+    }
+    @include mobile {
+      margin-bottom: 40px;
+    }
+  }
+
+  #white-carousel.carousel {
+    max-width: 630px;
+    width: 100%;
+    margin: 0 auto;
+
+    .carousel-inner img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include tablet {
+      max-width: none;
+      width: 100vw;
+      margin-left: calc(-100vw / 2 + 668px / 2);
+    }
+  }
+}
+
+.home-black-carousel {
+  padding: 180px 0 160px;
+
+  @include tablet {
+    padding: 100px 0;
+  }
+  @include mobile {
+    padding: 60px 0;
+  }
+
+  h2 {
+    display: inline-block;
+    color: $white;
+    margin-bottom: 45px;
+    position: relative;
+
+    @include tablet {
+      font-size: 42px;
+    }
+    @include mobile {
+      font-size: 32px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: -20px;
+      background-color: $white;
+    }
+  }
+  p {
+    color: $white;
+    max-width: 466px;
+    width: 100%;
+    margin-bottom: 60px;
+
+    @include mobile {
+      margin-bottom: 30px;
+    }
+  }
+
+  .wrap-block {
+    box-shadow: 0 20px 37px rgba(0, 0, 0, 0.2);
+
+    @include mobile {
+      flex-flow: wrap;
+      box-shadow: none;
+    }
+
+    #black-carousel.carousel {
+      max-width: 687px;
+      margin-right: 50px;
+
+      @include tablet {
+        max-width: 400px;
+        margin: 0 auto;
+        max-height: 335px;
+
+        img {
+          max-height: 335px;
+        }
+      }
+      @include mobile {
+        margin: 0 auto;
+        width: 100%;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    .wrap-info {
+      @include large {
+        padding-right: 50px;
+      }
+      @include tablet {
+        padding: 20px;
+      }
+      h3 {
+        margin-top: 85px;
+        color: $white;
+        margin-bottom: 20px;
+        display: inline-block;
+        position: relative;
+        &:before {
+          content: '';
+          position: absolute;
+          background-color: #f3ebe3;
+          opacity: 0.2;
+          height: 16px;
+          width: 100%;
+          bottom: -6px;
+          left: -8px;
+        }
+        @include tablet {
+          margin-top: 0;
+        }
+        @include mobile {
+          margin-top: 50px;
+          font-size: 18px;
+        }
+      }
+      p {
+        margin-bottom: 50px;
+
+        @include tab-mob {
+          margin-bottom: 30px;
+        }
+      }
+      .btn {
+        @include btn(tranparete, $white, $white, $black)
+      }
+    }
+  }
+}

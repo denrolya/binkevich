@@ -46,10 +46,14 @@ class Product
     private $description;
 
     /**
-     * One Product has Many Images.
+     * One Product has many Images
      *
      * @JMS\Groups({"product-list", "product-view"})
-     * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product")
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinTable(name="product_images",
+     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
+     *      )
      */
     private $productImages;
 
