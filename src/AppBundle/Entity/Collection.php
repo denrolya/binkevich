@@ -11,19 +11,15 @@ use JMS\Serializer\Annotation as JMS;
  * Category
  *
  * @JMS\ExclusionPolicy("none")
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
+ * @ORM\Table(name="collection")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CollectionRepository")
  */
-class Category
+class Collection
 {
-    const CATEGORY_RING = 1;
-    const CATEGORY_EARRING = 2;
-    const CATEGORY_BANGLE = 3;
-    const CATEGORY_PENDANT = 4;
-
     /**
      * @var int
      *
+     * @JMS\Groups({"index", "product-list", "product-view"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -33,7 +29,7 @@ class Category
     /**
      * @var string
      *
-     * @JMS\Groups({"index"})
+     * @JMS\Groups({"index", "product-list", "product-view"})
      * @ORM\Column(name="name", type="string", length=100, unique=true)
      */
     private $name;
@@ -45,7 +41,8 @@ class Category
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @JMS\Groups({"index", "product-list", "product-view"})
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="collection")
      */
     private $products;
 
@@ -74,7 +71,7 @@ class Category
      *
      * @param string $name
      *
-     * @return Category
+     * @return $this
      */
     public function setName($name)
     {
@@ -91,13 +88,6 @@ class Category
     public function getName()
     {
         return $this->name;
-    }
-
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
     }
 
     /**
@@ -145,7 +135,7 @@ class Category
      *
      * @return ArrayCollection
      */
-    public function getProduct()
+    public function getProducts()
     {
         return $this->products;
     }

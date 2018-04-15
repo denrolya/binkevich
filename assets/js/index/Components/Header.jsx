@@ -2,58 +2,57 @@ import React, {Component} from 'react';
 
 export default class Header extends Component {
     render() {
-
         return (
             <header className="container d-flex bg-transparent position-absolute">
                 <div className="mobile-menu">
                     <div className="wrap-els">
                         <div className="d-flex">
-                            <a className="logo marg-auto" href="#"></a>
+                            <a className="logo marg-auto" href="/"></a>
                             <button type="button" className="close-mobile-menu">&#10006;</button>
                         </div>
 
                         <ul>
                             <li>
-                                <a href="#">HOME</a>
+                                <a href="/">HOME</a>
                             </li>
                             <li>
-                                <a href="#" className="have-sub-mobile-menu">JEWELLERY</a>
+                                <a href="" className="have-sub-mobile-menu">JEWELLERY</a>
                                 <ul>
                                     <li className="have-sub-mobile-menu">
-                                        <a href="#" className="have-sub-mobile-menu">CATEGORIES</a>
+                                        <a href="/categories" className="have-sub-mobile-menu">CATEGORIES</a>
                                         <ul>
                                             <li>
-                                                <a href="/product">RINGS</a>
+                                                <a href="/categories/ring">RINGS</a>
                                             </li>
                                             <li>
-                                                <a href="/product">EARRINGS</a>
+                                                <a href="/categories/earring">EARRINGS</a>
                                             </li>
                                             <li>
-                                                <a href="/product">BANGLES</a>
+                                                <a href="/categories/bangle">BANGLES</a>
                                             </li>
                                             <li>
-                                                <a href="/product">PENDANTS</a>
+                                                <a href="/categories/pendant">PENDANTS</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#" className="have-sub-mobile-menu">COLLECTIONS</a>
+                                        <a href="/collections" className="have-sub-mobile-menu">COLLECTIONS</a>
                                         <ul>
                                             <li>
-                                                <a href="#">SOFT PEARL COLLECTION</a>
+                                                <a href="/collections/soft-pearl-collection">SOFT PEARL COLLECTION</a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">LOOKBOOK</a>
+                                <a href="/lookbook">LOOKBOOK</a>
                             </li>
                             <li>
-                                <a href="#">BESPOKE</a>
+                                <a href="/bespoke">BESPOKE</a>
                             </li>
                             <li>
-                                <a href="#">CONTACT</a>
+                                <a href="/contact">CONTACT</a>
                             </li>
                         </ul>
                     </div>
@@ -71,43 +70,43 @@ export default class Header extends Component {
 
                 <ul className="menu-list marg-l-auto pad-t-30">
                     <li className="item first">
-                        <a href="#">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li className="item first have-sub-menu">
                         <a href="#">Jewellery</a>
                         <ul className="second-menu sub-menu">
                             <li className="item second have-sub-sub-menu">
-                                <a href="#">CATEGORIES</a>
+                                <a href="/categories">CATEGORIES</a>
                                 <ul className="third-menu sub-menu">
                                     <li className="item third">
-                                        <a href="#">RINGS</a>
+                                        <a href="/categories/ring">RINGS</a>
                                     </li>
                                     <li className="item third">
-                                        <a href="#">Earrings</a>
+                                        <a href="/categories/earring">Earrings</a>
                                     </li>
                                     <li className="item third">
-                                        <a href="#">BangleS</a>
+                                        <a href="/categories/bangle">Bangles</a>
                                     </li>
                                     <li className="item third">
-                                        <a href="#">PENDANTS</a>
+                                        <a href="/categories/pendant">PENDANTS</a>
                                     </li>
                                 </ul>
                             </li>
                             <li className="item second have-sub-sub-menu">
-                                <a href="#">Collections</a>
+                                <a href="/collections">Collections</a>
                                 <ul className="third-menu sub-menu">
                                     <li className="item third new">
-                                        <a href="#">SOFT PEARL COLLECTION <span>NEW</span></a>
+                                        <a href="/collections/soft-pearl-collection">SOFT PEARL COLLECTION <span>NEW</span></a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
                     <li className="item first have-sub-menu">
-                        <a href="#">Lookbook</a>
+                        <a href="/lookbook">Lookbook</a>
                     </li>
                     <li className="item first">
-                        <a href="#">Bespoke</a>
+                        <a href="/bespoke">Bespoke</a>
                     </li>
                     <li className="item first">
                         <a href="/contact">Contact</a>

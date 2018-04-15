@@ -84,6 +84,13 @@ swiftmailer:
 
 nelmio_api_doc: ~
 
+stof_doctrine_extensions:
+    default_locale: en
+    translation_fallback: true
+    orm:
+        default:
+            sluggable: true
+
 fos_user:
     db_driver:      orm # can be orm or odm
     firewall_name:  main

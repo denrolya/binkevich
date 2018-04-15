@@ -1,0 +1,32 @@
+AppBundle\Entity\Collection:
+    collection-soft-pearl-collection:
+        name: Soft Pearl Collection
+
+AppBundle\Entity\Product:
+    collection-soft-pearl-collection-ring:
+        name: The Ring
+        description: 'A cluster of beautiful freshwater pearls make this ring a stylish centerpiece for any occasion.'
+        category: '@category-ring'
+        collection: '@collection-soft-pearl-collection'
+        productImages: ['@product_image-soft-pearl-ring']
+
+    collection-soft-pearl-collection-bangle:
+        name: The Bangle
+        description: 'The solidly elegant yet smooth bangle. is the statement piece of the collection.'
+        category: '@category-bangle'
+        collection: '@collection-soft-pearl-collection'
+        productImages: ['@product_image-soft-pearl-bangle']
+
+    collection-soft-pearl-collection-earring:
+        name: The Earring
+        description: 'Beautifully elegant cascade earrings.'
+        category: '@category-earring'
+        collection: '@collection-soft-pearl-collection'
+        productImages: ['@product_image-soft-pearl-earring']
+
+    collection-soft-pearl-collection-pendant:
+        name: The Pendant
+        description: 'The smoothness of the freshwater pearls make this pendant the most tactile and stylish accesory in the collection.'
+        category: '@category-pendant'
+        collection: '@collection-soft-pearl-collection'
+        productImages: ['@product_image-soft-pearl-pendant']

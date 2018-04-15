@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {
-    Card, CardImg, CardBody, CardTitle, Button
+    Card, CardImg, CardBody, CardTitle
 } from 'reactstrap';
 import ImageCarousel from '../../../common/Components/ImageCarousel';
 
@@ -13,11 +13,12 @@ export default class ProductItem extends Component {
         return (
             <div>
                 <Card>
-                    <ImageCarousel items={ this.props.product.productImages }/>
+                    { this.props.product.productImages && this.props.product.productImages.length >0 &&
+                        <ImageCarousel items={ this.props.product.productImages } indicators={true}/>
+                    }
                     <CardBody>
                         <CardTitle>{ this.props.product.name }</CardTitle>
-                        <a href={ '/product/' + this.props.product.id }
-                           className="btn btn-default">Purchase</a>
+                        <a href={ '/product/' + this.props.product.id } className="btn btn-default">Purchase</a>
                     </CardBody>
                 </Card>
             </div>

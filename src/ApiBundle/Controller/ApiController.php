@@ -2,33 +2,21 @@
 
 namespace ApiBundle\Controller;
 
-use FOS\RestBundle\Controller\Annotations\Get;
+use AppBundle\Entity\Collection;
 use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 class ApiController extends FOSRestController
 {
     /**
-     * Get test data
-     *
-     * @ApiDoc(
-     *      resource=true,
-     *      section="Test",
-     *      description="Get test data",
-     *      tags={"test"="#93c00b"}
-     * )
-     * @Get("/test")
+     * @Rest\View(serializerGroups={"index"})
+     * @Rest\Get("/collections/{slug}")
      */
-    public function getTestDataAction()
+    public function getCollectionProductsAction(Collection $collection)
     {
         return [
-            'type' => 'test',
-            'payload' => [
-                'string' => 'test',
-                'number' => 1,
-                'empty' => null,
-                'false' => false
-            ]
+            'data' => $collection->getProducts()
         ];
     }
 }

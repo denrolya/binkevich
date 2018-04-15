@@ -3,8 +3,10 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Traits\UpdatableTrait;
+use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
 
 /**
@@ -22,7 +24,7 @@ class Product
     /**
      * @var int
      *
-     * @JMS\Groups({"product-list", "product-view"})
+     * @JMS\Groups({"index", "product-list", "product-view"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -32,15 +34,21 @@ class Product
     /**
      * @var string
      *
-     * @JMS\Groups({"product-list", "product-view"})
+     * @JMS\Groups({"index", "product-list", "product-view"})
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
      * @var string
      *
-     * @JMS\Groups({"product-view"})
+     * @JMS\Groups({"index", "product-list", "product-view"})
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -48,20 +56,27 @@ class Product
     /**
      * One Product has many Images
      *
-     * @JMS\Groups({"product-list", "product-view"})
+     * @JMS\Groups({"index", "product-list", "product-view"})
      * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      * @ORM\JoinTable(name="product_images",
      *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id")}
      *      )
      */
     private $productImages;
 
     /**
+     * @JMS\Groups({"index", "product-list", "product-view"})
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="products")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Collection", inversedBy="products")
+     * @ORM\JoinColumn(name="collection_id", referencedColumnName="id")
+     */
+    private $collection;
 
     /**
      * @var array
@@ -130,12 +145,22 @@ class Product
     }
 
     /**
+     * Get slug.
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
      * Add productImage
      *
-     * @param ProductImage $image
+     * @param Media $image
      * @return $this
      */
-    public function addProductImage(ProductImage $image)
+    public function addProductImage(Media $image)
     {
         if (!$this->productImages->contains($image)) {
             $this->productImages->add($image);
@@ -147,10 +172,10 @@ class Product
     /**
      * Remove productImage
      *
-     * @param ProductImage $image
+     * @param Media $image
      * @return $this
      */
-    public function removeProductImage(ProductImage $image)
+    public function removeProductImage(Media $image)
     {
         if ($this->productImages->contains($image)) {
             $this->productImages->removeElement($image);
@@ -190,6 +215,29 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set collection
+     *
+     * @param Collection $collection
+     * @return $this
+     */
+    public function setCollection(Collection $collection)
+    {
+        $this->collection = $collection;
+
+        return $this;
+    }
+
+    /**
+     * Get collection
+     *
+     * @return Collection
+     */
+    public function getCollection()
+    {
+        return $this->collection;
     }
 
     public function getFiles()

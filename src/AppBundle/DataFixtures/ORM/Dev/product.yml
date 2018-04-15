@@ -3,18 +3,22 @@ AppBundle\Entity\Product:
         name: <word()>
         description: <sentence()>
         category: '@category-ring'
+        productImages: '<numberBetween(1, 10)>x @product_image-*'
 
     product_earring-{1..25}:
         name: <word()>
         description: <sentence()>
         category: '@category-earring'
+        productImages: '<numberBetween(1, 10)>x @product_image-*'
 
     product_bangle-{1..25}:
         name: <word()>
         description: <sentence()>
         category: '@category-bangle'
+        productImages: '<numberBetween(1, 10)>x @product_image-*'
 
     product_pendant-{1..25}:
         name: <word()>
         description: <sentence()>
         category: '@category-pendant'
+        productImages: '<numberBetween(1, 10)>x @product_image-*'

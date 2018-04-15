@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\DataFixtures\ORM\Dev;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use Faker\Factory;
 use Hautelook\AliceBundle\Doctrine\DataFixtures\AbstractLoader;
 use Symfony\Component\Finder\Finder;
@@ -15,16 +16,21 @@ class DataLoader extends AbstractLoader
     {
         return  [
             __DIR__ . '/user.yml',
+            __DIR__ . '/product_image.yml',
             __DIR__ . '/category.yml',
-            __DIR__ . '/product.yml',
-            __DIR__ . '/product_image.yml'
+            __DIR__ . '/collection.yml',
+            __DIR__ . '/product.yml'
         ];
     }
 
-    public function uploadedFile()
+    public function uploadedFile($assetPath = null)
     {
-        $faker = Factory::create();
-        $file = $faker->image(__DIR__ . '/../../../../../web/uploads/products/test', 640, 480, 'cats');
+        if (is_null($assetPath)) {
+            $faker = Factory::create();
+            $file = $faker->image(__DIR__ . '/../../../../../web/uploads/products/test', 640, 480, 'cats');
+        } else {
+            $file = __DIR__ . "/../../../../../assets/$assetPath";
+        }
 
         return $uploadedFile = new UploadedFile(
             $file,

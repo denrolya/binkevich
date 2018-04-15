@@ -1,4 +1,15 @@
-AppBundle\Entity\ProductImage:
+Application\Sonata\MediaBundle\Entity\Media:
     product_image-{1..200}:
         __construct: [<uploadedFile()>]
-        product: '@product_ring-*'
+
+    product_image-soft-pearl-earring:
+        __construct: [<uploadedFile('img/product-1.png')>]
+
+    product_image-soft-pearl-bangle:
+        __construct: [<uploadedFile('img/product-2.png')>]
+
+    product_image-soft-pearl-ring:
+        __construct: [<uploadedFile('img/product-3.png')>]
+
+    product_image-soft-pearl-pendant:
+        __construct: [<uploadedFile('img/product-4.png')>]

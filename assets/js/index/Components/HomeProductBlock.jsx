@@ -1,11 +1,28 @@
 import React, {Component} from 'react';
-
-const product1 = require('../../../img/product-1.png');
-const product2 = require('../../../img/product-2.png');
-const product3 = require('../../../img/product-3.png');
-const product4 = require('../../../img/product-4.png');
+import fetch from 'isomorphic-fetch';
 
 export default class HomeProductBlock extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            products: []
+        };
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:8000/api/v1/collections/soft-pearl-collection', {
+            method: 'GET',
+            mode: 'CORS'
+        }).then(res => res.json())
+          .then(json => {
+              this.setState({
+                  products: json.data
+              })
+          });
+    }
+
+    // TODO: Put products data to corresponding blocks
     render() {
         return (
             <section className="home-product-block bg-white">
@@ -20,7 +37,7 @@ export default class HomeProductBlock extends Component {
 
                         <div className="product-item left-item">
                             <div className="wrap">
-                                <img src={product1} alt=""/>
+                                <img src={this.state.products[0].productImages[0].src} alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">Earrings</h3>
                                         <p className="description">Beautifully elegant cascade earrings.</p>
@@ -32,7 +49,7 @@ export default class HomeProductBlock extends Component {
                     <div className="col-xl-7 col-sm-12 pad-r-custom bg-custom">
                         <div className="product-item right-item first">
                             <div className="wrap">
-                                <img src={product2} alt=""/>
+                                <img src={this.state.products[1].productImages[0].src} alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">BANGLE</h3>
                                         <p className="description">
@@ -44,7 +61,7 @@ export default class HomeProductBlock extends Component {
                         </div>
                         <div className="product-item right-item second">
                             <div className="wrap">
-                                <img src={product3} alt=""/>
+                                <img src={this.state.products[2].productImages[0].src} alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">RING</h3>
                                         <p className="description">
@@ -56,7 +73,7 @@ export default class HomeProductBlock extends Component {
                         </div>
                         <div className="product-item right-item third">
                             <div className="wrap">
-                                <img src={product4} alt=""/>
+                                <img src={this.state.products[3].productImages[0].src} alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">PENDANT</h3>
                                         <p className="description">

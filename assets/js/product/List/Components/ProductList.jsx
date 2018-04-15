@@ -26,15 +26,17 @@ export default class ProductList extends Component {
 
     render() {
         return (
-            <div className="row">
-                {this.state.rings && this.state.rings.map((ring, i) => {
-                    return (
-                        <div className="col col-md-3" key={i}>
-                            <ProductItem product={ring}/>
-                        </div>
-                    )
-                })}
-            </div>
+            <section className="home-top-block">
+                <div className="row">
+                    {this.state.rings && this.state.rings.map((ring, i) => {
+                        return (
+                            <div className="col col-md-3" key={i}>
+                                <ProductItem product={ring}/>
+                            </div>
+                        )
+                    })}
+                </div>
+            </section>
         );
     }
 }
