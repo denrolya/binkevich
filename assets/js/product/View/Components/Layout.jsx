@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HeaderLight from '../../../common/Components/HeaderLight';
+import Header from '../../../common/Components/Header';
 import Footer from '../../../common/Components/Footer';
 import Content from './Content';
 
@@ -7,7 +7,7 @@ export default class Layout extends Component {
     render() {
         return (
             <div>
-                <HeaderLight/>
+                <Header/>
                 <Content/>
                 <Footer/>
             </div>

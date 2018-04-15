@@ -45,16 +45,19 @@ export default class ImageCarousel extends Component {
     render() {
         const { activeIndex } = this.state;
 
-        const slides = this.props.items.map((item) => {
+        const slides = this.props.items.map((item, index) => {
             return (
-                <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.path}>
-                    <img src={'/' + item.path} />
+                <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={index}>
+                    <img src={item.src} />
                 </CarouselItem>
             );
         });
 
         return (
             <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous}>
+                {this.props.indicators &&
+                    <CarouselIndicators items={this.props.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+                }
                 {slides}
                 <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
                 <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />

@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
-
-const logo = require('../../../img/carousel-black-img.jpg');
+import ImageCarousel from '../../common/Components/ImageCarousel';
 
 export default class HomeBlackCarousel extends Component {
-    render() {
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            images: [{
+                src: require('../../../img/carousel-black-img.jpg')
+            }, {
+                src: require('../../../img/carousel-black-img2.jpg')
+            }]
+        };
+    }
+
+    render() {
         return (
             <section className="home-black-carousel ">
                 <div className="container">
@@ -16,33 +26,7 @@ export default class HomeBlackCarousel extends Component {
                                 you make your perfect design even more personal and unique.
                             </p>
                             <div className="wrap-block d-flex">
-                                <div id="black-carousel" className="carousel slide" data-ride="carousel">
-
-                                    <ul className="carousel-indicators">
-                                        <li data-target="#black-carousel" data-slide-to="0" className="active"></li>
-                                        <li data-target="#black-carousel" data-slide-to="1"></li>
-                                        <li data-target="#black-carousel" data-slide-to="2"></li>
-                                    </ul>
-
-                                    <div className="carousel-inner">
-                                        <div className="carousel-item active">
-                                            <img src={logo} alt="Los Angeles"/>
-                                        </div>
-                                        <div className="carousel-item">
-                                            <img src={logo} alt="Chicago"/>
-                                        </div>
-                                        <div className="carousel-item">
-                                            <img src={logo} alt="New York"/>
-                                        </div>
-                                    </div>
-
-                                    <a className="carousel-control-prev" href="#black-carousel" data-slide="prev">
-                                        <span className="carousel-control-prev-icon"></span>
-                                    </a>
-                                    <a className="carousel-control-next" href="#black-carousel" data-slide="next">
-                                        <span className="carousel-control-next-icon"></span>
-                                    </a>
-                                </div>
+                                <ImageCarousel id="black-carousel" items={ this.state.images } indicators={true}/>
                                 <div className="wrap-info">
                                     <h3>Personal order</h3>
                                     <p>

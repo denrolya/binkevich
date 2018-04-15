@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class HeaderLight extends Component {
+export default class Header extends Component {
     render() {
 
         return (
@@ -23,16 +23,16 @@ export default class HeaderLight extends Component {
                                         <a href="#" className="have-sub-mobile-menu">CATEGORIES</a>
                                         <ul>
                                             <li>
-                                                <a href="#">RINGS</a>
+                                                <a href="/product">RINGS</a>
                                             </li>
                                             <li>
-                                                <a href="#">EARRINGS</a>
+                                                <a href="/product">EARRINGS</a>
                                             </li>
                                             <li>
-                                                <a href="#">BANGLES</a>
+                                                <a href="/product">BANGLES</a>
                                             </li>
                                             <li>
-                                                <a href="#">PENDANTS</a>
+                                                <a href="/product">PENDANTS</a>
                                             </li>
                                         </ul>
                                     </li>

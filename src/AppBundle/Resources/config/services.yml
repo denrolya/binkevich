@@ -12,3 +12,9 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Product }
         public: true
+
+    admin.listener.serialization-listener:
+        class: AppBundle\Listener\Serialization\SerializationListener
+        tags:
+            - { name: jms_serializer.event_subscriber, event: serializer.post_serialize, method: onPostSerialize }
+        public: true

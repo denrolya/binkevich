@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
-
-const logo = require('../../../img/carousel-white-img.jpg');
+import ImageCarousel from '../../common/Components/ImageCarousel';
 
 export default class HomeWhiteCarousel extends Component {
-    render() {
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            images: [{
+                src: require('../../../img/carousel-white-img.jpg')
+            }, {
+                src: require('../../../img/carousel-white-img2.jpg')
+            }]
+        };
+    }
+
+    render() {
         return (
             <section className="home-white-carousel bg-white">
                 <div className="container">
@@ -20,34 +30,7 @@ export default class HomeWhiteCarousel extends Component {
                             <a href="#" className="btn btn-transparent">EXPLORE</a>
                         </div>
                         <div className="col-xl-7 col-sm-12">
-
-                            <div id="white-carousel" className="carousel slide" data-ride="carousel">
-
-                                <ul className="carousel-indicators">
-                                    <li data-target="#white-carousel" data-slide-to="0" className="active"></li>
-                                    <li data-target="#white-carousel" data-slide-to="1"></li>
-                                    <li data-target="#white-carousel" data-slide-to="2"></li>
-                                </ul>
-
-                                <div className="carousel-inner">
-                                    <div className="carousel-item active">
-                                        <img src={logo} alt="Los Angeles"/>
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img src={logo} alt="Chicago"/>
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img src={logo} alt="New York"/>
-                                    </div>
-                                </div>
-
-                                <a className="carousel-control-prev" href="#white-carousel" data-slide="prev">
-                                    <span className="carousel-control-prev-icon"></span>
-                                </a>
-                                <a className="carousel-control-next" href="#white-carousel" data-slide="next">
-                                    <span className="carousel-control-next-icon"></span>
-                                </a>
-                            </div>
+                            <ImageCarousel id="white-carousel" items={ this.state.images } indicators={true}/>
                         </div>
                     </div>
                 </div>
