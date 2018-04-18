@@ -3,13 +3,13 @@ Application\Sonata\MediaBundle\Entity\Media:
         __construct: [<uploadedFile()>]
 
     product_image-soft-pearl-earring:
-        __construct: [<uploadedFile('img/product-1.png')>]
+        __construct: [<uploadedFile('img/product-earring.png')>]
 
     product_image-soft-pearl-bangle:
-        __construct: [<uploadedFile('img/product-2.png')>]
+        __construct: [<uploadedFile('img/product-bangle.png')>]
 
     product_image-soft-pearl-ring:
-        __construct: [<uploadedFile('img/product-3.png')>]
+        __construct: [<uploadedFile('img/product-ring.png')>]
 
     product_image-soft-pearl-pendant:
-        __construct: [<uploadedFile('img/product-4.png')>]
+        __construct: [<uploadedFile('img/product-pendant.png')>]

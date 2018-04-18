@@ -6,7 +6,12 @@ export default class HomeProductBlock extends Component {
         super(props);
 
         this.state = {
-            products: []
+            products: {
+                earrings: [],
+                rings: [],
+                pendants: [],
+                bangles: []
+            }
         };
     }
 
@@ -26,30 +31,31 @@ export default class HomeProductBlock extends Component {
     render() {
         return (
             <section className="home-product-block bg-white">
-                <div className="row pad-0 marg-0">
-                    <div className="col-xl-5 col-sm-12 pad-l-custom">
-                        <h5>Feminine & Organic</h5>
-                        <h2>THE SOFT PEARL COLLECTION</h2>
-                        <p>
-                            Curves inspired by nature help to create<br/>a feminine and stylish collection.
-                        </p>
-                        <a href="#" className="btn btn-darck">EXPLORE</a>
+                { this.state.products.bangles.length > 0 &&
+                    <div className="row pad-0 marg-0">
+                        <div className="col-xl-5 col-sm-12 pad-l-custom">
+                            <h5>Feminine & Organic</h5>
+                            <h2>THE SOFT PEARL COLLECTION</h2>
+                            <p>
+                                Curves inspired by nature help to create<br/>a feminine and stylish collection.
+                            </p>
+                            <a href="#" className="btn btn-darck">EXPLORE</a>
 
-                        <div className="product-item left-item">
-                            <div className="wrap">
-                                <img src={this.state.products[0].productImages[0].src} alt=""/>
+                            <div className="product-item left-item">
+                                <div className="wrap">
+                                    <img src={ this.state.products.earrings[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">Earrings</h3>
                                         <p className="description">Beautifully elegant cascade earrings.</p>
 
                                     </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-xl-7 col-sm-12 pad-r-custom bg-custom">
-                        <div className="product-item right-item first">
-                            <div className="wrap">
-                                <img src={this.state.products[1].productImages[0].src} alt=""/>
+                        <div className="col-xl-7 col-sm-12 pad-r-custom bg-custom">
+                            <div className="product-item right-item first">
+                                <div className="wrap">
+                                    <img src={ this.state.products.bangles[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">BANGLE</h3>
                                         <p className="description">
@@ -57,11 +63,11 @@ export default class HomeProductBlock extends Component {
                                             is the statement piece of the collection.
                                         </p>
                                     </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="product-item right-item second">
-                            <div className="wrap">
-                                <img src={this.state.products[2].productImages[0].src} alt=""/>
+                            <div className="product-item right-item second">
+                                <div className="wrap">
+                                    <img src={ this.state.products.rings[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">RING</h3>
                                         <p className="description">
@@ -69,11 +75,11 @@ export default class HomeProductBlock extends Component {
                                             this ring a stylish centerpiece for any occasion.
                                         </p>
                                     </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="product-item right-item third">
-                            <div className="wrap">
-                                <img src={this.state.products[3].productImages[0].src} alt=""/>
+                            <div className="product-item right-item third">
+                                <div className="wrap">
+                                    <img src={ this.state.products.pendants[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">PENDANT</h3>
                                         <p className="description">
@@ -82,10 +88,11 @@ export default class HomeProductBlock extends Component {
                                             and stylish accesory in the collection.
                                         </p>
                                     </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             </section>
         );
     }

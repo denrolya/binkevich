@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
@@ -138,5 +139,26 @@ class Collection
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Get products formatted
+     */
+    public function getProductsFormatted()
+    {
+        return [
+            'rings' => $this->products->filter(function(Product $product) {
+                return $product->getCategory()->getSlug() === 'rings';
+            }),
+            'earrings' => $this->products->filter(function(Product $product) {
+                return $product->getCategory()->getSlug() === 'earrings';
+            })->getValues(),
+            'bangles' => $this->products->filter(function(Product $product) {
+                return $product->getCategory()->getSlug() === 'bangles';
+            })->getValues(),
+            'pendants' => $this->products->filter(function(Product $product) {
+                return $product->getCategory()->getSlug() === 'pendants';
+            })->getValues()
+        ];
     }
 }

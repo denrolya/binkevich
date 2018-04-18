@@ -16,7 +16,7 @@ class ApiController extends FOSRestController
     public function getCollectionProductsAction(Collection $collection)
     {
         return [
-            'data' => $collection->getProducts()
+            'data' => $collection->getProductsFormatted()
         ];
     }
 }
