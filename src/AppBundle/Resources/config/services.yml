@@ -4,3 +4,8 @@ services:
         tags:
             - { name: jms_serializer.event_subscriber, event: serializer.post_serialize, method: onPostSerialize }
         public: true
+
+    admin_success_handler:
+        public: true
+        class: AppBundle\Services\AuthenticationHandler
+        arguments: [ '@service_container' ]
