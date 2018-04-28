@@ -1,0 +1,35 @@
+services:
+    app.admin.category:
+        class: AppBundle\Admin\CategoryAdmin
+        arguments: [~, AppBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Products, label: Category }
+        public: true
+
+    app.admin.collection:
+        class: AppBundle\Admin\CollectionAdmin
+        arguments: [~, AppBundle\Entity\Collection, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Products, label: Collection }
+        public: true
+
+    app.admin.product:
+        class: AppBundle\Admin\ProductAdmin
+        arguments: [~, AppBundle\Entity\Product, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Products, label: Product }
+        public: true
+
+    app.admin.order:
+        class: AppBundle\Admin\OrderAdmin
+        arguments: [~, AppBundle\Entity\Order, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Orders, label: Orders }
+        public: true
+
+    app.admin.order-item:
+        class: AppBundle\Admin\OrderItemAdmin
+        arguments: [~, AppBundle\Entity\OrderItem, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Orders, label: "Order Items" }
+        public: true

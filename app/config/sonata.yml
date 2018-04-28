@@ -8,6 +8,20 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
 
+sonata_admin:
+    title: Binkevich Jewelry
+#    title_logo: bundles/acmedemo/img/fancy_acme_logo.png
+    dashboard:
+        groups:
+            Products:
+                items:
+                    - app.admin.category
+                    - app.admin.collection
+                    - app.admin.product
+            Orders:
+                items:
+                    - app.admin.order
+
 sonata_media:
     # if you don't use default namespace configuration
     #class:

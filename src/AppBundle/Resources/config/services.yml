@@ -1,19 +1,5 @@
 services:
-    admin.category:
-        class: AppBundle\Admin\CategoryAdmin
-        arguments: [~, AppBundle\Entity\Category, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Category }
-        public: true
-
-    admin.product:
-        class: AppBundle\Admin\ProductAdmin
-        arguments: [~, AppBundle\Entity\Product, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Product }
-        public: true
-
-    admin.listener.serialization-listener:
+    app.admin.listener.serialization-listener:
         class: AppBundle\Listener\Serialization\SerializationListener
         tags:
             - { name: jms_serializer.event_subscriber, event: serializer.post_serialize, method: onPostSerialize }

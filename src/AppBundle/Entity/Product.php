@@ -88,6 +88,11 @@ class Product
         $this->productImages = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return "{$this->name}({$this->category->getName()})";
+    }
+
     /**
      * Get id
      *
