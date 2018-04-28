@@ -16,7 +16,7 @@ export default class HomeProductBlock extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8000/api/v1/index/collection', {
+        fetch('/api/v1/index/collection', {
             method: 'GET',
             mode: 'CORS'
         }).then(res => res.json())
@@ -47,7 +47,6 @@ export default class HomeProductBlock extends Component {
                                     <div className="wrap-text">
                                         <h3 className="title">Earrings</h3>
                                         <p className="description">{this.state.products.earrings[0].shortDescription}</p>
-
                                     </div>
                                 </div>
                             </div>
@@ -58,8 +57,7 @@ export default class HomeProductBlock extends Component {
                                     <img src={ this.state.products.bangles[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">BANGLE</h3>
-                                        <p className="description">{this.state.products.bangles[0].shortDescription}
-                                        </p>
+                                        <p className="description">{this.state.products.bangles[0].shortDescription}</p>
                                     </div>
                                 </div>
                             </div>
@@ -77,8 +75,7 @@ export default class HomeProductBlock extends Component {
                                     <img src={ this.state.products.pendants[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">PENDANT</h3>
-                                        <p className="description">{this.state.products.pendants[0].shortDescription}
-                                        </p>
+                                        <p className="description">{this.state.products.pendants[0].shortDescription}</p>
                                     </div>
                                 </div>
                             </div>

@@ -13,7 +13,7 @@ export default class ProductList extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8000/api/v1/product/ring', {
+        fetch('/api/v1/product/ring', {
             method: 'GET',
             mode: 'CORS'
         }).then(res => res.json())
