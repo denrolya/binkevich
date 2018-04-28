@@ -46,7 +46,7 @@ export default class HomeProductBlock extends Component {
                                     <img src={ this.state.products.earrings[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">Earrings</h3>
-                                        <p className="description">Beautifully elegant cascade earrings.</p>
+                                        <p className="description">{this.state.products.earrings[0].shortDescription}</p>
 
                                     </div>
                                 </div>
@@ -58,9 +58,7 @@ export default class HomeProductBlock extends Component {
                                     <img src={ this.state.products.bangles[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">BANGLE</h3>
-                                        <p className="description">
-                                            The solidly elegant yet smooth bangle.
-                                            is the statement piece of the collection.
+                                        <p className="description">{this.state.products.bangles[0].shortDescription}
                                         </p>
                                     </div>
                                 </div>
@@ -70,10 +68,7 @@ export default class HomeProductBlock extends Component {
                                     <img src={ this.state.products.rings[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">RING</h3>
-                                        <p className="description">
-                                            A cluster of beautiful freshwater pearls make
-                                            this ring a stylish centerpiece for any occasion.
-                                        </p>
+                                        <p className="description">{this.state.products.rings[0].shortDescription}</p>
                                     </div>
                                 </div>
                             </div>
@@ -82,10 +77,7 @@ export default class HomeProductBlock extends Component {
                                     <img src={ this.state.products.pendants[0].productImages[0].src } alt=""/>
                                     <div className="wrap-text">
                                         <h3 className="title">PENDANT</h3>
-                                        <p className="description">
-                                            The smoothness of the freshwater pearls
-                                            make this pendant the most tactile
-                                            and stylish accesory in the collection.
+                                        <p className="description">{this.state.products.pendants[0].shortDescription}
                                         </p>
                                     </div>
                                 </div>
