@@ -14,6 +14,7 @@ class CollectionAdmin extends AbstractAdmin
         $formMapper
             ->add('name')
             ->add('products')
+            ->add('isDisplayedOnIndexPage')
         ;
     }
 
@@ -21,13 +22,15 @@ class CollectionAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name')
-            ->add('products');
+            ->add('products')
+            ->add('isDisplayedOnIndexPage');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('name')
-            ->add('products');
+            ->add('products')
+            ->add('isDisplayedOnIndexPage');
     }
 }

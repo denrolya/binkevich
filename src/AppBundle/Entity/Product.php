@@ -49,6 +49,14 @@ class Product
      * @var string
      *
      * @JMS\Groups({"index", "product-list", "product-view"})
+     * @ORM\Column(name="short_description", type="string", length=255)
+     */
+    private $shortDescription;
+
+    /**
+     * @var string
+     *
+     * @JMS\Groups({"product-list", "product-view"})
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -124,6 +132,29 @@ class Product
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set short description
+     *
+     * @param string $shortDescription
+     * @return $this
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get short description
+     *
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
     }
 
     /**

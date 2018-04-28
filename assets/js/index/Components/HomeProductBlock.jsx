@@ -16,7 +16,7 @@ export default class HomeProductBlock extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8000/api/v1/collections/soft-pearl-collection', {
+        fetch('http://localhost:8000/api/v1/index/collection', {
             method: 'GET',
             mode: 'CORS'
         }).then(res => res.json())

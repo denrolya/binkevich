@@ -12,6 +12,18 @@ sonata_admin:
     title: Binkevich Jewelry
 #    title_logo: bundles/acmedemo/img/fancy_acme_logo.png
     dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [Products]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [Orders]
+
         groups:
             Products:
                 items:

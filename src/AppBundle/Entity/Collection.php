@@ -47,6 +47,14 @@ class Collection
      */
     private $products;
 
+    /**
+     * @var bool
+     *
+     * @JMS\Groups({"index"})
+     * @ORM\Column(type="boolean")
+     */
+    private $isDisplayedOnIndexPage = false;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -139,6 +147,25 @@ class Collection
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * @param bool $isDisplayedOnIndexPage
+     * @return $this
+     */
+    public function setIsDisplayedOnIndexPage($isDisplayedOnIndexPage)
+    {
+        $this->isDisplayedOnIndexPage = $isDisplayedOnIndexPage;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsDisplayedOnIndexPage()
+    {
+        return $this->isDisplayedOnIndexPage;
     }
 
     /**
