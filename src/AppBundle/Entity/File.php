@@ -1,31 +1,20 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace SiteBundle\Entity;
 
-use AppBundle\Traits\UpdatableTrait;
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as JMS;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * File
  *
- * @JMS\ExclusionPolicy("none")
  * @ORM\Table(name="file")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\FileRepository")
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"slider" = "SliderPicture", "product_image" = "ProductImage"})
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity()
  */
-abstract class File
+class File
 {
-    use UpdatableTrait;
-
     /**
      * @var int
      *
-     * @JMS\Groups({"product-list", "product-view"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -35,49 +24,36 @@ abstract class File
     /**
      * @var string
      *
-     * @ORM\Column(name="path", type="string", length=255)
+     * @ORM\Column(name="relative_path", type="string", length=255, unique=true)
      */
-    private $path;
+    private $relativePath;
 
     /**
-     * @var UploadedFile
+     * @var string
+     *
+     * @ORM\Column(name="absolute_path", type="string", length=255, unique=true)
      */
-    private $file;
-
-    public function __construct(UploadedFile $file)
-    {
-        // set the path property to the filename where you've saved the file
-        $this->path = $file->getClientOriginalName();
-        $this->file = $file;
-    }
+    private $absolutePath;
 
     /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    public function upload()
-    {
-        if (null === $this->getPath()) {
-            return;
-        }
-
-        // if there is an error when moving the file, an exception will
-        // be automatically thrown by move(). This will properly prevent
-        // the entity from being persisted to the database on error
-        $this->getFile()->move(
-            $this->getUploadRootDir(), $this->path
-        );
-    }
+    private $name;
 
     /**
-     * @ORM\PostRemove()
+     * @var string
+     *
+     * @ORM\Column(name="size", type="string", length=255)
      */
-    public function removeUpload()
+    private $size;
+
+    public function __toString()
     {
-        if ($file = $this->getAbsolutePath()) {
-            unlink($file);
-        }
+        return $this->getName();
     }
+
 
     /**
      * Get id
@@ -90,75 +66,98 @@ abstract class File
     }
 
     /**
-     * Set path.
+     * Set relative path
      *
-     * @param string $path
+     * @param string $relativePath
      *
      * @return File
      */
-    public function setPath($path)
+    public function setRelativePath($relativePath)
     {
-        $this->path = $path;
+        $this->relativePath = $relativePath;
 
         return $this;
     }
 
     /**
-     * Get path
+     * Get relative path
      *
      * @return string
      */
-    public function getPath()
+    public function getRelativePath()
     {
-        return $this->path;
+        return $this->relativePath;
     }
 
     /**
-     * @return null|string
+     * Set absolute path
+     *
+     * @param string $absolutePath
+     *
+     * @return File
+     */
+    public function setAbsolutePath($absolutePath)
+    {
+        $this->absolutePath = $absolutePath;
+
+        return $this;
+    }
+
+    /**
+     * Get absolute path
+     *
+     * @return string
      */
     public function getAbsolutePath()
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
+        return $this->absolutePath;
     }
 
     /**
-     * @JMS\Groups({"product-list", "product-view"})
-     * @JMS\VirtualProperty()
-     * @JMS\SerializedName("path")
-     * @return null|string
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return File
      */
-    public function getWebPath()
+    public function setName($name)
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().'/'.$this->path;
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * The absolute directory path where uploaded
-     * documents should be saved
-     * @return string
-     */
-    protected function getUploadRootDir()
-    {
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Get rid of the __DIR__ so it doesn't screw up
-     * when displaying uploaded doc/image in the view.
+     * Get name
      *
      * @return string
      */
-    protected function getUploadDir()
+    public function getName()
     {
-        return 'uploads';
+        return $this->name;
+    }
+
+    /**
+     * Set size
+     *
+     * @param string $size
+     *
+     * @return File
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return string
+     */
+    public function getSize()
+    {
+        return $this->size;
     }
 }

@@ -72,11 +72,9 @@ class OrderAdmin extends Admin
             ->add('name')
             ->add('email')
             ->add('phonenumber')
-            ->add('address')
-            ->add('postal')
             ->add('createdAt')
             ->add('invoices', 'actions', [
-                'template' => 'SiteBundle:CRUD:list__action_invoices.html.twig'
+                'template' => 'AppBundle:CRUD:list__action_invoices.html.twig'
             ])
             ->add('_action', 'actions', [
                 'actions' => [

@@ -27,6 +27,10 @@ default:
     resource:   '@AppBundle/Controller/DefaultController.php'
     type:       annotation
 
+order:
+    resource:   '@AppBundle/Controller/OrderController.php'
+    type:       annotation
+
 api:
     type:       rest
     prefix:     /api/v1

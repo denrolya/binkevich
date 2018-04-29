@@ -7,5 +7,5 @@ services:
 
     admin_success_handler:
         public: true
-        class: AppBundle\Services\AuthenticationHandler
+        class: AppBundle\Service\AuthenticationHandler
         arguments: [ '@service_container' ]

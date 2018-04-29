@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Invoice from Binkevich</title>
+
+        {% block stylesheets %}
+        {% endblock stylesheets %}
+
+    </head>
+    <body>
+
+        <section class="invoice-header clearfix">
+            <div class="clearfix">
+                <div class="first-col">
+                    <h4>Binkevich LIMITED</h4>
+                    <p> 09798316 <br>
+                        4 Windsor Terrace, <br>
+                        Hagley Road, Birmingham, <br>
+                        England, B16 8UH <br>
+                        Tel +447449552179 <br>
+                        Email: Binkevich.co.uk@gmail.com <br>
+                        Web site : Binkevich.co.uk <br>
+                    </p>
+                </div>
+                <div class="last-col">
+                    <h4>INVOICE</h4>
+                    <h5>reference: {{ order.id }}</h5>
+                    <p>
+                        Date: {% if (order.invoiceDate) %}{{ order.invoiceDate | date("F j Y") }}{% else %}{{ "now" | date("F j Y") }}{% endif %}<br>
+                        Bank details: Barclays <br>
+                        Account N: 93721973 <br>
+                        Sort code: 20-07-84 <br>
+                    </p>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="invoice-details">
+                <div class="first-col">
+                    <h5>BILL TO</h5>
+                </div>
+                <div class="last-col">
+                    <h6>{{ order.name }}</h6>
+                    <h6>{{ order.address }}</h6>
+                    <h6>Phone: {{ order.phonenumber }}</h6>
+                </div>
+            </div>
+        </section>
+        <section class="invoice-table">
+            <table class="table first-table">
+                <tbody>
+                    <tr class="text-uppercase">
+                        <td>SALESPERSON</td>
+                        <td width="58%">PROJECT</td>
+                        <td>TERMS</td>
+                        <td>DELIVERY DATE</td>
+                    </tr>
+                    <tr>
+                        <td>{{ order.salesPerson | title }}</td>
+                        <td>{{ order.projectName | title }}</td>
+                        <td>{{ order.terms | capitalize }}</td>
+                        <td>{{ order.deliveryDate | date("F j Y") }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            {% set totalPrice = 0 %}
+            {% set totalCharge = 0 %}
+            <table class="table second-table" style="border-top: 1px solid #939598">
+                <thead>
+                    <tr>
+                        <td width="11.1%">QUANTITY</td>
+                        <td width="40%">DESCRIPTION</td>
+                        <td width="1%">UNIT PRICE</td>
+                        <td width="1%">OFFICE CHARGE</td>
+                        <td width="1%">LINE TOTAL</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items %}
+                        <tr>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.description }}</td>
+                            <td>{{ item.unitPrice }}</td>
+                            <td>{{ item.officeCharge }}%</td>
+                            <td>{{ item.totalPrice }}</td>
+                        </tr>
+                        {% set totalPrice = totalPrice + item.totalPrice %}
+                        {% set totalCharge = totalCharge + item.quantity * item.unitPrice * item.officeCharge/100 %}
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="border-0"></td>
+                        <td>£{{ totalCharge }}</td>
+                        <td>£{{ totalPrice }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="border-0"></td>
+                        <td class="border-0 text-uppercase">SUBTOTAL</td>
+                        <td>£{{ totalPrice }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="border-0"></td>
+                        <td class="border-0 text-uppercase"></td>
+                        <td>£{{ totalPrice }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="border-0"></td>
+                        <td class="total border-0 text-uppercase font-weight-bold">TOTAL</td>
+                        <td>£{{ totalPrice }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="line"></div>
+            <p class="thx-you">Make all checks payable to [Binkevich] <br> THANK YOU FOR YOUR BUSINESS</p>
+        </section>
+    </body>
+</html>
