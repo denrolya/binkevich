@@ -3,8 +3,19 @@ header {
   left: 0;
   right: 0;
   margin: 0 auto;
-  padding-top: 40px;
   z-index: 100;
+
+  &.bg-transparent {
+    padding-top: 40px;
+  }
+  &.bg-white {
+    padding: 25px 0;
+    border-bottom: 1px solid $black;
+
+    @include mobile {
+      border-bottom: none;
+    }
+  }
 
   @include mobile {
     padding-top: 10px;
@@ -15,7 +26,6 @@ header {
     width: 141px;
     height: 91px;
     margin-left: auto;
-    background-image: url("#{$path-to-img}logo-white.png");
     @include large {
       margin-right: auto;
       margin-left: 0;
@@ -145,7 +155,6 @@ header {
       width: 36px;
       height: 3px;
       border-radius: 1px;
-      background-color: $white;
 
       &+span {
         margin-top: 4px;
@@ -163,13 +172,13 @@ header {
       }
     }
     li.item {
+      min-height: 25px;
 
       &:not(.first) {
         @include hover-focus-active {
           background-color: $white;
         }
       }
-
       a {
         color: #ffffff;
         font-family: $mon;
@@ -192,7 +201,6 @@ header {
           &:after {
             content: '';
             display: block;
-            border-bottom: 1px solid $white;
             width: 100%;
             margin-top: 6px;
           }
@@ -210,7 +218,6 @@ header {
       }
       ul.sub-menu {
         box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);
-        background-color: rgba(255, 255, 255, 0.8);
         z-index: 100;
         li.item a {
           padding: 16px;
@@ -247,14 +254,14 @@ header {
         top: 0;
       }
     }
-    li.lock-icon a {
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAASCAMAAABcgh8DAAAAAXNSR0IB2cksfwAAAHJQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////XlhBxAAAACZ0Uk5TACBchpGOimAoFHGQPBYSOYEZB2ePE3l/BG9BAjU9uIIiHHNm/v8TtBcXAAAAUUlEQVR4nGNgYGBgZGJmYWVj52AAA04ubh5ePn4BAUEQT0hYhBdEi4qJSwApSUkpaRBXWkZSFkjJyStANCkqKTMwqKgiARUGFQYkMGi5KG4GADwqCgGGMI0EAAAAAElFTkSuQmCC');
+    li.basket-icon a {
       background-repeat: no-repeat;
       background-size: contain;
       width: 14px;
       height: 18px;
       display: block;
       margin-top: -2px;
+      min-height: 25px;
     }
   }
 
@@ -265,5 +272,52 @@ header {
     .mobile-menu, .menu-btn {
       display: block;
     }
+  }
+  &.bg-transparent {
+    .logo {
+      background-image: url("#{$path-to-img}logo-white.png");
+    }
+    .menu-btn span {
+      background-color: $white;
+    }
+    li.item.first:not(.have-sub-menu){
+      @include hover-focus-active {
+        a:after {
+          border-bottom: 1px solid $white;
+        }
+      }
+    }
+    ul.sub-menu {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    li.basket-icon a {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAASCAMAAABcgh8DAAAAAXNSR0IB2cksfwAAAHJQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////XlhBxAAAACZ0Uk5TACBchpGOimAoFHGQPBYSOYEZB2ePE3l/BG9BAjU9uIIiHHNm/v8TtBcXAAAAUUlEQVR4nGNgYGBgZGJmYWVj52AAA04ubh5ePn4BAUEQT0hYhBdEi4qJSwApSUkpaRBXWkZSFkjJyStANCkqKTMwqKgiARUGFQYkMGi5KG4GADwqCgGGMI0EAAAAAElFTkSuQmCC');
+    }
+  }
+  &.bg-white {
+
+    .logo {
+      background-image: url("#{$path-to-img}logo-black.png");
+    }
+    .menu-btn span {
+      background-color: $black;
+    }
+    .menu-list li.item a {
+      color: $black;
+    }
+    li.item.first:not(.have-sub-menu){
+      @include hover-focus-active {
+        a:after {
+          border-bottom: 1px solid $black;
+        }
+      }
+    }
+    ul.sub-menu {
+      background-color: #fff;
+    }
+    li.basket-icon a {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAASCAMAAABcgh8DAAAAAXNSR0IB2cksfwAAADZQTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAt3ZocgAAABJ0Uk5TAAq+xJnCuwnBQUTACEW6x5r/b7hrHAAAAD5JREFUeJxjYGBgYGRiZmFhZWNnAANGDk4QxcXNA+YycUKEefnAFDMDFPCDSRYYVwCIBVEAgyADEhi0XBQAANeGA/IE0f+vAAAAAElFTkSuQmCC');
+    }
+
   }
 }

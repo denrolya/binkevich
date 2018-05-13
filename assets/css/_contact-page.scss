@@ -1,0 +1,181 @@
+.contact-form {
+  @include large {
+    margin-top: 235px;
+    margin-bottom: 160px;
+  }
+
+  @include tab-mob {
+    margin-top: 190px;
+    margin-bottom: 120px;
+  }
+
+  @include mobile {
+    padding: 0 10px;
+  }
+
+  .container.bg-white {
+    padding: 100px 0;
+
+    @include mobile {
+      padding: 40px 15px;
+    }
+  }
+
+  .custom-pad {
+    padding: 0 90px;
+    @include large {
+      &__l {
+        padding-left: 90px;
+        padding-right: 40px;
+
+      }
+      &__r {
+        padding-right: 90px;
+        padding-left: 40px;
+      }
+    }
+    @include tablet {
+      padding: 0 125px;
+
+      &__l {
+        padding: 0 125px;
+      }
+      &__r {
+        padding: 0 125px;
+      }
+    }
+
+    @include mobile {
+      padding: 0 10px;
+
+    }
+  }
+
+  h2 {
+    letter-spacing: 2.1px;
+
+    &:after {
+      content: '';
+      display: block;
+      margin: 20px 0;
+      border-bottom: 1px solid $black;
+
+      @include large {
+        width: 50%;
+      }
+    }
+  }
+
+  p {
+    line-height: 21px;
+    margin-bottom: 30px;
+
+    @include large {
+      width: 50%;
+    }
+
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+
+  label {
+    width: 100%;
+    color: $black;
+    font-family: $mon;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.05px;
+    margin-bottom: 21px;
+
+    &.file-label {
+      padding-top: 25px;
+
+      input[type="file"] {
+        display: none;
+      }
+
+      img {
+        margin-right: 10px;
+      }
+
+      span {
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: normal;
+        text-transform: none;
+
+        &>span {
+          width: 100%;
+          display: block;
+        }
+
+        b {
+          font-weight: 600;
+        }
+      }
+    }
+
+    @include mobile {
+      font-size: 12px;
+      margin-bottom: 15px;
+      line-height: 20px;
+
+      &.file-label {
+        width: 100%;
+        padding-top: 15px;
+      }
+    }
+  }
+  input[type='text'], textarea {
+    width: 100%;
+    border: 1px solid $black;
+    font-family: $mon;
+    font-size: 18px;
+    margin-top: 10px;
+
+    @include mobile {
+      font-size: 12px;
+      margin-top: 0;
+    }
+  }
+  input[type='text'] {
+    padding: 18px 10px;
+
+    @include mobile {
+      padding: 13px 7px;
+    }
+  }
+
+  textarea {
+    max-width: 100%;
+    width: 100%;
+    min-height: 181px;
+    padding: 10px;
+
+    @include mobile {
+      min-height: 160px;
+    }
+  }
+
+  button.btn {
+    @include btn($black, $white, $black, $black);
+    max-width: 219px;
+    box-shadow: 0 3px 24px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(-220deg, #1a2837 0%, #152427 100%);
+    letter-spacing: 1.2px;
+    padding: 22px 10px;
+
+    @include mobile {
+      padding-top: 22px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    &:hover {
+      background-image: none;
+    }
+  }
+}
