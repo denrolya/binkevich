@@ -12,6 +12,7 @@ Encore
     // will create web/build/app.js and web/build/app.css
     .addEntry('common', './assets/js/common/app.jsx')
     .addEntry('index', './assets/js/index/app.jsx')
+    .addEntry('contact', './assets/js/contact/app.jsx')
     .addEntry('product_list', './assets/js/product/List/app.jsx')
     .addEntry('product_collection', './assets/js/product/Collection/app.jsx')
     .addEntry('product_view', './assets/js/product/View/app.jsx')

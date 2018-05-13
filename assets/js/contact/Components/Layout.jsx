@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
-import HeaderDark from '../../../common/Components/HeaderDark.jsx';
-import Footer from './Footer.jsx';
-import Content from './Content.jsx';
+import Header from '../../common/Components/Header';
+import Footer from '../../common/Components/Footer';
+import ContactForm from './ContactForm.jsx';
 
 export default class Layout extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            blogPosts: []
-        }
-    }
 
     render() {
         return (
-            <div>
-                <HeaderDark/>
+            <div className="gradient-page">
+                <Header/>
                 <ContactForm/>
                 <Footer/>
             </div>
