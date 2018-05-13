@@ -45,7 +45,7 @@ class DefaultController extends Controller
      */
     public function categoryProductListAction()
     {
-        return $this->render('AppBundle:Default:product.html.twig');
+        return $this->render('AppBundle:Default:category.html.twig');
     }
 
     /**

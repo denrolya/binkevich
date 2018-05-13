@@ -125,4 +125,29 @@ class ProductApiController extends FOSRestController
 
         return new ViewTemplate("Invalid request!", Response::HTTP_BAD_REQUEST);
     }
+
+    /**
+     * @ApiDoc(
+     *      resource=true,
+     *      section="Product",
+     *      description="Get a list of products in category",
+     *      output = {
+     *          "class"="array<AppBundle\Entity\Product>",
+     *          "groups"={"product-list"}
+     *      },
+     *      statusCodes={
+     *          200="Returned when successful",
+     *          500="Returned when other error occurs"
+     *     },
+     *     tags={"stable"="#93c00b"}
+     * )
+     * @Rest\Get("/categories/{slug}")
+     * @Rest\View(serializerGroups={"product-list"})
+     */
+    public function getCategoryProductsAction(Category $category)
+    {
+        return [
+            'data' => $category->getProducts()
+        ];
+    }
 }

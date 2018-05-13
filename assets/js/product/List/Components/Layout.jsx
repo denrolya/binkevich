@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
-import Header from '../../../common/Components/Header';
+import HeaderWhite from '../../../common/Components/HeaderWhite';
+import Footer from '../../../common/Components/Footer';
 import ProductList from './ProductList';
 
 export default class Layout extends Component {
     render() {
         return (
             <div>
-                <Header/>
+                <HeaderWhite/>
                 <ProductList/>
+                <Footer/>
             </div>
         );
     }
