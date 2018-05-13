@@ -14,7 +14,7 @@ export default class ProductList extends Component {
         };
     }
 
-    loadProducts(category) {
+    switchCategory(category) {
         this.setState(prevState => ({
             ...prevState,
             activeCategory: category,
@@ -33,7 +33,7 @@ export default class ProductList extends Component {
     }
 
     componentDidMount() {
-        this.loadProducts(this.state.activeCategory);
+        this.switchCategory(this.state.activeCategory);
     }
 
     render() {
@@ -45,9 +45,10 @@ export default class ProductList extends Component {
                             {this.state.categories && this.state.categories.map((category, i) => {
                                 return (
                                     <button id={category.toLowerCase()}
+                                            className={category === this.state.activeCategory ? 'active' : ''}
                                             key={i}
                                             type="button"
-                                            onClick={() => this.loadProducts(category)}>
+                                            onClick={() => this.switchCategory(category)}>
                                         {category}
                                     </button>
                                 );
