@@ -26,8 +26,7 @@ class DataLoader extends AbstractLoader
     public function uploadedFile($assetPath = null)
     {
         if (is_null($assetPath)) {
-            $faker = Factory::create();
-            $file = $faker->image(__DIR__ . '/../../../../../web/uploads/products/test', 640, 480, 'cats');
+            $file = __DIR__ . '/../../../../../assets/img/content/ring' . rand(1,4) . '.png';
         } else {
             $file = __DIR__ . "/../../../../../assets/$assetPath";
         }
