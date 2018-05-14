@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import Header from './Header';
 
-export default class HeaderWhite extends Component {
+export default class HeaderWhite extends Header {
     render() {
         return (
             <header className="bg-white">
@@ -23,25 +24,29 @@ export default class HeaderWhite extends Component {
                                             <a href="#" className="have-sub-mobile-menu">CATEGORIES</a>
                                             <ul>
                                                 <li>
-                                                    <a href="#">RINGS</a>
+                                                    <a href="/caegories/rings">RINGS</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">EARRINGS</a>
+                                                    <a href="/categories/earrings">EARRINGS</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">BANGLES</a>
+                                                    <a href="/categories/bangles">BANGLES</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">PENDANTS</a>
+                                                    <a href="/pendants">PENDANTS</a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a href="#" className="have-sub-mobile-menu">COLLECTIONS</a>
                                             <ul>
-                                                <li>
-                                                    <a href="jewellery-collection.html">SOFT PEARL COLLECTION</a>
-                                                </li>
+                                                {this.state.collections && this.state.collections.map((collection, i) => {
+                                                    return (
+                                                        <li>
+                                                            <a href={'/collections/' + collection.slug}>{collection.name}</a>
+                                                        </li>
+                                                    );
+                                                })}
                                             </ul>
                                         </li>
                                     </ul>
@@ -78,26 +83,29 @@ export default class HeaderWhite extends Component {
                                     <a href="jewellery-categories.html">CATEGORIES</a>
                                     <ul className="third-menu sub-menu">
                                         <li className="item third">
-                                            <a href="#">RINGS</a>
+                                            <a href="/categories/rings">RINGS</a>
                                         </li>
                                         <li className="item third">
-                                            <a href="#">Earrings</a>
+                                            <a href="/categories/earrings">Earrings</a>
                                         </li>
                                         <li className="item third">
-                                            <a href="#">BangleS</a>
+                                            <a href="/categories/bangles">Bangles</a>
                                         </li>
                                         <li className="item third">
-                                            <a href="#">PENDANTS</a>
+                                            <a href="/categories/pendants">PENDANTS</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li className="item second have-sub-sub-menu">
                                     <a href="#">Collections</a>
                                     <ul className="third-menu sub-menu">
-                                        <li className="item third new">
-                                            <a href="jewellery-collection.html">SOFT PEARL COLLECTION
-                                                <span>NEW</span></a>
-                                        </li>
+                                        {this.state.collections && this.state.collections.map((collection, i) => {
+                                            return (
+                                                <li className="item third new">
+                                                    <a href={'/collections/' + collection.slug}>{collection.name} <span>NEW</span></a>
+                                                </li>
+                                            );
+                                        })}
                                     </ul>
                                 </li>
                             </ul>

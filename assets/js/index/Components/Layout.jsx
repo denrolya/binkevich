@@ -7,7 +7,6 @@ import HomeWhiteCarousel from "./HomeWhiteCarousel";
 import HomeBlackCarousel from "./HomeBlackCarousel";
 
 export default class Layout extends Component {
-
     render() {
         return (
             <div>

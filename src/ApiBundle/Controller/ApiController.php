@@ -33,6 +33,22 @@ class ApiController extends FOSRestController
     }
 
     /**
+     * @Rest\View(serializerGroups={"index"})
+     * @Rest\Get("/collections")
+     */
+    public function getCollectionsAction()
+    {
+        $collections = $this
+            ->getDoctrine()
+            ->getRepository(Collection::class)
+            ->findAll();
+
+        return [
+            'data' => $collections
+        ];
+    }
+
+    /**
      * @Rest\Get("/collections/{slug}")
      */
     public function getCollectionProductsAction(Collection $collection)

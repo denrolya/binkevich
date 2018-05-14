@@ -36,13 +36,14 @@ class Collection
     private $name;
 
     /**
+     * @JMS\Groups({"index"})
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
 
     /**
-     * @JMS\Groups({"index", "product-list", "product-view"})
+     * @JMS\Groups({"product-list", "product-view"})
      * @ORM\OneToMany(targetEntity="Product", mappedBy="collection")
      */
     private $products;

@@ -1,6 +1,31 @@
 import React, {Component} from 'react';
 
 export default class Header extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            collections: []
+        };
+    }
+
+    fetchCollections() {
+        fetch('/app_dev.php/api/v1/collections', {
+            method: 'GET',
+            mode:   'CORS'
+        }).then(res => res.json())
+          .then(json => {
+              this.setState(prevState => ({
+                  ...prevState,
+                  collections: json.data
+              }));
+          });
+    }
+
+    componentDidMount() {
+        this.fetchCollections();
+    }
+
     render() {
         return (
             <header className="container d-flex bg-transparent position-absolute">
@@ -38,9 +63,13 @@ export default class Header extends Component {
                                     <li>
                                         <a href="/collections" className="have-sub-mobile-menu">COLLECTIONS</a>
                                         <ul>
-                                            <li>
-                                                <a href="/collections/soft-pearl-collection">SOFT PEARL COLLECTION</a>
-                                            </li>
+                                            {this.state.collections && this.state.collections.map((collection, i) => {
+                                                return (
+                                                    <li>
+                                                        <a href={'/collections/' + collection.slug}>{collection.name}</a>
+                                                    </li>
+                                                );
+                                            })}
                                         </ul>
                                     </li>
                                 </ul>
@@ -95,9 +124,13 @@ export default class Header extends Component {
                             <li className="item second have-sub-sub-menu">
                                 <a href="/collections">Collections</a>
                                 <ul className="third-menu sub-menu">
-                                    <li className="item third new">
-                                        <a href="/collections/soft-pearl-collection">SOFT PEARL COLLECTION <span>NEW</span></a>
-                                    </li>
+                                    {this.state.collections && this.state.collections.map((collection, i) => {
+                                        return (
+                                            <li className="item third new">
+                                                <a href={'/collections/' + collection.slug}>{collection.name} <span>NEW</span></a>
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </li>
                         </ul>

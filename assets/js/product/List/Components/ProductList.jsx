@@ -3,15 +3,30 @@ import fetch from 'isomorphic-fetch';
 import ProductItem from './ProductItem';
 
 export default class ProductList extends Component {
-
     constructor(props) {
         super(props);
 
+        const categories = ['Rings', 'Earrings', 'Bangles', 'Pendants'],
+            categoryExtractedFromUrl = this.extractCategoryFromURI(),
+            activeCategory = (categories.indexOf(categoryExtractedFromUrl) !== -1) ?
+                              categoryExtractedFromUrl :
+                             'Rings';
         this.state = {
-            categories: ['Rings', 'Earrings', 'Bangles', 'Pendants'],
-            activeCategory: 'Rings',
+            categories: categories,
+            activeCategory: activeCategory,
             products:  []
         };
+    }
+
+    extractCategoryFromURI() {
+        const currentPath = new URL(window.location.href).pathname;
+        const categorySlug = currentPath.substr(currentPath.lastIndexOf('/') + 1);
+
+        return this.capitalize(categorySlug);
+    }
+
+    capitalize(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
     switchCategory(category) {
@@ -26,9 +41,10 @@ export default class ProductList extends Component {
             mode:   'CORS'
         }).then(res => res.json())
           .then(json => {
-              this.setState({
+              this.setState(prevState => ({
+                  ...prevState,
                   products: json.data
-              });
+              }));
           });
     }
 
