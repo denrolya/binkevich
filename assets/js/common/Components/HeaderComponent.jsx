@@ -3,32 +3,11 @@ import React, {Component} from 'react';
 export default class Header extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            collections: []
-        };
-    }
-
-    fetchCollections() {
-        fetch('/app_dev.php/api/v1/collections', {
-            method: 'GET',
-            mode:   'CORS'
-        }).then(res => res.json())
-          .then(json => {
-              this.setState(prevState => ({
-                  ...prevState,
-                  collections: json.data
-              }));
-          });
-    }
-
-    componentDidMount() {
-        this.fetchCollections();
     }
 
     render() {
         return (
-            <header className="container d-flex bg-transparent position-absolute">
+            <header className={'container d-flex ' + ((this.props.dark === true) ? 'bg-transparent position-absolute' : 'bg-white')}>
                 <div className="mobile-menu">
                     <div className="wrap-els">
                         <div className="d-flex">
@@ -63,7 +42,7 @@ export default class Header extends Component {
                                     <li>
                                         <a href="/collections" className="have-sub-mobile-menu">COLLECTIONS</a>
                                         <ul>
-                                            {this.state.collections && this.state.collections.map((collection, i) => {
+                                            {this.props.collections && this.props.collections.map((collection, i) => {
                                                 return (
                                                     <li>
                                                         <a href={'/collections/' + collection.slug}>{collection.name}</a>
@@ -94,7 +73,7 @@ export default class Header extends Component {
                 </button>
 
 
-                <a className="logo" href="#"></a>
+                <a className="logo" href="/"></a>
 
 
                 <ul className="menu-list marg-l-auto pad-t-30">
@@ -124,7 +103,7 @@ export default class Header extends Component {
                             <li className="item second have-sub-sub-menu">
                                 <a href="/collections">Collections</a>
                                 <ul className="third-menu sub-menu">
-                                    {this.state.collections && this.state.collections.map((collection, i) => {
+                                    {this.props.collections && this.props.collections.map((collection, i) => {
                                         return (
                                             <li className="item third new">
                                                 <a href={'/collections/' + collection.slug}>{collection.name} <span>NEW</span></a>

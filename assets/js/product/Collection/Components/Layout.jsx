@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HeaderWhite from '../../../common/Components/HeaderWhite';
+import Header from '../../../common/Containers/Header';
 import Footer from '../../../common/Components/Footer';
 
 export default class Layout extends Component {
@@ -10,7 +10,7 @@ export default class Layout extends Component {
     render() {
         return (
             <div>
-                <HeaderWhite/>
+                <Header/>
                 <Footer/>
             </div>
         );
