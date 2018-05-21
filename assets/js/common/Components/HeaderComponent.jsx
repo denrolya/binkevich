@@ -44,7 +44,7 @@ export default class Header extends Component {
                                         <ul>
                                             {this.props.collections && this.props.collections.map((collection, i) => {
                                                 return (
-                                                    <li>
+                                                    <li key={i}>
                                                         <a href={'/collections/' + collection.slug}>{collection.name}</a>
                                                     </li>
                                                 );
@@ -105,7 +105,7 @@ export default class Header extends Component {
                                 <ul className="third-menu sub-menu">
                                     {this.props.collections && this.props.collections.map((collection, i) => {
                                         return (
-                                            <li className="item third new">
+                                            <li className="item third new" key={i}>
                                                 <a href={'/collections/' + collection.slug}>{collection.name} <span>NEW</span></a>
                                             </li>
                                         );

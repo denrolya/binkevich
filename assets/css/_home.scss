@@ -683,7 +683,7 @@
         }
       }
       .btn {
-        @include btn(tranparete, $white, $white, $black)
+        @include btn(transparent, $white, $white, $black)
       }
     }
   }

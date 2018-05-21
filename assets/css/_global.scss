@@ -1,9 +1,9 @@
 body {
   background-color: #ffffff;
-}
 
-.gradient-page {
-  background-image: linear-gradient(-220deg, #1a2837 0%, #152427 100%);
+  &.gradient-page {
+    background-image: linear-gradient(-220deg, #1a2837 0%, #152427 100%);
+  }
 }
 
 h2, h3 {
@@ -69,4 +69,120 @@ p {
   @include mobile {
     font-size: 13px;
   }
+}
+
+.modal {
+  .modal-dialog {
+    box-shadow: 0 15px 70px rgba(0, 0, 0, 0.25);
+    background-color: $white;
+  }
+
+  .modal-header {
+    border: none;
+  }
+
+  .modal-content {
+    border: none;
+    border-radius: 0;
+    padding: 20px 60px 40px 60px;
+  }
+
+  .close {
+    margin-left: auto;
+    background-color: #000 !important;
+    color: #fff;
+    line-height: 10px;
+    font-size: 20px;
+    padding: 13px;
+    opacity: 1;
+  }
+
+  h2 {
+    text-align: center;
+    line-height: 50px;
+
+    &:after {
+      content: "";
+      border-bottom: 1px solid $black;
+      display: block;
+      width: 50%;
+      margin: 20px auto;
+    }
+  }
+
+  p {
+    letter-spacing: 0.7px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-bottom: 25px;
+  }
+
+  label {
+    display: block;
+    width: 100%;
+    color: $black;
+    font-family: $mon;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.05px;
+
+    input {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      border: 1px solid $black;
+      padding: 20px;
+      font-size: 16px;
+    }
+  }
+
+  .btn {
+    @include btn($black, $white, $black, $black);
+    max-width: 100%;
+    width: 100%;
+  }
+
+  @include mobile {
+    .modal-dialog {
+      max-width: 320px;
+    }
+
+    .modal-content {
+      padding: 20px;
+    }
+
+    h2 {
+      line-height: 32px;
+      font-size: 30px;
+
+      &:after {
+        margin: 10px auto;
+      }
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-size: 12px;
+      line-height: 15px;
+
+      input {
+        font-size: 14px;
+        padding: 7px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+      }
+    }
+
+    .btn {
+      max-width: 100%;
+    }
+  }
+
 }

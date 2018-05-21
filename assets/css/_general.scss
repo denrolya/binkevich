@@ -89,13 +89,15 @@ $phone: 0px;
 }
 
 @mixin btn($bgC, $textC, $borderC, $hoverText) {
-  display: block;
+  display: flex;
   max-width: 260px;
   width: 100%;
   min-height: 60px;
+  padding-top: 5px;
+  align-items: center;
+  justify-content: center;
   border: 1px solid $borderC;
   text-align: center;
-  padding-top: 23px;
   color: $textC;
   font-family: $mon;
   font-weight: 500;
@@ -108,7 +110,6 @@ $phone: 0px;
     max-width: 162px;
     min-height: 40px;
     font-size: 12px;
-    padding-top: 14px;
   }
 
   @include hover-focus-active {
