@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
-import ProductItem from './ProductItem';
+import ProductListComponent from '../Components/ProductListComponent';
 
-export default class ProductList extends Component {
+export default class ProductListContainer extends Component {
     constructor(props) {
         super(props);
 
         const categories = ['Rings', 'Earrings', 'Bangles', 'Pendants'],
             categoryExtractedFromUrl = this.extractCategoryFromURI(),
             activeCategory = (categories.indexOf(categoryExtractedFromUrl) !== -1) ?
-                              categoryExtractedFromUrl :
+                             categoryExtractedFromUrl :
                              'Rings';
         this.state = {
             categories: categories,
@@ -72,13 +72,7 @@ export default class ProductList extends Component {
                         </div>
                     </div>
 
-                    <div className="row">
-                        {this.state.products && this.state.products.map((product, i) => {
-                            return (
-                                <ProductItem product={product} key={i}/>
-                            );
-                        })}
-                    </div>
+                    <ProductListComponent products={this.state.products}></ProductListComponent>
                 </div>
             </section>
         );
