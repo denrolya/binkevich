@@ -3102,8 +3102,9 @@ header .logo {
   font-style: normal; }
 body {
   background-color: #ffffff; }
-  body.gradient-page {
-    background-image: linear-gradient(-220deg, #1a2837 0%, #152427 100%); }
+.gradient-page {
+    background-image: linear-gradient(-220deg, #1a2837 0%, #152427 100%);
+}
 
 h2, h3 {
   color: #000;
