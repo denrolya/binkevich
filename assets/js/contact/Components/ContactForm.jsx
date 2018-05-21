@@ -61,22 +61,20 @@ export default class ContactForm
                     </div>
                 </section>
 
-                <div className="modal fade" id="successModal" tabIndex="-1" role="dialog"
-                     aria-labelledby="successModalLabel"
-                     aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
+                        </div>
+                        <div class="modal-content">
                             <h2 id="successModalLabel">
                                 Your message
                                 has been sent
                             </h2>
-                            <div className="modal-body">
-                                <p>We’ll be in touch as soon as possible.</p>
-                            </div>
-                            <button type="button" className="btn">back home</button>
+                            <p>We’ll be in touch as soon as possible.</p>
+                            <button type="button" class="btn">back home</button>
                         </div>
                     </div>
                 </div>
