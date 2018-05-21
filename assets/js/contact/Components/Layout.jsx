@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../../common/Containers/Header';
 import Footer from '../../common/Components/Footer';
-import ContactForm from './ContactForm.jsx';
+import ContactForm from '../Containers/ContactForm.jsx';
 
 export default class Layout extends Component {
 
@@ -12,7 +12,8 @@ export default class Layout extends Component {
                 <ContactForm/>
 
                 {/* TODO: Refactor */}
-                <div className="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                <div className="modal fade" id="successModal" tabIndex="-1" role="dialog"
+                     aria-labelledby="successModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-header">
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
