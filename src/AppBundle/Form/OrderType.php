@@ -19,7 +19,7 @@ class OrderType extends AbstractType
             ->add('email')
             ->add('phonenumber')
             ->add('comments')
-//            ->add('file')
+            ->add('file')
         ;
     }/**
      * {@inheritdoc}

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 const attach = require('../../../img/attach-file-icon.png');
 
-export default class ContactFormComponen extends Component {
+export default class ContactFormComponent extends Component {
     constructor(props) {
         super(props);
         this.state =
@@ -11,6 +12,7 @@ export default class ContactFormComponen extends Component {
                     name: '',
                     email: '',
                     phonenumber: '',
+                    file: undefined,
                     comments: 'Dear Binkevich Team'
                 }
             };
@@ -21,13 +23,26 @@ export default class ContactFormComponen extends Component {
     handleChange(propertyName, event) {
         const order = this.state.order;
 
-        order[propertyName] = event.target.value;
+        if (propertyName === 'file') {
+            order['file'] = event.target.files[0];
+        } else {
+            order[propertyName] = event.target.value;
+        }
+        console.log("here " + order[propertyName])
+
         this.setState({order: order});
     }
+
+    //   fileChangedHandler(event) {
+    //       file: event.target.value;
+    //       const file = event.target.files[0]
+//
+    //   }
 
     handleSubmit(event) {
         event.preventDefault();
         this.props.onSubmit(this.state)
+
     }
 
 
@@ -89,6 +104,7 @@ export default class ContactFormComponen extends Component {
                                                name="attach-file"
                                                id="attach-file-contact-form"
                                                multiple="multiple"
+                                               onChange={this.handleChange.bind(this, 'file')}
                                         />
                                         <img src={attach} alt="attach-file-icon"/>
                                         <span className="d-block">
