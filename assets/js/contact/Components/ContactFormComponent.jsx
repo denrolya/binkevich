@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 
 const attach = require('../../../img/attach-file-icon.png');
-var createReactClass = require('create-react-class');
 
-//const ContactFormComponent = createReactClass({
 export default class ContactFormComponen extends Component {
     constructor(props) {
         super(props);
