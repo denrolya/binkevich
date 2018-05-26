@@ -3,19 +3,54 @@ import React, {Component} from 'react';
 const attach = require('../../../img/attach-file-icon.png');
 var createReactClass = require('create-react-class');
 
-const ContactFormComponent = createReactClass({
-
-    getInitialState() {
-        return {
-            message: "Dear Binkevich Team,"
-        }
-    },
+//const ContactFormComponent = createReactClass({
+export default class ContactFormComponen extends Component {
+    constructor(props) {
+        super(props);
+        this.state =
+            {
+                name: '',
+                email: '',
+                phone: '',
+                comments: 'Dear Binkevich Team'
+            }
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePhoneChange = this.handlePhoneChange.bind(this);
+        this.handleCommentsChange = this.handleCommentsChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
     handleNameChange(e) {
         this.setState({
-            message: e.target.value
+            name: e.target.value
         })
-    },
+    }
+
+
+    handleEmailChange(e) {
+        this.setState({
+            email: e.target.value
+        })
+    }
+
+    handlePhoneChange(e) {
+        this.setState({
+            phone: e.target.value
+        })
+    }
+
+    handleCommentsChange(e) {
+        this.setState({
+            comments: e.target.value
+        })
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.onSubmit(this.state);
+    }
+
 
 // TODO attachment
     render() {
@@ -40,26 +75,32 @@ const ContactFormComponent = createReactClass({
                                     <input
                                         type="text" name="name"
                                         value={this.state.name}
+                                        onChange={this.handleNameChange}
                                     />
-
                                 </label>
                                 <label>
                                     EMAIL
-                                    <input type="text" name="email"/>
-                                    value={this.state.email}
+                                    <input type="email" name="email"
+                                           value={this.state.email}
+                                           onChange={this.handleEmailChange}
+                                    />
                                 </label>
                                 <label>
                                     PHONE NUMBER
-                                    <input type="text" name="phone"/>
-                                    value={this.state.phoneNumber}
+                                    <input type="text" name="phone"
+                                           value={this.state.phoneNumber}
+                                           onChange={this.handlePhoneChange}
+                                    />
                                 </label>
                             </div>
+
                             <div className="col-12 col-xl-6 custom-pad__r d-flex flex-wrap">
                                 <label>
                                     MESSAGE
-                                    <textarea name="message"
-                                              id=""
-                                              value={this.state.message}
+                                    <textarea name="comments"
+                                              id="comments"
+                                              value={this.state.comments}
+                                              onChange={this.handleCommentsChange}
                                     ></textarea>
                                 </label>
                                 <div
@@ -72,9 +113,9 @@ const ContactFormComponent = createReactClass({
                                         />
                                         <img src={attach} alt="attach-file-icon"/>
                                         <span className="d-block">
-                            <span>Attach your design</span>
-                            <span id="files-length"><b>0</b> files attached</span>
-                        </span>
+                                                  <span>Attach your design</span>
+                                                  <span id="files-length"><b>0</b> files attached</span>
+                                                  </span>
                                     </label>
                                     <button type="submit" className="btn align-self-center" data-toggle="modal"
                                             data-target="#successModal">
@@ -111,4 +152,7 @@ const ContactFormComponent = createReactClass({
             </div>
         );
     }
-})
+}
+
+
+//export default ContactFormComponent
