@@ -26,7 +26,9 @@ export default class HomeBlackCarousel extends Component {
                                 you make your perfect design even more personal and unique.
                             </p>
                             <div className="wrap-block d-flex">
-                                <ImageCarousel id="black-carousel" items={ this.state.images } indicators={true}/>
+                                <div id="black-carousel">
+                                    <ImageCarousel items={ this.state.images } indicators={true}/>
+                                </div>
                                 <div className="wrap-info">
                                     <h3>Personal order</h3>
                                     <p>
