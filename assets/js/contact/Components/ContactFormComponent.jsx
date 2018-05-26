@@ -7,46 +7,27 @@ export default class ContactFormComponen extends Component {
         super(props);
         this.state =
             {
-                name: '',
-                email: '',
-                phone: '',
-                comments: 'Dear Binkevich Team'
-            }
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePhoneChange = this.handlePhoneChange.bind(this);
-        this.handleCommentsChange = this.handleCommentsChange.bind(this);
+                order: {
+                    name: '',
+                    email: '',
+                    phonenumber: '',
+                    comments: 'Dear Binkevich Team'
+                }
+            };
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleNameChange(e) {
-        this.setState({
-            name: e.target.value
-        })
+    handleChange(propertyName, event) {
+        const order = this.state.order;
+
+        order[propertyName] = event.target.value;
+        this.setState({order: order});
     }
 
-
-    handleEmailChange(e) {
-        this.setState({
-            email: e.target.value
-        })
-    }
-
-    handlePhoneChange(e) {
-        this.setState({
-            phone: e.target.value
-        })
-    }
-
-    handleCommentsChange(e) {
-        this.setState({
-            comments: e.target.value
-        })
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        this.props.onSubmit(this.state);
+    handleSubmit(event) {
+        event.preventDefault();
+        this.props.onSubmit(this.state)
     }
 
 
@@ -72,22 +53,22 @@ export default class ContactFormComponen extends Component {
                                     NAME
                                     <input
                                         type="text" name="name"
-                                        value={this.state.name}
-                                        onChange={this.handleNameChange}
+                                        value={this.state.order.name}
+                                        onChange={this.handleChange.bind(this, 'name')}
                                     />
                                 </label>
                                 <label>
                                     EMAIL
                                     <input type="email" name="email"
-                                           value={this.state.email}
-                                           onChange={this.handleEmailChange}
+                                           value={this.state.order.email}
+                                           onChange={this.handleChange.bind(this, 'email')}
                                     />
                                 </label>
                                 <label>
                                     PHONE NUMBER
-                                    <input type="text" name="phone"
-                                           value={this.state.phoneNumber}
-                                           onChange={this.handlePhoneChange}
+                                    <input type="text" name="phonenumber"
+                                           value={this.state.order.phonenumber}
+                                           onChange={this.handleChange.bind(this, 'phonenumber')}
                                     />
                                 </label>
                             </div>
@@ -97,8 +78,8 @@ export default class ContactFormComponen extends Component {
                                     MESSAGE
                                     <textarea name="comments"
                                               id="comments"
-                                              value={this.state.comments}
-                                              onChange={this.handleCommentsChange}
+                                              value={this.state.order.comments}
+                                              onChange={this.handleChange.bind(this, 'comments')}
                                     ></textarea>
                                 </label>
                                 <div

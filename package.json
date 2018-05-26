@@ -11,6 +11,7 @@
     "webpack-notifier": "^1.5.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "create-react-class": "^15.6.3",
     "node-sass": "^4.7.2",
     "reactstrap": "^5.0.0",

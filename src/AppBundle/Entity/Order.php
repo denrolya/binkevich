@@ -47,14 +47,14 @@ class Order
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255, nullable=true)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="postal", type="string", length=100)
+     * @ORM\Column(name="postal", type="string", length=100, nullable=true)
      */
     private $postal;
 
