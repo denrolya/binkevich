@@ -9,7 +9,7 @@ import HomeBlackCarousel from "./HomeBlackCarousel";
 export default class Layout extends Component {
     render() {
         return (
-            <div>
+            <div className="gradient-page">
                 <Header dark={true}/>
                 <HomeTopBlock/>
                 <HomeProductBlock/>
