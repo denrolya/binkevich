@@ -54,7 +54,6 @@ class File
         return $this->getName();
     }
 
-
     /**
      * Get id
      *

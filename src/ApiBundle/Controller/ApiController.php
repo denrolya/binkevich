@@ -3,6 +3,7 @@
 namespace ApiBundle\Controller;
 
 use AppBundle\Entity\Collection;
+use AppBundle\Entity\File;
 use AppBundle\Entity\Order;
 use AppBundle\Form\OrderType;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -76,6 +77,23 @@ class ApiController extends FOSRestController
 
             $em->persist($order);
             $em->flush();
+
+            if ($uploadedFile = $order->getUploadedFile()) {
+                $filename = $order->getId() . '-' . md5(uniqid()) . '.' . $uploadedFile->guessExtension();
+                $orderDirAbsolutePath = $this->container->getParameter('files_dir') . '/' . $order->getId();
+                $uploadedFile->move($orderDirAbsolutePath, $filename);
+
+                $orderFile = (new File())
+                    ->setName($filename)
+                    ->setRelativePath('/uploads/orders/' . $order->getId() . '/' . $filename)
+                    ->setAbsolutePath($orderDirAbsolutePath . '/' . $filename)
+                    ->setSize($uploadedFile->getClientSize());
+
+                $order->setFile($orderFile);
+
+                $em->persist($orderFile);
+                $em->flush();
+            }
 
             return $this->view([
                 'data' => $order

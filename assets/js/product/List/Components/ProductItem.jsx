@@ -14,7 +14,7 @@ export default class ProductItem extends Component {
                         <h6>{ this.props.product.collection.name }</h6>
                     }
                     <p>Various color schemes available</p>
-                    <a href={ '/product/' + this.props.product.id } className="btn-buy">PURCHASE</a>
+                    <a href={ '/products/' + this.props.product.id } className="btn-buy">PURCHASE</a>
             </div>
         );
     }

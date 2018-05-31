@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -84,6 +85,12 @@ class Order
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", unique=true, nullable=true)
      */
     private $file;
+
+    /**
+     * NOT MAPPED
+     * @var UploadedFile
+     */
+    private $uploadedFile;
 
     /**
      * @ORM\OneToMany(targetEntity="OrderItem", mappedBy="order", cascade={"all"}, orphanRemoval=true))
@@ -341,6 +348,25 @@ class Order
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * @param UploadedFile $uploadedFile
+     * @return $this
+     */
+    public function setUploadedFile(UploadedFile $uploadedFile)
+    {
+        $this->uploadedFile = $uploadedFile;
+
+        return $this;
+    }
+
+    /**
+     * @return UploadedFile
+     */
+    public function getUploadedFile()
+    {
+        return $this->uploadedFile;
     }
 
     /**
