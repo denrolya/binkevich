@@ -1,20 +1,22 @@
 import React, {Component} from 'react';
 
 const attach = require('../../../img/attach-file-icon.png');
+const initialState = {
+    order: {
+        name:        '',
+        email:       '',
+        phonenumber: '',
+        comments:    'Dear Binkevich Team',
+        file:        undefined
+    },
+    isSubmitInProgress: false
+};
 
 export default class ContactForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            order: {
-                name:        '',
-                email:       '',
-                phonenumber: '',
-                comments:    'Dear Binkevich Team',
-                file:        undefined
-            }
-        };
+        this.state = initialState;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,14 +29,20 @@ export default class ContactForm extends Component {
                               event.target.files[0] :
                               event.target.value;
 
-        this.setState({
-            order: order
-        });
+        this.setState({ order });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.onSubmit(this.state.order);
+        this.setState({
+            isSubmitInProgress: true
+        });
+
+        this.props
+            .onSubmit(this.state.order)
+            .then(res => {
+                this.setState(initialState);
+            });
     }
 
     render() {
@@ -92,18 +100,19 @@ export default class ContactForm extends Component {
                                     <input type="file"
                                            name="attach-file"
                                            id="attach-file-contact-form"
-                                           multiple="multiple"
+                                           multiple="false"
+                                           accept=".zip"
                                            onChange={ this.handleChange.bind(this, 'file') }
                                     />
                                     <img src={ attach } alt="attach-file-icon"/>
                                     <span className="d-block">
-                                          <span>Attach your design</span>
-                                          <span id="files-length"><b>0</b> files attached</span>
+                                          <span>Attach your design
+                                              <small>(only 1 zip file allowed!)</small>
+                                          </span>
                                     </span>
                                 </label>
-                                <button type="submit" className="btn align-self-center" data-toggle="modal"
-                                        data-target="#successModal">
-                                    SEND MESSAGE
+                                <button type="submit" className="btn align-self-center" data-toggle="modal" data-target="#successModal">
+                                    { this.state.isSubmitInProgress ? 'Submitting...' : 'SEND MESSAGE' }
                                 </button>
                             </div>
                         </div>
