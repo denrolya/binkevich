@@ -9,12 +9,12 @@ export default class ProductListContainer extends Component {
         const categories = ['Rings', 'Earrings', 'Bangles', 'Pendants'],
             categoryExtractedFromUrl = this.extractCategoryFromURI(),
             activeCategory = (categories.indexOf(categoryExtractedFromUrl) !== -1) ?
-                             categoryExtractedFromUrl :
-                             'Rings';
+                categoryExtractedFromUrl :
+                'Rings';
         this.state = {
             categories: categories,
             activeCategory: activeCategory,
-            products:  []
+            products: []
         };
     }
 
@@ -33,19 +33,19 @@ export default class ProductListContainer extends Component {
         this.setState(prevState => ({
             ...prevState,
             activeCategory: category,
-            products:   []
+            products: []
         }));
 
         fetch('/app_dev.php/api/v1/categories/' + category.toLowerCase(), {
             method: 'GET',
-            mode:   'CORS'
+            mode: 'CORS'
         }).then(res => res.json())
-          .then(json => {
-              this.setState(prevState => ({
-                  ...prevState,
-                  products: json.data
-              }));
-          });
+            .then(json => {
+                this.setState(prevState => ({
+                    ...prevState,
+                    products: json.data
+                }));
+            });
     }
 
     componentDidMount() {
@@ -71,7 +71,6 @@ export default class ProductListContainer extends Component {
                             })}
                         </div>
                     </div>
-
                     <ProductListComponent products={this.state.products}></ProductListComponent>
                 </div>
             </section>
