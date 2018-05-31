@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
+import OrderSuccessModal from './OrderSuccessModal';
 
 const attach = require('../../../img/attach-file-icon.png');
 const initialState = {
@@ -9,10 +10,11 @@ const initialState = {
         comments:    'Dear Binkevich Team',
         file:        undefined
     },
-    isSubmitInProgress: false
+    isSubmitInProgress: false,
+    isSuccessModalOpen: false
 };
 
-export default class ContactForm extends Component {
+export default class ContactForm extends React.Component {
     constructor(props) {
         super(props);
 
@@ -34,15 +36,30 @@ export default class ContactForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.setState({
-            isSubmitInProgress: true
-        });
 
-        this.props
-            .onSubmit(this.state.order)
-            .then(res => {
-                this.setState(initialState);
+        if (this.isFormValid()) {
+            this.setState({
+                isSubmitInProgress: true
             });
+
+            this.props
+                .onSubmit(this.state.order)
+                .then(res => {
+                    this.setState(initialState);
+                    this.toggleSuccessModal();
+                });
+        }
+    }
+
+    isFormValid() {
+        // TODO: implement
+        return false;
+    }
+
+    toggleSuccessModal() {
+        this.setState({
+            isSuccessModalOpen: !this.state.isSuccessModalOpen
+        });
     }
 
     render() {
@@ -118,6 +135,8 @@ export default class ContactForm extends Component {
                         </div>
                     </form>
                 </div>
+
+                <OrderSuccessModal isOpen={this.state.isSuccessModalOpen} toggle={this.toggleSuccessModal.bind(this)}/>
             </section>
         );
     }
