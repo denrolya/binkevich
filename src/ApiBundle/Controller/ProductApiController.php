@@ -31,7 +31,7 @@ class ProductApiController extends FOSRestController
      *     },
      *     tags={"stable"="#93c00b"}
      * )
-     * @Rest\Get("/product/ring")
+     * @Rest\Get("/products/ring")
      * @Rest\View(serializerGroups={"product-list"})
      */
     public function getRingsAction()
@@ -63,7 +63,7 @@ class ProductApiController extends FOSRestController
      *     },
      *     tags={"stable"="#93c00b"}
      * )
-     * @Rest\Get("/product/{id}")
+     * @Rest\Get("/products/{id}")
      * @Rest\View(serializerGroups={"product-view"})
      */
     public function getRingByIdAction(Product $product)
@@ -93,7 +93,7 @@ class ProductApiController extends FOSRestController
      *     tags={"stable"="#93c00b"}
      * )
      * @Rest\View(serializerGroups={"product-view"})
-     * @Rest\Post("/product")
+     * @Rest\Post("/products")
      */
     public function createProductAction(Request $request)
     {

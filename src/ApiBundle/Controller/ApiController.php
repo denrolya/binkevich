@@ -63,7 +63,7 @@ class ApiController extends FOSRestController
     }
 
     /**
-     * @Rest\Post("/order")
+     * @Rest\Post("/orders")
      */
     public function placeOrderAction(Request $request)
     {

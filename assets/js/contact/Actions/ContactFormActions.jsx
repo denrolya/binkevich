@@ -13,6 +13,6 @@ export function handleContactDataSubmit(order) {
     }
 
     return axios
-        .post('/api/v1/order', formData)
+        .post('/api/v1/orders', formData)
         .then(res => res);
 }

@@ -24,7 +24,7 @@ export default class Content extends Component {
     componentDidMount() {
         const productID = this.getProductID();
         fetch(
-            ('http://localhost:8000/api/v1/product/' + productID), {
+            ('http://localhost:8000/api/v1/products/' + productID), {
                 method: 'GET',
                 mode: 'CORS'
             }
