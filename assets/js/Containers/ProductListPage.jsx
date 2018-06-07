@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import ProductItem from '../Components/ProductItem';
-import { fetchProductsInCategory, extractCategoryFromURI } from '../Actions/ProductListActions';
+import { fetchProductsInCategory, extractCategoryFromURI } from '../Actions/ProductActions';
 
 export default class ProductListPage extends React.Component {
     constructor(props) {
