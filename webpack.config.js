@@ -10,12 +10,12 @@ Encore
     .setPublicPath('/build')
 
     // will create web/build/app.js and web/build/app.css
-    .addEntry('common', './assets/js/common/app.jsx')
-    .addEntry('index', './assets/js/index/app.jsx')
-    .addEntry('contact', './assets/js/contact/app.jsx')
-    .addEntry('product_list', './assets/js/product/List/app.jsx')
-    .addEntry('product_collection', './assets/js/product/Collection/app.jsx')
-    .addEntry('product_view', './assets/js/product/View/app.jsx')
+    .addEntry('common', './assets/js/common.jsx')
+    .addEntry('index', './assets/js/indexPage.jsx')
+    .addEntry('contact', './assets/js/contactPage.jsx')
+    .addEntry('product_list', './assets/js/productListPage.jsx')
+    .addEntry('product_collection', './assets/js/collectionViewPage.jsx')
+    .addEntry('product_view', './assets/js/productViewPage.jsx')
     .addStyleEntry('main', './assets/css/main.scss')
 
     // allow sass/scss files to be processed
