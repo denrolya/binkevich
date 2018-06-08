@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageCarousel from '../Components/ImageCarousel';
 
-export default class ProductView extends React.Component {
+export default class ProductSection extends React.Component {
     render() {
         return (
             <section className="single-product">
