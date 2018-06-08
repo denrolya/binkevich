@@ -15,6 +15,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Order
 {
+    const TIMESTAMP_PLACEHOLDER = '{{TIMESTAMP}}';
+    const INVOICE_FILENAME_PATTERN = 'invoice_' . self::TIMESTAMP_PLACEHOLDER . '.pdf';
+
     /**
      * @var integer
      *
