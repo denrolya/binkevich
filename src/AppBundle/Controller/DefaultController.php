@@ -17,19 +17,11 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/collections", name="collection_list")
-     */
-    public function collectionListAction()
-    {
-        return $this->render('AppBundle:Default:collection.html.twig');
-    }
-
-    /**
      * @Route("/collections/{slug}", name="collection_product_list")
      */
     public function collectionProductListAction($slug)
     {
-        return $this->render('AppBundle:Default:product.html.twig');
+        return $this->render('AppBundle:Default:collection.html.twig');
     }
 
     /**

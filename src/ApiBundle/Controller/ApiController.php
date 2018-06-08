@@ -47,12 +47,13 @@ class ApiController extends FOSRestController
     }
 
     /**
+     * @Rest\View(serializerGroups={"product-list"})
      * @Rest\Get("/collections/{slug}")
      */
     public function getCollectionProductsAction(Collection $collection)
     {
         return $this->view([
-            'data' => $collection->getProductsFormatted()
+            'data' => $collection
         ]);
     }
 

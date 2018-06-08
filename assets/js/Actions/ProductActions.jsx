@@ -19,6 +19,12 @@ export function fetchCollectionOverviewProducts() {
         .then(res => res.data);
 }
 
+export function fetchCollectionBySlug(slug) {
+    return axios
+        .get('/app_dev.php/api/v1/collections/' + slug)
+        .then(res => res.data);
+}
+
 export function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -35,9 +41,16 @@ export function extractProductIdFromURI() {
     return path.split('/')[2];
 }
 
+export function extractCollectionSlugFromURI() {
+    let currentPath = new URL(window.location.href).pathname;
+    let collectionSlug = currentPath.substr(currentPath.lastIndexOf('/') + 1);
+
+    return collectionSlug;
+}
+
 export function extractCategoryFromURI() {
-    const currentPath = new URL(window.location.href).pathname;
-    const categorySlug = currentPath.substr(currentPath.lastIndexOf('/') + 1);
+    let currentPath = new URL(window.location.href).pathname;
+    let categorySlug = currentPath.substr(currentPath.lastIndexOf('/') + 1);
 
     return capitalize(categorySlug);
 }
