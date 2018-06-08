@@ -13,6 +13,12 @@ export function fetchProductById(id) {
         .then(res => res.data);
 }
 
+export function fetchCollectionOverviewProducts() {
+    return axios
+        .get('/app_dev.php/api/v1/collections/index')
+        .then(res => res.data);
+}
+
 export function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

@@ -2,10 +2,6 @@ import React from 'react';
 import ImageCarousel from '../Components/ImageCarousel';
 
 export default class ProductView extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <section className="single-product">

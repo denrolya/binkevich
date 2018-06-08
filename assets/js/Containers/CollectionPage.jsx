@@ -3,10 +3,6 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 
 export default class CollectionPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>

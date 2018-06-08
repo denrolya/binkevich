@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Category,
+    AppBundle\Entity\Collection;
+
 /**
  * CollectionRepository
  *
@@ -10,4 +13,16 @@ namespace AppBundle\Repository;
  */
 class CollectionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getCollectionOverviewWithProducts()
+    {
+        /** @var Collection $collection */
+        $collection = $this->findOneBy(['isDisplayedOnIndexPage' => true]);
+
+        return [
+            'ring' => $collection->getFirstProductInCollectionByCategory(Category::CATEGORY_RING),
+            'earring' => $collection->getFirstProductInCollectionByCategory(Category::CATEGORY_EARRING),
+            'bangle' => $collection->getFirstProductInCollectionByCategory(Category::CATEGORY_BANGLE),
+            'pendant' => $collection->getFirstProductInCollectionByCategory(Category::CATEGORY_PENDANT)
+        ];
+    }
 }

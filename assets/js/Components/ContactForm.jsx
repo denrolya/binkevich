@@ -1,7 +1,7 @@
 import React from 'react';
 import OrderSuccessModal from './OrderSuccessModal';
 
-const attach = require('../../img/attach-file-icon.png');
+const attachIcon = require('../../img/attach-file-icon.png');
 const initialState = {
     order: {
         name:        '',
@@ -121,7 +121,7 @@ export default class ContactForm extends React.Component {
                                            accept=".zip"
                                            onChange={ this.handleChange.bind(this, 'file') }
                                     />
-                                    <img src={ attach } alt="attach-file-icon"/>
+                                    <img src={ attachIcon } alt="attach-file-icon"/>
                                     <span className="d-block">
                                           <span>Attach your design
                                               <small>(only 1 zip file allowed!)</small>

@@ -170,23 +170,15 @@ class Collection
     }
 
     /**
-     * Get products formatted
+     * @param int $categoryId
+     * @return Product|null
      */
-    public function getProductsFormatted()
+    public function getFirstProductInCollectionByCategory($categoryId)
     {
-        return [
-            'rings' => $this->products->filter(function(Product $product) {
-                return $product->getCategory()->getSlug() === 'rings';
-            }),
-            'earrings' => $this->products->filter(function(Product $product) {
-                return $product->getCategory()->getSlug() === 'earrings';
-            })->getValues(),
-            'bangles' => $this->products->filter(function(Product $product) {
-                return $product->getCategory()->getSlug() === 'bangles';
-            })->getValues(),
-            'pendants' => $this->products->filter(function(Product $product) {
-                return $product->getCategory()->getSlug() === 'pendants';
-            })->getValues()
-        ];
+        $products = $this->getProducts()->filter(function(Product $product) use ($categoryId) {
+            return $product->getCategory()->getId() === $categoryId;
+        })->getValues();
+
+        return $products[0] ?? null;
     }
 }

@@ -1,15 +1,15 @@
 import React from 'react';
-import ImageCarousel from '../Components/ImageCarousel';
+import ImageCarousel from '../ImageCarousel';
 
-export default class HomeBlackCarousel extends React.Component {
+export default class BlackCarouselSection extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             images: [{
-                src: require('../../img/carousel-black-img.jpg')
+                src: require('../../../img/carousel-black-img.jpg')
             }, {
-                src: require('../../img/carousel-black-img2.jpg')
+                src: require('../../../img/carousel-black-img2.jpg')
             }]
         };
     }

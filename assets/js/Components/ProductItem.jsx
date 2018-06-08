@@ -1,10 +1,6 @@
 import React from 'react';
 
 export default class ProductItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="col-xl-3 col-lg-6 col-12 product earrings">

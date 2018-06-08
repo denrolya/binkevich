@@ -16,23 +16,17 @@ class ApiController extends FOSRestController
 {
     /**
      * @Rest\View(serializerGroups={"index"})
-     * @Rest\Get("/index/collection")
+     * @Rest\Get("/collections/index")
      */
     public function getIndexPageCollectionAction()
     {
         $indexPageCollection = $this
             ->getDoctrine()
             ->getRepository(Collection::class)
-            ->findOneBy([
-                'isDisplayedOnIndexPage' => true
-            ]);
-
-        if (!$indexPageCollection) {
-            return $this->view(null, Response::HTTP_NO_CONTENT);
-        }
+            ->getCollectionOverviewWithProducts();
 
         return $this->view([
-            'data' => $indexPageCollection->getProductsFormatted()
+            'data' => $indexPageCollection
         ]);
     }
 

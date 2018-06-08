@@ -39,9 +39,7 @@ class ProductApiController extends FOSRestController
         $rings = $this
             ->getDoctrine()
             ->getRepository(Product::class)
-            ->findBy([
-                'category' => Category::CATEGORY_RING
-            ]);
+            ->findByCategory(Category::CATEGORY_RING);
 
         return [
             'data' => $rings

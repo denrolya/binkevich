@@ -1,33 +1,26 @@
 import React from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-import HomeProductBlock from '../Components/HomeProductBlock';
-import HomeTopBlock from '../Components/HomeTopBlock';
-import HomeWhiteCarousel from '../Components/HomeWhiteCarousel';
-import HomeBlackCarousel from '../Components/HomeBlackCarousel';
+import TopSection from '../Components/Index/TopSection';
+import CollectionSection from '../Components/Index/CollectionSection';
+import WhiteCarouselSection from '../Components/Index/WhiteCarouselSection';
+import BlackCarouselSection from '../Components/Index/BlackCarouselSection';
+import {fetchCollectionOverviewProducts} from '../Actions/ProductActions';
 
 export default class IndexPage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            products: {
-                earrings: [],
-                rings: [],
-                pendants: [],
-                bangles: []
-            }
+            collection: undefined
         };
     }
 
     componentDidMount() {
-        fetch('/api/v1/index/collection', {
-            method: 'GET',
-            mode: 'CORS'
-        }).then(res => res.json())
-          .then(json => {
+        fetchCollectionOverviewProducts()
+          .then(res => {
               this.setState({
-                  products: json.data
+                  collection: res.data
               })
           });
     }
@@ -36,10 +29,12 @@ export default class IndexPage extends React.Component {
         return (
             <div className="gradient-page">
                 <Header dark={true}/>
-                <HomeTopBlock/>
-                <HomeProductBlock products={this.state.products}/>
-                <HomeWhiteCarousel/>
-                <HomeBlackCarousel/>
+                <TopSection/>
+                {this.state.collection &&
+                    <CollectionSection collection={this.state.collection}/>
+                }
+                <WhiteCarouselSection/>
+                <BlackCarouselSection/>
                 <Footer/>
             </div>
         );
