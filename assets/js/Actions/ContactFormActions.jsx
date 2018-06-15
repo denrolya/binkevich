@@ -12,5 +12,5 @@ export function handleContactDataSubmit(order) {
         formData.append('file', order.file);
     }
 
-    return axios.post('/app_dev.php/api/v1/orders', formData);
+    return axios.post(Routing.generate('api_place_order'), formData);
 }

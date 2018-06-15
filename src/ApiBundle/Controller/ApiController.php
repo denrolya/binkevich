@@ -20,13 +20,21 @@ class ApiController extends FOSRestController
      */
     public function getIndexPageCollectionAction()
     {
-        $indexPageCollection = $this
+        $collectionRepo = $this
             ->getDoctrine()
-            ->getRepository(Collection::class)
-            ->getCollectionOverviewWithProducts();
+            ->getRepository(Collection::class);
+
+        $collection = $collectionRepo
+            ->findOneBy(['isDisplayedOnIndexPage' => true]);
+
+        $indexPageCollectionProductions = $collectionRepo
+            ->getCollectionOverviewWithProducts($collection);
 
         return $this->view([
-            'data' => $indexPageCollection
+            'data' => [
+                'slug' => $collection->getSlug(),
+                'products' => $indexPageCollectionProductions
+            ]
         ]);
     }
 

@@ -1,27 +1,27 @@
 import axios from 'axios';
 import {parse} from 'url';
 
-export function fetchProductsInCategory(category) {
+export function fetchProductsInCategory(slug) {
     return axios
-        .get('/app_dev.php/api/v1/categories/' + category)
+        .get(Routing.generate('api_product_get_category_products', {slug}))
         .then(res => res.data);
 }
 
 export function fetchProductById(id) {
     return axios
-        .get('/app_dev.php/api/v1/products/' + id)
+        .get(Routing.generate('api_product_get_ring_by_id', {id}))
         .then(res => res.data);
 }
 
 export function fetchCollectionOverviewProducts() {
     return axios
-        .get('/app_dev.php/api/v1/collections/index')
+        .get(Routing.generate('api_get_index_page_collection'))
         .then(res => res.data);
 }
 
 export function fetchCollectionBySlug(slug) {
     return axios
-        .get('/app_dev.php/api/v1/collections/' + slug)
+        .get(Routing.generate('api_get_collection_products', {slug}))
         .then(res => res.data);
 }
 

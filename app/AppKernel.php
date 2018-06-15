@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 
             new ApiBundle\ApiBundle(),
             new AppBundle\AppBundle(),

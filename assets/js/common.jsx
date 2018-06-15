@@ -1,9 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.css';
+const routes = require('../../web/js/fos_js_routes.json');
+import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+
+Routing.setRoutingData(routes);
 // import './../../css/main.css';
 
 // TODO: Refactor
 jQuery(document).ready(function($){
-    var $mobileMenu = $('.mobile-menu');
+    const $mobileMenu = $('.mobile-menu');
 
     $('.close-mobile-menu').click(function(){
         $mobileMenu.removeClass('open');

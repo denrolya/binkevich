@@ -37,7 +37,7 @@ export default class BlackCarouselSection extends React.Component {
                                         for any occasion. Please contact us with your design
                                         requirements and we’ll be more than happy to assist.
                                     </p>
-                                    <a href="#" className="btn">GET IN TOUCH</a>
+                                    <a href="/contact" className="btn">GET IN TOUCH</a>
                                 </div>
                             </div>
                         </div>

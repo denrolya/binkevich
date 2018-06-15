@@ -35,10 +35,15 @@ api:
     type:       rest
     prefix:     /api/v1
     resource:   '@ApiBundle/Resources/config/routes.yml'
+    options:
+        expose: true
 
 api_doc:
     resource:   '@NelmioApiDocBundle/Resources/config/routing.yml'
     prefix:     /api/v1/doc
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 fos_user_security:
     resource:   '@FOSUserBundle/Resources/config/routing/security.xml'

@@ -13,11 +13,8 @@ use AppBundle\Entity\Category,
  */
 class CollectionRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getCollectionOverviewWithProducts()
+    public function getCollectionOverviewWithProducts(Collection $collection)
     {
-        /** @var Collection $collection */
-        $collection = $this->findOneBy(['isDisplayedOnIndexPage' => true]);
-
         return [
             'ring' => $collection->getFirstProductInCollectionByCategory(Category::CATEGORY_RING),
             'earring' => $collection->getFirstProductInCollectionByCategory(Category::CATEGORY_EARRING),
