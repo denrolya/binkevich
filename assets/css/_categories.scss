@@ -92,10 +92,15 @@
     flex-direction: column;
     text-align: center;
 
+    .wrap-img {
+      min-height: 137px;
+      margin-bottom: 35px;
+    }
+
     img {
       display: block;
       width: 100%;
-      margin-bottom: 35px;
+      margin: 0 auto;
     }
     h5 {
       font-family: $abrFat;

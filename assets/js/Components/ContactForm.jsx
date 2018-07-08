@@ -53,7 +53,7 @@ export default class ContactForm extends React.Component {
 
     isFormValid() {
         // TODO: implement
-        return false;
+        return true;
     }
 
     toggleSuccessModal() {

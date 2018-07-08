@@ -1,11 +1,9 @@
 .contact-form {
   @include large {
-    margin-top: 235px;
     margin-bottom: 160px;
   }
 
   @include tab-mob {
-    margin-top: 190px;
     margin-bottom: 120px;
   }
 
@@ -129,7 +127,7 @@
       }
     }
   }
-  input[type='text'], textarea {
+  input[type='text'], input[type='email'], textarea {
     width: 100%;
     border: 1px solid $black;
     font-family: $mon;
@@ -141,7 +139,7 @@
       margin-top: 0;
     }
   }
-  input[type='text'] {
+  input[type='text'], input[type='email'] {
     padding: 18px 10px;
 
     @include mobile {

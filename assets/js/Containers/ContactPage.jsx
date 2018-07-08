@@ -14,8 +14,8 @@ export default class ContactPage extends React.Component {
 
     render() {
         return (
-            <div className="gradient-page">
-                <Header dark={false}/>
+            <div className="gradient-page contact-page">
+                <Header dark={true}/>
                 <ContactForm onSubmit={this.handleSubmit}/>
                 <Footer/>
             </div>
