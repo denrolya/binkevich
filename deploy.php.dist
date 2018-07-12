@@ -88,6 +88,7 @@ task('deploy', [
     'deploy:vendors',
     'deploy:frontend:vendors',
     'deploy:assets:install',
+    'deploy:publish:routes',
     'deploy:assets:compile',
     'deploy:assetic:dump',
     'deploy:cache:clear',
@@ -98,6 +99,7 @@ task('deploy', [
     'cleanup',
 ])->desc('Deploy backend application');
 
+task('deploy:publish:routes', '{{bin/php}} {{bin/console}} fos:js-routing:dump {{console_options}} --format=json');
 task('deploy:frontend:vendors','yarn install --ignore-engines')->desc('Install frontend dependencies');
 task('deploy:assets:compile', 'yarn run encore production');
 
