@@ -3,11 +3,12 @@
     margin-bottom: 160px;
   }
 
-  @include tab-mob {
+  @include tablet {
     margin-bottom: 120px;
   }
 
   @include mobile {
+    margin-bottom: 80px;
     padding: 0 10px;
   }
 

@@ -19,7 +19,7 @@ export default class BlackCarouselSection extends React.Component {
             <section className="home-black-carousel ">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-12">
+                        <div className="col-12">
                             <h2>BESPOKE SERVICES</h2>
                             <p>
                                 With emphasis on bespoke bridal collections, we are proud to help
