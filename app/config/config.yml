@@ -9,6 +9,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    # Use camelCase instead of snake_case when serializing entities
+    jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
 
 framework:
     #esi: ~

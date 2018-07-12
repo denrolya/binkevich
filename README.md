@@ -3,8 +3,13 @@
 ## Installation
 1. $: `composer install`
     * Set only the database parameters, skip the others
-2. $: `bin/console d:d:c && bin/console d:s:c && bin/console f:l -n`
+2. $: `yarn install`
+3. $: `mkdir -p web/uploads/media`
+    * Create uploads folder
+4. $: `bin/console d:d:c && bin/console d:s:c && bin/console f:l -n`
     * This creates the database, populates it with test data
+5. $: `bin/console fos:js-routing:dump --format=json`
+    * Publish API routes into JSON file
 
 ## Running frontend:
 1. Make sure your backend is served as expected `php bin/console server:run`
