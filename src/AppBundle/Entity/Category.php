@@ -39,7 +39,7 @@ class Category
     private $name;
 
     /**
-     * @Gedmo\Slug(fields={"name"})
+     * @Gedmo\Slug(fields={"index", "name"})
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;

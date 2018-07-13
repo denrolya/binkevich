@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderMobile from './HeaderMobile';
-import {fetchCollections} from '../Actions/HeaderActions';
+import {fetchCollectionsAndCategories} from '../Actions/HeaderActions';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -12,10 +12,11 @@ export default class Header extends React.Component {
     }
 
     componentDidMount() {
-        fetchCollections()
+        fetchCollectionsAndCategories()
             .then(res => {
                 this.setState({
-                    collections: res.data
+                    collections: res.data.collections,
+                    categories: res.data.categories
                 });
             });
     }
@@ -27,7 +28,14 @@ export default class Header extends React.Component {
                     <a href={'/collections/' + collection.slug}>{collection.name} <span>NEW</span></a>
                 </li>
             );
-        });
+        }),
+              categories = this.state.collections.map((category, i) => {
+                 return (
+                     <li className="item third">
+                         <a href={'/categories/' + category.slug}>{category.name}</a>
+                     </li>
+                 )
+              });
 
         return (
             <header className={((this.props.dark === true) ? 'bg-transparent position-absolute' : 'bg-white')}>
@@ -52,17 +60,15 @@ export default class Header extends React.Component {
                                 <li className="item second have-sub-sub-menu">
                                     <a href="/categories">CATEGORIES</a>
                                     <ul className="third-menu sub-menu">
+
                                         <li className="item third">
-                                            <a href="/categories/ring">RINGS</a>
+                                            <a href="/categories/earrings">Earrings</a>
                                         </li>
                                         <li className="item third">
-                                            <a href="/categories/earring">Earrings</a>
+                                            <a href="/categories/bangles">Bangles</a>
                                         </li>
                                         <li className="item third">
-                                            <a href="/categories/bangle">Bangles</a>
-                                        </li>
-                                        <li className="item third">
-                                            <a href="/categories/pendant">PENDANTS</a>
+                                            <a href="/categories/pendants">PENDANTS</a>
                                         </li>
                                     </ul>
                                 </li>

@@ -24,7 +24,6 @@ class AppKernel extends Kernel
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 
-            new ApiBundle\ApiBundle(),
             new AppBundle\AppBundle(),
 
             // These are the bundles the SonataAdminBundle relies on

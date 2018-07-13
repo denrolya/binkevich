@@ -34,7 +34,7 @@ order:
 api:
     type:       rest
     prefix:     /api/v1
-    resource:   '@ApiBundle/Resources/config/routes.yml'
+    resource:   '@AppBundle/Resources/config/routes.yml'
     options:
         expose: true
 

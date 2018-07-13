@@ -1,7 +1,8 @@
 <?php
 
-namespace ApiBundle\Controller;
+namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\Collection;
 use AppBundle\Entity\File;
 use AppBundle\Entity\Order;
@@ -40,17 +41,25 @@ class ApiController extends FOSRestController
 
     /**
      * @Rest\View(serializerGroups={"index"})
-     * @Rest\Get("/collections")
+     * @Rest\Get("/collections-and-categories")
      */
-    public function getCollectionsAction()
+    public function getCollectionsAndCategoriesAction()
     {
         $collections = $this
             ->getDoctrine()
             ->getRepository(Collection::class)
             ->findAll();
 
+        $categories = $this
+            ->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
+
         return $this->view([
-            'data' => $collections
+            'data' => [
+                'collections' => $collections,
+                'categories' => $categories
+            ]
         ]);
     }
 

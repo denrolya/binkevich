@@ -1,9 +1,9 @@
 api:
     type:           rest
-    resource:       ApiBundle\Controller\ApiController
+    resource:       AppBundle\Controller\ApiController
     name_prefix:    api_
 
 api_product:
     type:           rest
-    resource:       ApiBundle\Controller\ProductApiController
+    resource:       AppBundle\Controller\ProductApiController
     name_prefix:    api_product_

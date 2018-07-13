@@ -33,15 +33,17 @@ class Media extends BaseMedia
         return $this->id;
     }
 
-    public function __construct(UploadedFile $uploadedFile)
+    public function __construct(UploadedFile $uploadedFile = null)
     {
-        $this->setName($uploadedFile->getFilename());
-        $this->setEnabled(true);
-        $this->setHeight(480);
-        $this->setWidth(640);
-        $this->setSize($uploadedFile->getClientSize());
-        $this->setProviderName('sonata.media.provider.image');
-        $this->setContext('default');
-        $this->setBinaryContent(new File($uploadedFile->getRealPath()));
+        if ($uploadedFile) {
+            $this->setName($uploadedFile->getFilename());
+            $this->setEnabled(true);
+            $this->setHeight(480);
+            $this->setWidth(640);
+            $this->setSize($uploadedFile->getClientSize());
+            $this->setProviderName('sonata.media.provider.image');
+            $this->setContext('default');
+            $this->setBinaryContent(new File($uploadedFile->getRealPath()));
+        }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiBundle\Controller;
+namespace AppBundle\Controller;
 
 use AppBundle\Entity\Category;
 use AppBundle\Entity\ProductImage;

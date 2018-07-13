@@ -21,16 +21,16 @@ export default class Header extends React.Component {
                                     <a href="#" className="have-sub-mobile-menu">CATEGORIES</a>
                                     <ul>
                                         <li>
-                                            <a href="/categories/ring">RINGS</a>
+                                            <a href="/categories/rings">RINGS</a>
                                         </li>
                                         <li>
-                                            <a href="/categories/earring">EARRINGS</a>
+                                            <a href="/categories/earrings">EARRINGS</a>
                                         </li>
                                         <li>
-                                            <a href="/categories/bangle">BANGLES</a>
+                                            <a href="/categories/bangles">BANGLES</a>
                                         </li>
                                         <li>
-                                            <a href="/categories/pendant">PENDANTS</a>
+                                            <a href="/categories/pendants">PENDANTS</a>
                                         </li>
                                     </ul>
                                 </li>
