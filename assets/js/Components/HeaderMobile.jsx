@@ -30,19 +30,15 @@ export default class Header extends React.Component {
                             <a href="/">HOME</a>
                         </li>
                         <li>
-                            <a href="#" className="have-sub-mobile-menu">JEWELLERY</a>
+                            <a href="/categories" className="have-sub-mobile-menu">JEWELLERY</a>
                             <ul>
                                 <li className="have-sub-mobile-menu">
-                                    <a href="#" className="have-sub-mobile-menu">CATEGORIES</a>
-                                    <ul>
-                                        { categories }
-                                    </ul>
+                                    <a href="/categories" className="have-sub-mobile-menu">CATEGORIES</a>
+                                    <ul>{ categories }</ul>
                                 </li>
                                 <li>
                                     <a href="#" className="have-sub-mobile-menu">COLLECTIONS</a>
-                                    <ul>
-                                        { collections }
-                                    </ul>
+                                    <ul>{ collections }</ul>
                                 </li>
                             </ul>
                         </li>

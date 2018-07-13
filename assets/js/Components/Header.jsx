@@ -60,15 +60,11 @@ export default class Header extends React.Component {
                             <ul className="second-menu sub-menu">
                                 <li className="item second have-sub-sub-menu">
                                     <a href="/categories">CATEGORIES</a>
-                                    <ul className="third-menu sub-menu">
-                                        { categories }
-                                    </ul>
+                                    <ul className="third-menu sub-menu">{ categories }</ul>
                                 </li>
                                 <li className="item second have-sub-sub-menu">
                                     <a href="/collections">Collections</a>
-                                    <ul className="third-menu sub-menu">
-                                        { collections }
-                                    </ul>
+                                    <ul className="third-menu sub-menu">{ collections }</ul>
                                 </li>
                             </ul>
                         </li>
