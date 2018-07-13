@@ -39,7 +39,8 @@ class Category
     private $name;
 
     /**
-     * @Gedmo\Slug(fields={"index", "name"})
+     * @Gedmo\Slug(fields={"name"})
+     * @JMS\Groups({"index"})
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;

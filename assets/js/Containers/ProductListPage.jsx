@@ -43,6 +43,7 @@ export default class ProductListPage extends React.Component {
         const categoriesButtons = this.state.categories.map((category, i) => {
             return (
                 <a id={category.toLowerCase()}
+                        href="#"
                         className={category === this.state.activeCategory ? 'active' : ''}
                         key={i}
                         onClick={this.switchCategory.bind(this, category)}>

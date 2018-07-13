@@ -2,6 +2,21 @@ import React from 'react';
 
 export default class Header extends React.Component {
     render() {
+        const collections = this.props.collections.map((collection, i) => {
+            return (
+                <li key={i}>
+                    <a href={'/collections/' + collection.slug}>{collection.name}</a>
+                </li>
+            );
+        });
+        const categories = this.props.categories.map((category, i) => {
+            return (
+                <li>
+                    <a className="text-uppercase" href={'/categories/' + category.slug}>{category.name}</a>
+                </li>
+            );
+        });
+
         return (
             <div className="mobile-menu">
                 <div className="wrap-els">
@@ -20,30 +35,13 @@ export default class Header extends React.Component {
                                 <li className="have-sub-mobile-menu">
                                     <a href="#" className="have-sub-mobile-menu">CATEGORIES</a>
                                     <ul>
-                                        <li>
-                                            <a href="/categories/rings">RINGS</a>
-                                        </li>
-                                        <li>
-                                            <a href="/categories/earrings">EARRINGS</a>
-                                        </li>
-                                        <li>
-                                            <a href="/categories/bangles">BANGLES</a>
-                                        </li>
-                                        <li>
-                                            <a href="/categories/pendants">PENDANTS</a>
-                                        </li>
+                                        { categories }
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="#" className="have-sub-mobile-menu">COLLECTIONS</a>
                                     <ul>
-                                        {this.props.collections && this.props.collections.map((collection, i) => {
-                                            return (
-                                                <li key={i}>
-                                                    <a href={'/collections/' + collection.slug}>{collection.name}</a>
-                                                </li>
-                                            );
-                                        })}
+                                        { collections }
                                     </ul>
                                 </li>
                             </ul>
