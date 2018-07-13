@@ -56,7 +56,7 @@ export default class Header extends React.Component {
                             <a href="/">Home</a>
                         </li>
                         <li className="item first have-sub-menu">
-                            <a href="#">Jewellery</a>
+                            <a href="/categories">Jewellery</a>
                             <ul className="second-menu sub-menu">
                                 <li className="item second have-sub-sub-menu">
                                     <a href="/categories">CATEGORIES</a>
