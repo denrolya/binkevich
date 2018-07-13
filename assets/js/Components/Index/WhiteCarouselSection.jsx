@@ -27,7 +27,7 @@ export default class WhiteCarouselSection extends React.Component {
                                 for any occasion. Please contact us with your design
                                 requirements and we’ll be more than happy to assist.
                             </p>
-                            <a href="#" className="btn btn-transparent">EXPLORE</a>
+                            <a href="/categories" className="btn btn-transparent">EXPLORE</a>
                         </div>
                         <div className="col-xl-7 col-sm-12">
                             <ImageCarousel id="white-carousel" items={ this.state.images } indicators={true}/>

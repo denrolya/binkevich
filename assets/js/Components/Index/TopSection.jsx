@@ -17,7 +17,7 @@ export default class HomeTopBlock extends React.Component {
                                 Combining traditional craftmanship with the latest
                                 technology, each piece is finished to perfection.
                             </p>
-                            <a href="#" className="btn btn-transparent">VIEW COLLECTION</a>
+                            <a href="/categories" className="btn btn-transparent">VIEW COLLECTION</a>
                         </div>
                     </div>
                 </div>
