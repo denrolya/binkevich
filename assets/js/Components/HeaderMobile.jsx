@@ -11,7 +11,7 @@ export default class Header extends React.Component {
         });
         const categories = this.props.categories.map((category, i) => {
             return (
-                <li>
+                <li key={i}>
                     <a className="text-uppercase" href={'/categories/' + category.slug}>{category.name}</a>
                 </li>
             );

@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageCarousel from '../ImageCarousel';
 
-export default class BlackCarouselSection extends React.Component {
+export default class BespokeSection extends React.Component {
     constructor(props) {
         super(props);
 
@@ -16,7 +16,7 @@ export default class BlackCarouselSection extends React.Component {
 
     render() {
         return (
-            <section className="home-black-carousel ">
+            <section className="home-black-carousel" id="section-bespoke">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">

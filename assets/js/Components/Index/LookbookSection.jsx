@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageCarousel from '../ImageCarousel';
 
-export default class WhiteCarouselSection extends React.Component {
+export default class LookbookSection extends React.Component {
     constructor(props) {
         super(props);
 
@@ -16,7 +16,7 @@ export default class WhiteCarouselSection extends React.Component {
 
     render() {
         return (
-            <section className="home-white-carousel bg-white">
+            <section className="home-white-carousel bg-white" id="section-lookbook">
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-5 col-sm-12">

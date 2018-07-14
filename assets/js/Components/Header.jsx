@@ -32,7 +32,7 @@ export default class Header extends React.Component {
         });
         const categories = this.state.categories.map((category, i) => {
             return (
-                <li className="item third">
+                <li className="item third" key={i}>
                     <a className="text-uppercase" href={'/categories/' + category.slug}>{category.name}</a>
                 </li>
             );
@@ -69,10 +69,10 @@ export default class Header extends React.Component {
                             </ul>
                         </li>
                         <li className="item first have-sub-menu">
-                            <a href="/lookbook">Lookbook</a>
+                            <a href="#section-lookbook">Lookbook</a>
                         </li>
                         <li className="item first">
-                            <a href="/bespoke">Bespoke</a>
+                            <a href="#section-bespoke">Bespoke</a>
                         </li>
                         <li className="item first">
                             <a href="/contact">Contact</a>

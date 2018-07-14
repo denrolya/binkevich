@@ -3,7 +3,7 @@ import React from 'react';
 export default class CollectionSection extends React.Component {
     render() {
         return (
-            <section className="home-product-block bg-white">
+            <section className="home-product-block bg-white" id="section-collection">
                 <div className="row pad-0 marg-0">
                     <div className="col-xl-5 col-sm-12 pad-l-custom">
                         <h5>Feminine & Organic</h5>
