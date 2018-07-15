@@ -1,22 +1,18 @@
 import React from 'react';
+import _ from 'lodash';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import ProductItem from '../Components/ProductItem';
+import { fetchCategories } from '../Actions/CategoryActions';
 import { fetchProductsInCategory, extractCategoryFromURI } from '../Actions/ProductActions';
 
 export default class ProductListPage extends React.Component {
     constructor(props) {
         super(props);
 
-        const categories = ['Rings', 'Earrings', 'Bangles', 'Pendants'],
-              categoryExtractedFromUrl = extractCategoryFromURI(),
-              activeCategory = (categories.indexOf(categoryExtractedFromUrl) !== -1) ?
-                               categoryExtractedFromUrl :
-                               'Rings';
-
         this.state = {
-            categories: categories,
-            activeCategory: activeCategory,
+            categories: [],
+            activeCategory: undefined,
             products: []
         };
     }
@@ -27,7 +23,7 @@ export default class ProductListPage extends React.Component {
             activeCategory: category
         });
 
-        fetchProductsInCategory(category.toLowerCase())
+        fetchProductsInCategory(category.slug)
             .then(res => {
                 this.setState({
                     products: res.data
@@ -36,18 +32,29 @@ export default class ProductListPage extends React.Component {
     }
 
     componentDidMount() {
-        this.switchCategory(this.state.activeCategory);
+        fetchCategories()
+            .then(res => {
+                const categoryExtractedFromUrl = extractCategoryFromURI(),
+                    activeCategory = _.find(res.data.categories, {'slug': categoryExtractedFromUrl});
+
+                this.setState({
+                    categories: res.data.categories,
+                    activeCategory: activeCategory
+                });
+
+                this.switchCategory(this.state.activeCategory);
+            });
     }
 
     render() {
         const categoriesButtons = this.state.categories.map((category, i) => {
             return (
-                <a id={category.toLowerCase()}
+                <a id={category.slug}
                         href="#"
-                        className={category === this.state.activeCategory ? 'active' : ''}
+                        className={'text-capitalize ' + ((category === this.state.activeCategory) ? 'active' : '')}
                         key={i}
-                        onClick={this.switchCategory.bind(this, category)}>
-                    {category}
+                        onClick={this.switchCategory.bind(this, category.slug)}>
+                    {category.name}
                 </a>
             );
         });

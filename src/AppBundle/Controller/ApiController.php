@@ -41,15 +41,28 @@ class ApiController extends FOSRestController
 
     /**
      * @Rest\View(serializerGroups={"index"})
-     * @Rest\Get("/collections-and-categories")
+     * @Rest\Get("/collections")
      */
-    public function getCollectionsAndCategoriesAction()
+    public function getCollectionsAction()
     {
         $collections = $this
             ->getDoctrine()
             ->getRepository(Collection::class)
             ->findAll();
 
+        return $this->view([
+            'data' => [
+                'collections' => $collections,
+            ]
+        ]);
+    }
+
+    /**
+     * @Rest\View(serializerGroups={"index"})
+     * @Rest\Get("/categories")
+     */
+    public function getCategoriesAction()
+    {
         $categories = $this
             ->getDoctrine()
             ->getRepository(Category::class)
@@ -57,7 +70,6 @@ class ApiController extends FOSRestController
 
         return $this->view([
             'data' => [
-                'collections' => $collections,
                 'categories' => $categories
             ]
         ]);

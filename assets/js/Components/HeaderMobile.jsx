@@ -5,14 +5,14 @@ export default class Header extends React.Component {
         const collections = this.props.collections.map((collection, i) => {
             return (
                 <li key={i}>
-                    <a href={'/collections/' + collection.slug}>{collection.name}</a>
+                    <a href={Routing.generate('collection_product_list', {slug: collection.slug})}>{collection.name}</a>
                 </li>
             );
         });
         const categories = this.props.categories.map((category, i) => {
             return (
                 <li key={i}>
-                    <a className="text-uppercase" href={'/categories/' + category.slug}>{category.name}</a>
+                    <a className="text-uppercase" href={Routing.generate('category_product_list', {slug: category.slug})}>{category.name}</a>
                 </li>
             );
         });
@@ -21,19 +21,19 @@ export default class Header extends React.Component {
             <div className="mobile-menu">
                 <div className="wrap-els">
                     <div className="d-flex">
-                        <a className="logo marg-auto" href="/"></a>
+                        <a className="logo marg-auto" href={Routing.generate('homepage')}></a>
                         <button type="button" className="close-mobile-menu">&#10006;</button>
                     </div>
 
                     <ul>
                         <li>
-                            <a href="/">HOME</a>
+                            <a href={Routing.generate('homepage')}>HOME</a>
                         </li>
                         <li>
-                            <a href="/categories" className="have-sub-mobile-menu">JEWELLERY</a>
+                            <a href={Routing.generate('category_list')} className="have-sub-mobile-menu">JEWELLERY</a>
                             <ul>
                                 <li className="have-sub-mobile-menu">
-                                    <a href="/categories" className="have-sub-mobile-menu">CATEGORIES</a>
+                                    <a href={Routing.generate('category_list')} className="have-sub-mobile-menu">CATEGORIES</a>
                                     <ul>{ categories }</ul>
                                 </li>
                                 <li>
@@ -43,13 +43,13 @@ export default class Header extends React.Component {
                             </ul>
                         </li>
                         <li>
-                            <a href="/lookbook">LOOKBOOK</a>
+                            <a href={Routing.generate('homepage') + '#section-lookbook'}>LOOKBOOK</a>
                         </li>
                         <li>
-                            <a href="/bespoke">BESPOKE</a>
+                            <a href={Routing.generate('homepage') + '#section-bespoke'}>BESPOKE</a>
                         </li>
                         <li>
-                            <a href="/contact">CONTACT</a>
+                            <a href={Routing.generate('contact_form')}>CONTACT</a>
                         </li>
                     </ul>
                 </div>

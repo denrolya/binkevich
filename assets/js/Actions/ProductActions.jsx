@@ -1,6 +1,12 @@
 import axios from 'axios';
 import {parse} from 'url';
 
+export function fetchCategories() {
+    return axios
+        .get(Routing.generate(api_))
+        .then(res => res.data);
+}
+
 export function fetchProductsInCategory(slug) {
     return axios
         .get(Routing.generate('api_product_get_category_products', {slug}))
@@ -52,6 +58,6 @@ export function extractCategoryFromURI() {
     let currentPath = new URL(window.location.href).pathname;
     let categorySlug = currentPath.substr(currentPath.lastIndexOf('/') + 1);
 
-    return capitalize(categorySlug);
+    return categorySlug;
 }
 

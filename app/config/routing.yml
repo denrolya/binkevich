@@ -26,6 +26,8 @@ media:
 default:
     resource:   '@AppBundle/Controller/DefaultController.php'
     type:       annotation
+    options:
+      expose: true
 
 order:
     resource:   '@AppBundle/Controller/OrderController.php'
