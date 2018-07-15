@@ -53,7 +53,7 @@ export default class ProductListPage extends React.Component {
                         href="#"
                         className={'text-capitalize ' + ((category === this.state.activeCategory) ? 'active' : '')}
                         key={i}
-                        onClick={this.switchCategory.bind(this, category.slug)}>
+                        onClick={this.switchCategory.bind(this, category)}>
                     {category.name}
                 </a>
             );
