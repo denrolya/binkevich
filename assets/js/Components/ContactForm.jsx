@@ -1,14 +1,17 @@
 import React from 'react';
+import {ToastContainer} from "react-toastr";
+import Files from 'react-files'
+//import {ToastContainer, toast} from 'react-toastify';
 import OrderSuccessModal from './OrderSuccessModal';
 
 const attachIcon = require('../../img/attach-file-icon.png');
 const initialState = {
     order: {
-        name:        '',
-        email:       '',
+        name: '',
+        email: '',
         phonenumber: '',
-        comments:    'Dear Binkevich Team',
-        file:        undefined
+        comments: 'Dear Binkevich Team,',
+        file: undefined
     },
     isSubmitInProgress: false,
     isSuccessModalOpen: false
@@ -21,17 +24,29 @@ export default class ContactForm extends React.Component {
         this.state = initialState;
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleChangeFile = this.handleChangeFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(propertyName, event) {
         const order = this.state.order;
+        order[propertyName] = event.target.value;
+        this.setState({order});
+    }
 
-        order[propertyName] = (propertyName === 'file') ?
-                              event.target.files[0] :
-                              event.target.value;
+    handleChangeFile(files) {
+        if (files !== undefined) {
+            const order = this.state.order;
+            order.file = files[0];
+            this.setState({order});
+        }
+    }
 
-        this.setState({ order });
+    onFileError() {
+        window.alert("jojo")
+        container.success('hi! Now is ${new Date()}', '///title\\\\\\', {
+            closeButton: true,
+        })
     }
 
     handleSubmit(event) {
@@ -41,6 +56,7 @@ export default class ContactForm extends React.Component {
             this.setState({
                 isSubmitInProgress: true
             });
+            const order = this.state.order;
 
             this.props
                 .onSubmit(this.state.order)
@@ -53,9 +69,20 @@ export default class ContactForm extends React.Component {
 
     isFormValid() {
         // TODO: implement
+        //maxFiles = {3}
+        //maxFileSize = {30000000}d
+        //  //minFileSize = {0}
         return true;
     }
 
+//<input type="file"
+//name="attach-file"
+//id="attach-file-contact-form"
+//multiple="false"
+//accept=".zip"
+//maxFileSize={30000000}
+//onChange={this.handleChange.bind(this, 'file')}
+///>
     toggleSuccessModal() {
         this.setState({
             isSuccessModalOpen: !this.state.isSuccessModalOpen
@@ -63,11 +90,20 @@ export default class ContactForm extends React.Component {
     }
 
     render() {
+        var container;
         return (
             <section className="contact-form">
                 <div className="container bg-white">
                     <div className="row">
                         <div className="col-12 custom-pad">
+                            <ToastContainer
+                                ref={ref => container = ref}
+                                className="toast-top-right"
+                            />
+                            <h1>
+                                React-Toastr
+                                <small>React.js toastr component</small>
+                            </h1>
                             <h2>CONTACT</h2>
                             <p>
                                 If you’re interested in our collections or require our bespoke services
@@ -76,28 +112,28 @@ export default class ContactForm extends React.Component {
                             </p>
                         </div>
                     </div>
-                    <form className="row" method="post" onSubmit={ this.handleSubmit }>
+                    <form className="row" method="post" onSubmit={this.handleSubmit}>
                         <div className="col-12 col-xl-6 custom-pad__l d-flex flex-wrap">
                             <label>
                                 NAME
                                 <input
                                     type="text" name="name"
-                                    value={ this.state.order.name }
-                                    onChange={ this.handleChange.bind(this, 'name') }
+                                    value={this.state.order.name}
+                                    onChange={this.handleChange.bind(this, 'name')}
                                 />
                             </label>
                             <label>
                                 EMAIL
                                 <input type="email" name="email"
-                                       value={ this.state.order.email }
-                                       onChange={ this.handleChange.bind(this, 'email') }
+                                       value={this.state.order.email}
+                                       onChange={this.handleChange.bind(this, 'email')}
                                 />
                             </label>
                             <label>
                                 PHONE NUMBER
                                 <input type="text" name="phonenumber"
-                                       value={ this.state.order.phonenumber }
-                                       onChange={ this.handleChange.bind(this, 'phonenumber') }
+                                       value={this.state.order.phonenumber}
+                                       onChange={this.handleChange.bind(this, 'phonenumber')}
                                 />
                             </label>
                         </div>
@@ -107,29 +143,40 @@ export default class ContactForm extends React.Component {
                                 MESSAGE
                                 <textarea name="comments"
                                           id="comments"
-                                          value={ this.state.order.comments }
-                                          onChange={ this.handleChange.bind(this, 'comments') }
+                                          value={this.state.order.comments}
+                                          onChange={this.handleChange.bind(this, 'comments')}
                                 ></textarea>
                             </label>
                             <div
                                 className="d-flex align-items-start w-100 flex-wrap flex-lg-nowrap flex-lg-nowrap">
                                 <label className="file-label d-flex align-items-center">
-                                    <input type="file"
-                                           name="attach-file"
-                                           id="attach-file-contact-form"
-                                           multiple="false"
-                                           accept=".zip"
-                                           onChange={ this.handleChange.bind(this, 'file') }
+                                    <Files
+                                        className="attach-file"
+                                        onError={
+                                            () => {
+                                                console.log(container)
+                                                container.success('hi!', '///title\\\\\\', {
+                                                    closeButton: true,
+                                                })
+                                            }
+
+                                        }
+                                        onChange={this.handleChangeFile()}
+                                        accepts={['.zip']}
+                                        multiple={false}
+                                        maxFileSize={30000000}
+                                        clickable
                                     />
-                                    <img src={ attachIcon } alt="attach-file-icon"/>
+                                    <img src={attachIcon} alt="attach-file-icon"/>
                                     <span className="d-block">
                                           <span>Attach your design
                                               <small>(only 1 zip file allowed!)</small>
                                           </span>
                                     </span>
                                 </label>
-                                <button type="submit" className="btn align-self-center" data-toggle="modal" data-target="#successModal">
-                                    { this.state.isSubmitInProgress ? 'Submitting...' : 'SEND MESSAGE' }
+                                <button type="submit" className="btn align-self-center" data-toggle="modal"
+                                        data-target="#successModal">
+                                    {this.state.isSubmitInProgress ? 'Submitting...' : 'SEND MESSAGE'}
                                 </button>
                             </div>
                         </div>
@@ -138,6 +185,11 @@ export default class ContactForm extends React.Component {
 
                 <OrderSuccessModal isOpen={this.state.isSuccessModalOpen} toggle={this.toggleSuccessModal.bind(this)}/>
             </section>
-        );
+        )
+            ;
     }
 }
+
+// container.success('hi!', '///title\\\\\\', {
+// closeButton: true,
+// })
