@@ -51,8 +51,28 @@ fos_user_security:
     resource:   '@FOSUserBundle/Resources/config/routing/security.xml'
     prefix:     /api/v1
 
-liplex_multiple_file_upload:
-    resource: "@LiplexMultipleFileUploadBundle/Resources/config/routing.yml"
-    prefix:   /
-    options:
-        expose: true
+## Multiple image upload
+api_multiple_upload_file:
+    path:     /api/v1/multiple-file-upload
+    defaults: { _controller: 'LiplexMultipleFileUploadBundle:MultipleFileUpload:multipleImageUpload' }
+    methods:  [POST]
+
+api_multiple_show_image:
+    path:     /api/v1/image/{id}
+    defaults: { _controller: 'AppBundle:Default:showImage' }
+    methods:  [GET]
+
+api_multiple_get_file:
+    path:     /api/v1/file/{id}
+    defaults: { _controller: 'LiplexMultipleFileUploadBundle:MultipleFileUpload:getFile' }
+    methods:  [GET]
+
+api_multiple_get_filenames:
+    path:     /api/v1/media/{ids}/name
+    defaults: { _controller: 'LiplexMultipleFileUploadBundle:MultipleFileUpload:getFileNames' }
+    methods:  [GET]
+
+api_multiple_delete_media:
+    path:     /api/media/{id}
+    defaults: { _controller: 'LiplexMultipleFileUploadBundle:MultipleFileUpload:deleteMedia' }
+    methods:  [DELETE]

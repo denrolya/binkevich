@@ -3,8 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Product;
+use Application\Sonata\MediaBundle\Entity\Media;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -70,5 +73,17 @@ class DefaultController extends Controller
     public function contactFormAction()
     {
         return $this->render('AppBundle:Default:contact.html.twig');
+    }
+
+    public function showImageAction(Media $media)
+    {
+        $imageProvider = $this->get('sonata.media.provider.image');
+
+        $webPath = $this->get('kernel')->getRootDir().'/../web';
+
+        $format = $imageProvider->getFormatName($media, 'small');
+        $imagePath = $imageProvider->generatePublicUrl($media, $format);
+
+        return new BinaryFileResponse($webPath . $imagePath);
     }
 }
