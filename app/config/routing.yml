@@ -50,3 +50,9 @@ fos_js_routing:
 fos_user_security:
     resource:   '@FOSUserBundle/Resources/config/routing/security.xml'
     prefix:     /api/v1
+
+liplex_multiple_file_upload:
+    resource: "@LiplexMultipleFileUploadBundle/Resources/config/routing.yml"
+    prefix:   /
+    options:
+        expose: true

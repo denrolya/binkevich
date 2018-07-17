@@ -39,7 +39,7 @@ export default class ProductListPage extends React.Component {
 
                 this.setState({
                     categories: res.data.categories,
-                    activeCategory: activeCategory
+                    activeCategory: activeCategory ? activeCategory : res.data.categories[0]
                 });
 
                 this.switchCategory(this.state.activeCategory);

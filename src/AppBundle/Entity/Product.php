@@ -98,7 +98,7 @@ class Product
 
     public function __toString()
     {
-        return ($this->name) ? "{$this->name}({$this->category->getName()})" : null;
+        return ($this->name) ? "{$this->name}({$this->category->getName()})" : '';
     }
 
     /**

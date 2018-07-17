@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Liplex\MultipleFileUploadBundle\LiplexMultipleFileUploadBundle(),
 
             new AppBundle\AppBundle(),
 

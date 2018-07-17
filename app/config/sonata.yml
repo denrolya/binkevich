@@ -63,3 +63,22 @@ sonata_media:
         local:
             directory:  "%kernel.root_dir%/../web/uploads/media"
             create:     false
+
+liplex_multiple_file_upload:
+    media_class: 'Application\Sonata\MediaBundle\Entity\Media'
+    mapping:
+        product:
+            class: 'AppBundle\Entity\Product'
+            fields:
+                image:
+                    field: productImages
+                    context: default
+                    provider: sonata.media.provider.image
+
+sonata_doctrine_orm_admin:
+    templates:
+        form:
+            - 'LiplexMultipleFileUploadBundle:Admin/Form:form_fields.html.twig'
+        types:
+            show:
+                multiple_image_view: 'LiplexMultipleFileUploadBundle:Admin/CRUD:show_multiple_image_view.html.twig'
