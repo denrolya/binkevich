@@ -1,6 +1,7 @@
 # System & IDE files
 .DS_Store
 /.idea
+/yarn-error.log
 
 # Symfony3 Files
 /.web-server-pid
@@ -34,7 +35,7 @@
 /report/
 
 # Deployer conf
-deploy.php
+/deploy.php
 
 # Uploads
 /web/uploads
