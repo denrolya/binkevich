@@ -5,7 +5,7 @@ namespace AppBundle\Service;
 use AppBundle\Entity\File;
 use AppBundle\Entity\Order;
 use AppBundle\Util\ParametersManager;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -21,10 +21,10 @@ class FileManager
     /** @var Router  */
     private $router;
 
-    /** @var EntityManager  */
+    /** @var EntityManagerInterface  */
     private $em;
 
-    public function __construct(Pdf $pdfService, Router $router, EntityManager $em)
+    public function __construct(Pdf $pdfService, Router $router, EntityManagerInterface $em)
     {
         $this->filesDirectory = ParametersManager::getParameter(Order::ORDER_FILES_DIRECTORY_PARAMETER);
         $this->pdfService = $pdfService;

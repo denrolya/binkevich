@@ -94,7 +94,8 @@ stof_doctrine_extensions:
     translation_fallback: true
     orm:
         default:
-            sluggable: true
+          timestampable: true
+          sluggable: true
 
 fos_user:
     db_driver:      orm # can be orm or odm
