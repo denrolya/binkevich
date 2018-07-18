@@ -111,7 +111,7 @@ class ApiController extends FOSRestController
 
             // TODO: Put to file manager
             if ($uploadedFile = $order->getUploadedFile()) {
-                $filename = $order->getId() . '-' . md5(uniqid()) . '.' . $uploadedFile->guessExtension();
+                $filename = $order->getId() . '-' . md5(uniqid()) . '.' . $uploadedFile->getClientOriginalExtension();
                 $orderDirAbsolutePath = $this->container->getParameter('files_dir') . '/' . $order->getId();
                 $uploadedFile->move($orderDirAbsolutePath, $filename);
 
