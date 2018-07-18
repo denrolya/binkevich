@@ -4,10 +4,12 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Product;
 use Application\Sonata\MediaBundle\Entity\Media;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
@@ -75,6 +77,12 @@ class DefaultController extends Controller
         return $this->render('AppBundle:Default:contact.html.twig');
     }
 
+    /**
+     * @Route("/product/{product_id}/image/{media_id}/thumb", name="show_product_media")
+     * @Method({"GET"})
+     * @ParamConverter("product", options={"id" = "product_id"})
+     * @ParamConverter("media", options={"id" = "media_id"})
+     */
     public function showImageAction(Media $media)
     {
         $imageProvider = $this->get('sonata.media.provider.image');
@@ -85,5 +93,25 @@ class DefaultController extends Controller
         $imagePath = $imageProvider->generatePublicUrl($media, $format);
 
         return new BinaryFileResponse($webPath . $imagePath);
+    }
+
+    /**
+     * @Route("/product/{product_id}/media/{media_id}", name="delete_product_media")
+     * @Method({"DELETE"})
+     * @ParamConverter("product", options={"id" = "product_id"})
+     * @ParamConverter("media", options={"id" = "media_id"})
+     */
+    public function deleteProductMediaAction(Product $product, Media $media)
+    {
+        $em = $this->get('doctrine.orm.entity_manager');
+        $mediaManager = $this->get('sonata.media.manager.media');
+
+        $product->removeProductImage($media);
+
+        $mediaManager->delete($media);
+
+        $em->flush();
+
+        return new JsonResponse(null);
     }
 }

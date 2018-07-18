@@ -29,29 +29,12 @@
             <div class="row" ng-if="ctrl.allowImages">
                 <div class="col-md-2 col-sm-4 col-xs-6" ng-repeat="imageId in ctrl.medias">
                     <div class="button-container">
-                        <img ng-src="/api/v1/image/[[ imageId ]]"
+                        <img ng-src="/product/{{ sonata_admin.admin.subject.id }}/image/[[ imageId ]]/thumb"
                              class="thumbnail"
                              alt="{% trans %}image.alt{% endtrans %}"/>
                         <button type="button"
                                 class="btn btn-danger btn-xs"
                                 ng-click="ctrl.removeMedia(imageId)"
-                                ng-show="!ctrl.singleUpload">
-                            <span class="fa fa-trash-o"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="files" ng-if="ctrl.allowFiles">
-                <div class="file" ng-repeat="fileId in ctrl.medias">
-                    <div class="btn-group" role="group">
-                        <a class="btn btn-default"
-                           href="/api/v1/file/[[ fileId ]]"
-                           target="_blank">
-                            [[ ctrl.fileNames[fileId] ]]
-                        </a>
-                        <button type="button"
-                                class="btn btn-danger"
-                                ng-click="ctrl.removeMedia(fileId)"
                                 ng-show="!ctrl.singleUpload">
                             <span class="fa fa-trash-o"></span>
                         </button>
@@ -66,7 +49,7 @@
                 <div class="upload-area"
                      nv-file-drop=""
                      uploader="uploader"
-                     options="{url: '{{ path('api_multiple_upload_file') }}'}"
+                     options="{url: '{{ path('api_multiple_image_upload') }}'}"
                 >
                     <div class="well"
                          nv-file-over=""

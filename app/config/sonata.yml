@@ -78,7 +78,7 @@ liplex_multiple_file_upload:
 sonata_doctrine_orm_admin:
     templates:
         form:
-            - 'LiplexMultipleFileUploadBundle:Admin/Form:form_fields.html.twig'
+            - 'AppBundle:Admin/Form:form_fields.html.twig'
         types:
             show:
                 multiple_image_view: 'LiplexMultipleFileUploadBundle:Admin/CRUD:show_multiple_image_view.html.twig'
