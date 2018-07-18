@@ -7,6 +7,7 @@ use AppBundle\Entity\Collection;
 use AppBundle\Entity\File;
 use AppBundle\Entity\Order;
 use AppBundle\Form\OrderType;
+use AppBundle\Service\FileManager;
 use FOS\RestBundle\Controller\FOSRestController;
 use Liplex\MultipleFileUploadBundle\Repository\MultipleFileUploadRepository;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -109,19 +110,10 @@ class ApiController extends FOSRestController
             $em->persist($order);
             $em->flush();
 
-            // TODO: Put to file manager
-            if ($uploadedFile = $order->getUploadedFile()) {
-                $filename = $order->getId() . '-' . md5(uniqid()) . '.' . $uploadedFile->getClientOriginalExtension();
-                $orderDirAbsolutePath = $this->container->getParameter('files_dir') . '/' . $order->getId();
-                $uploadedFile->move($orderDirAbsolutePath, $filename);
-
-                $orderFile = (new File())
-                    ->setName($filename)
-                    ->setRelativePath('/uploads/orders/' . $order->getId() . '/' . $filename)
-                    ->setAbsolutePath($orderDirAbsolutePath . '/' . $filename)
-                    ->setSize($uploadedFile->getClientSize());
-
-                $order->setFile($orderFile);
+            if ($order->getUploadedFile()) {
+                $orderFile = $order->handleUploadedFile(
+                    $this->getParameter(Order::ORDER_FILES_DIRECTORY_PARAMETER)
+                );
 
                 $em->persist($orderFile);
                 $em->flush();

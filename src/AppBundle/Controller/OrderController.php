@@ -58,7 +58,7 @@ class OrderController extends Controller
         $finder = new Finder();
         $finder
             ->files()
-            ->in($this->container->getParameter('files_dir') . '/' . $order->getId(). '/invoices');
+            ->in($this->container->getParameter('order_files_dir') . '/' . $order->getId(). '/invoices');
 
         foreach ($finder as $file) {
             /** @var \Symfony\Component\Finder\SplFileInfo $file */

@@ -1,14 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: drolya
- * Date: 08.06.18
- * Time: 10:27
- */
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\File;
 use AppBundle\Entity\Order;
+use AppBundle\Util\ParametersManager;
+use Doctrine\ORM\EntityManager;
 use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -24,12 +21,15 @@ class FileManager
     /** @var Router  */
     private $router;
 
-    // TODO: Inject parameter
-    public function __construct($filesDir, Pdf $pdfService, Router $router)
+    /** @var EntityManager  */
+    private $em;
+
+    public function __construct(Pdf $pdfService, Router $router, EntityManager $em)
     {
-        $this->filesDirectory = $filesDir;
+        $this->filesDirectory = ParametersManager::getParameter(Order::ORDER_FILES_DIRECTORY_PARAMETER);
         $this->pdfService = $pdfService;
         $this->router = $router;
+        $this->em = $em;
     }
 
     /**
@@ -64,8 +64,7 @@ class FileManager
      */
     public function generatePdfFromRoute($route, $routeParams = [])
     {
-        // TODO
-        $pageUrl = $this->router->generateUrl($route, $routeParams, UrlGeneratorInterface::ABSOLUTE_URL);
+        $pageUrl = $this->router->generate($route, $routeParams, UrlGeneratorInterface::ABSOLUTE_URL);
 
         return $this->pdfService->getOutput($pageUrl);
     }

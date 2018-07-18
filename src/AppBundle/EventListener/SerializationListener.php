@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Listener\Serialization;
+namespace AppBundle\EventListener;
 
 use Application\Sonata\MediaBundle\Entity\Media;
 use JMS\Serializer\EventDispatcher\EventSubscriberInterface;

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Util\ParametersManager;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -15,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Order
 {
+    const ORDER_FILES_DIRECTORY_PARAMETER = 'order_files_dir';
     const TIMESTAMP_PLACEHOLDER = '{{TIMESTAMP}}';
     const INVOICE_FILENAME_PATTERN = 'invoice_' . self::TIMESTAMP_PLACEHOLDER . '.pdf';
 
@@ -496,5 +498,28 @@ class Order
     public function getDeliveryDate()
     {
         return $this->deliveryDate;
+    }
+
+    /**
+     * @return File
+     * @throws \Exception
+     */
+    public function handleUploadedFile($targetDir)
+    {
+        $orderId = $this->getId();
+        $orderDirAbsolutePath = "$targetDir/$orderId";
+        $filename = $orderId . '-' . md5(uniqid()) . '.' . $this->uploadedFile->getClientOriginalExtension();
+
+        $this->uploadedFile->move($orderDirAbsolutePath, $filename);
+
+        $orderFile = (new File())
+            ->setName($filename)
+            ->setRelativePath("/uploads/orders/$orderId/$filename")
+            ->setAbsolutePath("$orderDirAbsolutePath/$filename")
+            ->setSize($this->uploadedFile->getClientSize());
+
+        $this->setFile($orderFile);
+
+        return $orderFile;
     }
 }
