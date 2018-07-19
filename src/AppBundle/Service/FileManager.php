@@ -24,9 +24,9 @@ class FileManager
     /** @var EntityManagerInterface  */
     private $em;
 
-    public function __construct(Pdf $pdfService, Router $router, EntityManagerInterface $em)
+    public function __construct($orderFilesDirectory, Pdf $pdfService, Router $router, EntityManagerInterface $em)
     {
-        $this->filesDirectory = ParametersManager::getParameter(Order::ORDER_FILES_DIRECTORY_PARAMETER);
+        $this->orderFilesDirectory = $orderFilesDirectory;
         $this->pdfService = $pdfService;
         $this->router = $router;
         $this->em = $em;

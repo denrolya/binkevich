@@ -12,10 +12,17 @@ services:
         tags: ['controller.service_arguments']
 
     AppBundle\Service\:
-        resource: '../../Service/*'
         autowire: true
         autoconfigure: true
         public: true
+        resource: '../../Service/*'
+
+    AppBundle\Service\FileManager:
+        autowire: true
+        autoconfigure: true
+        public: true
+        arguments:
+            - '%order_files_dir%'
 
     AppBundle\EventListener\SerializationListener:
         tags:
