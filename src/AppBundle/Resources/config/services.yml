@@ -1,11 +1,23 @@
 services:
-    app.admin.listener.serialization-listener:
-        class: AppBundle\EventListener\SerializationListener
+    AppBundle\:
+        resource: '../../*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+        exclude: '../../{Entity,Repository}'
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    AppBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
+    AppBundle\Service\:
+        resource: '../../Service/*'
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    AppBundle\EventListener\SerializationListener:
         tags:
             - { name: jms_serializer.event_subscriber, event: serializer.post_serialize, method: onPostSerialize }
         public: true
-
-    admin_success_handler:
-        public: true
-        class: AppBundle\Service\AuthenticationHandler
-        arguments: [ '@service_container' ]

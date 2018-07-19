@@ -2,11 +2,11 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Traits\UpdatableTrait;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use JMS\Serializer\Annotation as JMS;
 
 /**
@@ -19,7 +19,7 @@ use JMS\Serializer\Annotation as JMS;
  */
 class Product
 {
-    use UpdatableTrait;
+    use TimestampableEntity;
 
     /**
      * @var int
