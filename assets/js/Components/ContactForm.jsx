@@ -19,12 +19,23 @@ export default class ContactForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = initialState;
+        this.state = {
+            order:              {
+                name:        '',
+                email:       '',
+                phonenumber: '',
+                comments:    'Dear Binkevich Team',
+                file:        undefined
+            },
+            isSubmitInProgress: false,
+            isSuccessModalOpen: false
+        };
 
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.handleFileChange = this.handleFileChange.bind(this);
         this.handleFileError = this.handleFileError.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleSuccessModal = this.toggleSuccessModal.bind(this);
     }
 
     handleFieldChange(propertyName, event) {
@@ -60,7 +71,16 @@ export default class ContactForm extends React.Component {
         this.props
             .onSubmit(this.state.order)
             .then(res => {
-                this.setState(initialState);
+                this.setState({
+                    order:              {
+                        name:        '',
+                        email:       '',
+                        phonenumber: '',
+                        comments:    'Dear Binkevich Team',
+                        file:        undefined
+                    },
+                    isSubmitInProgress: false,
+                });
                 this.toggleSuccessModal();
             });
     }
@@ -151,7 +171,7 @@ export default class ContactForm extends React.Component {
             </div>
 
             <OrderSuccessModal isOpen={ this.state.isSuccessModalOpen }
-                               toggle={ this.toggleSuccessModal.bind(this) }/>
+                               toggle={ this.toggleSuccessModal }/>
         </section>);
     }
 }
