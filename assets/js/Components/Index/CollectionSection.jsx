@@ -11,7 +11,7 @@ export default class CollectionSection extends React.Component {
                         <p>
                             Curves inspired by nature help to create<br/>a feminine and stylish collection.
                         </p>
-                        <a href={'/collections/' + this.props.collection.slug} className="btn btn-darck">EXPLORE</a>
+                        <a href={Routing.generate('collection_product_list', {slug: this.props.collection.slug})} className="btn btn-dark">EXPLORE</a>
 
                         <div className="product-item left-item">
                             <div className="wrap">

@@ -37,7 +37,7 @@ export default class BespokeSection extends React.Component {
                                         for any occasion. Please contact us with your design
                                         requirements and we’ll be more than happy to assist.
                                     </p>
-                                    <a href="/contact" className="btn">GET IN TOUCH</a>
+                                    <a href={Routing.generate('contact_form')} className="btn">GET IN TOUCH</a>
                                 </div>
                             </div>
                         </div>
