@@ -14,3 +14,17 @@ export function handleContactDataSubmit(order) {
 
     return axios.post(Routing.generate('api_place_order'), formData);
 }
+
+export function getInitialFormState() {
+    return {
+        order:              {
+            name:        '',
+            email:       '',
+            phonenumber: '',
+            comments:    'Dear Binkevich Team',
+            file:        undefined
+        },
+        isSubmitInProgress: false,
+        isSuccessModalOpen: false
+    };
+}

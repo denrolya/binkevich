@@ -1,35 +1,15 @@
 import React from 'react';
 import Files from 'react-files';
 import OrderSuccessModal from './OrderSuccessModal';
+import {getInitialFormState} from '../Actions/ContactFormActions';
 
 const attachIcon = require('../../img/attach-file-icon.png');
-const initialState = {
-    order:              {
-        name:        '',
-        email:       '',
-        phonenumber: '',
-        comments:    'Dear Binkevich Team',
-        file:        undefined
-    },
-    isSubmitInProgress: false,
-    isSuccessModalOpen: false
-};
 
 export default class ContactForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            order:              {
-                name:        '',
-                email:       '',
-                phonenumber: '',
-                comments:    'Dear Binkevich Team',
-                file:        undefined
-            },
-            isSubmitInProgress: false,
-            isSuccessModalOpen: false
-        };
+        this.state = getInitialFormState();
 
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.handleFileChange = this.handleFileChange.bind(this);
@@ -38,27 +18,33 @@ export default class ContactForm extends React.Component {
         this.toggleSuccessModal = this.toggleSuccessModal.bind(this);
     }
 
-    handleFieldChange(propertyName, event) {
-        const order = this.state.order;
-        order[propertyName] = event.target.value;
-        this.setState({ order });
-    }
-
-    handleFileChange(files) {
-        if (!files) {
-            return;
-        }
-
-        const order = this.state.order;
-        order.file = files[0];
-        console.log(order.file);
-        this.setState({ order });
-    }
-
-    handleFileError(error, file) {
+    handleFileError(error) {
         if (error.code === 1) {
             alert("The file you've attached is not a zip archive! Please attach another file or submit your order without it.");
         }
+    }
+
+    toggleSuccessModal() {
+        this.setState({
+            isSuccessModalOpen: !this.state.isSuccessModalOpen
+        });
+    }
+
+    handleFieldChange(propertyName, event) {
+        event.persist(); // In order to use event.target inside of setState
+        this.setState((prevState) => {
+            prevState.order[propertyName] = event.target.value;
+            return prevState;
+        });
+    }
+
+    handleFileChange(files) {
+        if (!files) { return; }
+
+        this.setState((prevState) => {
+            prevState.order.file = files[0];
+            return prevState;
+        });
     }
 
     handleSubmit(event) {
@@ -71,24 +57,9 @@ export default class ContactForm extends React.Component {
         this.props
             .onSubmit(this.state.order)
             .then(res => {
-                this.setState({
-                    order:              {
-                        name:        '',
-                        email:       '',
-                        phonenumber: '',
-                        comments:    'Dear Binkevich Team',
-                        file:        undefined
-                    },
-                    isSubmitInProgress: false,
-                });
+                this.setState(getInitialFormState());
                 this.toggleSuccessModal();
             });
-    }
-
-    toggleSuccessModal() {
-        this.setState({
-            isSuccessModalOpen: !this.state.isSuccessModalOpen
-        });
     }
 
     render() {
@@ -135,8 +106,7 @@ export default class ContactForm extends React.Component {
                             MESSAGE *
                             <textarea name="comments" id="comments" required
                                       value={ this.state.order.comments }
-                                      onChange={ (e) => this.handleFieldChange('comments', e) }
-                            ></textarea>
+                                      onChange={ (e) => this.handleFieldChange('comments', e) }></textarea>
                         </label>
                         <div
                             className="d-flex align-items-start w-100 flex-wrap flex-lg-nowrap flex-lg-nowrap">
@@ -152,13 +122,10 @@ export default class ContactForm extends React.Component {
                                 />
                                 <img src={ attachIcon } alt="attach-file-icon"/>
                                 <span className="d-block">
-                                    { this.state.order.file &&
-                                        <span>{ this.state.order.file.name }</span>
-                                    }
+                                    { this.state.order.file && <span>{ this.state.order.file.name }</span> }
 
                                     { !this.state.order.file &&
-                                        <span>Attach your design <small>(only 1 zip file allowed!)</small></span>
-                                    }
+                                    <span>Attach your design <small>(only 1 zip file allowed!)</small></span> }
                                 </span>
                             </label>
                             <button type="submit" className="btn align-self-center" data-toggle="modal"
@@ -170,8 +137,7 @@ export default class ContactForm extends React.Component {
                 </form>
             </div>
 
-            <OrderSuccessModal isOpen={ this.state.isSuccessModalOpen }
-                               toggle={ this.toggleSuccessModal }/>
+            <OrderSuccessModal isOpen={ this.state.isSuccessModalOpen } toggle={ this.toggleSuccessModal }/>
         </section>);
     }
 }

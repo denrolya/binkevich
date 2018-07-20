@@ -1,7 +1,24 @@
 import React from 'react';
 import ImageCarousel from '../Components/ImageCarousel';
+import PurchaseNotAvailableModal from './PurchaseNotAvailableModal';
 
 export default class ProductSection extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isPurchaseModalOpen: false
+        };
+
+        this.togglePurchaseModal = this.togglePurchaseModal.bind(this);
+    }
+
+    togglePurchaseModal() {
+        this.setState({
+            isPurchaseModalOpen: !this.state.isPurchaseModalOpen
+        });
+    }
+
     render() {
         return (
             <section className="single-product">
@@ -17,8 +34,8 @@ export default class ProductSection extends React.Component {
                                 </p>
                                 <div className="wrap-prise">
                                     <h3 className="prise">£120</h3>
-                                    <button type="button" className="btn btn-transparent" data-toggle="modal"
-                                            data-target="#purchase-modal">PURCHASE
+                                    <button type="button" className="btn btn-transparent" onClick={this.togglePurchaseModal}>
+                                        PURCHASE
                                     </button>
                                 </div>
                             </div>
@@ -33,6 +50,8 @@ export default class ProductSection extends React.Component {
                         }
                     </div>
                 </div>
+
+                <PurchaseNotAvailableModal isOpen={ this.state.isPurchaseModalOpen } toggle={ this.togglePurchaseModal }/>
             </section>
         )
     }
