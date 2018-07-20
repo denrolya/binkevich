@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 class IndexPageCarouselAdmin extends AbstractAdmin
@@ -16,22 +17,22 @@ class IndexPageCarouselAdmin extends AbstractAdmin
 
     public function getDashboardActions()
     {
-        $actions = [];
+        $actions = parent::getDashboardActions();
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
 
         $lookbookCarousel = $em
             ->getRepository(IndexPageCarousel::class)
-            ->findOneBySlug(IndexPageCarousel::LOOKBOOK_CAROUSEL_SLUG);
+            ->findOneBy(['slug' => IndexPageCarousel::LOOKBOOK_CAROUSEL_SLUG]);
 
         $bespokeCarousel = $em
             ->getRepository(IndexPageCarousel::class)
-            ->findOneBySlug(IndexPageCarousel::BESPOKE_CAROUSEL_SLUG);
+            ->findOneBy(['slug' => IndexPageCarousel::BESPOKE_CAROUSEL_SLUG]);
 
-        if ($this->hasRoute('create') && $this->hasAccess('create')) {
+        if ($bespokeCarousel && $lookbookCarousel) {
             $actions['lookbook'] = [
                 'label' => 'Lookbook',
                 'translation_domain' => 'SonataAdminBundle',
-                 'template' => $this->getTemplateRegistry()->getTemplate('action_edit'),
+                'template' => $this->getTemplateRegistry()->getTemplate('action_edit'),
                 'url' => $this->generateUrl('edit', ['id' => $lookbookCarousel->getId()]),
                 'icon' => 'pencil',
             ];
@@ -43,6 +44,8 @@ class IndexPageCarouselAdmin extends AbstractAdmin
                 'url' => $this->generateUrl('edit', ['id' => $bespokeCarousel->getId()]),
                 'icon' => 'pencil',
             ];
+
+            unset($actions['create']);
         }
 
         return $actions;
@@ -52,13 +55,13 @@ class IndexPageCarouselAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('General information')
-                ->add('name')
+            ->add('name')
             ->end()
 
             ->with('Images')
-                ->add('images', 'multiple_file_upload', [
-                    'allow_images' => true,
-                ])
+            ->add('images', 'multiple_file_upload', [
+                'allow_images' => true,
+            ])
             ->end();
     }
 
@@ -70,5 +73,10 @@ class IndexPageCarouselAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('name');
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit']);
     }
 }
