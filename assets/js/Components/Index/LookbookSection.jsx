@@ -2,18 +2,6 @@ import React from 'react';
 import ImageCarousel from '../ImageCarousel';
 
 export default class LookbookSection extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            images: [{
-                src: require('../../../img/carousel-white-img.jpg')
-            }, {
-                src: require('../../../img/carousel-white-img2.jpg')
-            }]
-        };
-    }
-
     render() {
         return (
             <section className="home-white-carousel bg-white" id="section-lookbook">
@@ -30,7 +18,7 @@ export default class LookbookSection extends React.Component {
                             <a href={Routing.generate('category_list')} className="btn btn-transparent">EXPLORE</a>
                         </div>
                         <div className="col-xl-7 col-sm-12">
-                            <ImageCarousel id="white-carousel" items={ this.state.images } indicators={true}/>
+                            <ImageCarousel id="white-carousel" items={ this.props.carouselImages } indicators={true}/>
                         </div>
                     </div>
                 </div>

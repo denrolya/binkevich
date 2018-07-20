@@ -1,4 +1,11 @@
 services:
+    app.admin.carousel:
+        class: AppBundle\Admin\IndexPageCarouselAdmin
+        arguments: [~, AppBundle\Entity\IndexPageCarousel, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Index, label: Carousel }
+        public: true
+
     app.admin.category:
         class: AppBundle\Admin\CategoryAdmin
         arguments: [~, AppBundle\Entity\Category, ~]

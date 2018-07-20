@@ -17,7 +17,7 @@ sonata_admin:
                 position: left
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [Products]
+                    groups: [Products, 'Index Page Carousels']
             -
                 position: right
                 type: sonata.admin.block.admin_list
@@ -25,6 +25,9 @@ sonata_admin:
                     groups: [Orders]
 
         groups:
+            'Index Page Carousels':
+                items:
+                    - app.admin.carousel
             Products:
                 items:
                     - app.admin.category
@@ -72,6 +75,14 @@ liplex_multiple_file_upload:
             fields:
                 image:
                     field: productImages
+                    context: default
+                    provider: sonata.media.provider.image
+
+        carousel:
+            class: 'AppBundle\Entity\IndexPageCarousel'
+            fields:
+                image:
+                    field: images
                     context: default
                     provider: sonata.media.provider.image
 

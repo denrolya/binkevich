@@ -2,24 +2,22 @@
 
 namespace AppBundle\Entity;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
 
 /**
- * Category
+ * BespokeCarousel
  *
- * @JMS\ExclusionPolicy("none")
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
+ * @ORM\Table(name="index_page_carousel")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\IndexPageCarouselRepository")
  */
-class Category
+class IndexPageCarousel
 {
-    const CATEGORY_RING = 1;
-    const CATEGORY_EARRING = 2;
-    const CATEGORY_BANGLE = 3;
-    const CATEGORY_PENDANT = 4;
+    const BESPOKE_CAROUSEL_SLUG = 'bespoke';
+    const LOOKBOOK_CAROUSEL_SLUG = 'lookbook';
 
     /**
      * @var int
@@ -46,18 +44,20 @@ class Category
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * One Carousel has many Images
+     *
+     * @JMS\Groups({"index"})
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"remove"})
+     * @ORM\JoinTable(name="carousel_images",
+     *      joinColumns={@ORM\JoinColumn(name="carousel_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id")}
+     *      )
      */
-    private $products;
+    private $images;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
-    }
-
-    public function __toString()
-    {
-        return $this->getName();
+        $this->images = new ArrayCollection();
     }
 
     /**
@@ -75,7 +75,7 @@ class Category
      *
      * @param string $name
      *
-     * @return Category
+     * @return IndexPageCarousel
      */
     public function setName($name)
     {
@@ -116,42 +116,42 @@ class Category
     }
 
     /**
-     * Add product
+     * Add image
      *
-     * @param Product $product
+     * @param Media $image
      * @return $this
      */
-    public function addProduct(Product $product)
+    public function addImage(Media $image)
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
         }
 
         return $this;
     }
 
     /**
-     * Remove product
+     * Remove image
      *
-     * @param Product $product
+     * @param Media $image
      * @return $this
      */
-    public function removeProduct(Product $product)
+    public function removeImage(Media $image)
     {
-        if ($this->products->contains($product)) {
-            $this->products->removeElement($product);
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
         }
 
         return $this;
     }
 
     /**
-     * Get products
+     * Get images
      *
      * @return ArrayCollection
      */
-    public function getProducts()
+    public function getImages()
     {
-        return $this->products;
+        return $this->images;
     }
 }
