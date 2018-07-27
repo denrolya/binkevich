@@ -25,6 +25,14 @@ sonata_admin:
                     groups: [Orders]
 
         groups:
+            'Index Page Carousels':
+                items:
+                    - route:        admin_app_indexpagecarousel_edit
+                      route_params: { id: 1 }
+                      label:        Lookbook
+                    - route:        admin_app_indexpagecarousel_edit
+                      route_params: { id: 2 }
+                      label:        Bespoke
             Products:
                 items:
                     - app.admin.category
@@ -72,6 +80,14 @@ liplex_multiple_file_upload:
             fields:
                 image:
                     field: productImages
+                    context: default
+                    provider: sonata.media.provider.image
+
+        carousel:
+            class: 'AppBundle\Entity\IndexPageCarousel'
+            fields:
+                image:
+                    field: images
                     context: default
                     provider: sonata.media.provider.image
 

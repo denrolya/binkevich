@@ -5,22 +5,26 @@ import TopSection from '../Components/Index/TopSection';
 import CollectionSection from '../Components/Index/CollectionSection';
 import LookbookSection from '../Components/Index/LookbookSection';
 import BespokeSection from '../Components/Index/BespokeSection';
-import {fetchCollectionOverviewProducts} from '../Actions/ProductActions';
+import {fetchIndexPageData} from '../Actions/IndexPageActions';
 
 export default class IndexPage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            collection: undefined
+            collection: undefined,
+            bespokeCarouselImages: [],
+            lookbookCarouselImages: []
         };
     }
 
     componentDidMount() {
-        fetchCollectionOverviewProducts()
+        fetchIndexPageData()
           .then(res => {
               this.setState({
-                  collection: res.data
+                  collection: res.data.collection,
+                  bespokeCarouselImages: res.data.carousels.bespoke,
+                  lookbookCarouselImages: res.data.carousels.lookbook
               })
           });
     }
@@ -33,8 +37,8 @@ export default class IndexPage extends React.Component {
                 {this.state.collection &&
                     <CollectionSection collection={this.state.collection}/>
                 }
-                <LookbookSection/>
-                <BespokeSection/>
+                <LookbookSection carouselImages={this.state.lookbookCarouselImages}/>
+                <BespokeSection carouselImages={this.state.bespokeCarouselImages}/>
                 <Footer/>
             </div>
         );

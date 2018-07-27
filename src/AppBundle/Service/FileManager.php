@@ -8,12 +8,14 @@ use AppBundle\Util\ParametersManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class FileManager
 {
     /** @var string */
-    private $filesDirectory;
+    private $orderFilesDirectory;
 
     /** @var Pdf  */
     private $pdfService;
@@ -42,12 +44,16 @@ class FileManager
             'id' => $order->getId()
         ]);
 
-        // TODO: Put timestamp instead of datetime formatting
-        $invoicesDir = "{$this->filesDirectory}/{$order->getId()}/invoices/";
+        $invoicesDir = "{$this->orderFilesDirectory}/{$order->getId()}/invoices/";
         $filename = str_replace(Order::TIMESTAMP_PLACEHOLDER,
             time(),
             Order::INVOICE_FILENAME_PATTERN
         );
+
+        $fs = new Filesystem();
+        if (!$fs->exists($invoicesDir)) {
+            $fs->mkdir($invoicesDir);
+        }
 
         $this->writePdfToFile($invoicesDir . $filename, $pdf);
 
@@ -55,6 +61,31 @@ class FileManager
             'pdf' => $pdf,
             'filename' => $filename
         ];
+    }
+
+    /**
+     * @param Order $order
+     * @return string
+     */
+    public function generateOrderInvoicesArchive(Order $order)
+    {
+        $invoicesDir = "{$this->orderFilesDirectory}/{$order->getId()}/invoices/";
+        $zip = new \ZipArchive();
+        $zipName = 'order-' . time() . '.zip';
+        $zip->open($invoicesDir . '/' . $zipName,  \ZipArchive::CREATE);
+
+        $finder = new Finder();
+        $finder->files()->in($invoicesDir);
+
+        foreach ($finder as $file) {
+            /** @var \Symfony\Component\Finder\SplFileInfo $file */
+            if (strtolower($file->getExtension()) !== 'pdf') continue;
+            $zip->addFromString($file->getFilename(), $file->getContents());
+        }
+
+        $zip->close();
+
+        return $invoicesDir . '/' . $zipName;
     }
 
     /**

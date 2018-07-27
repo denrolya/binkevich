@@ -4,13 +4,11 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Collection;
-use AppBundle\Entity\File;
+use AppBundle\Entity\IndexPageCarousel;
 use AppBundle\Entity\Order;
 use AppBundle\Form\OrderType;
-use AppBundle\Service\FileManager;
 use FOS\RestBundle\Controller\FOSRestController;
 use Liplex\MultipleFileUploadBundle\Repository\MultipleFileUploadRepository;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +23,47 @@ class ApiController extends FOSRestController
 {
     /**
      * @Rest\View(serializerGroups={"index"})
+     * @Rest\Get("/pages/index")
+     */
+    public function getIndexPageDataAction()
+    {
+        /* Get index page collection */
+        $collectionRepo = $this
+            ->getDoctrine()
+            ->getRepository(Collection::class);
+
+        $collection = $collectionRepo
+            ->findOneBy(['isDisplayedOnIndexPage' => true]);
+
+        $indexPageCollectionProducts = $collectionRepo
+            ->getCollectionOverviewWithProducts($collection);
+
+
+        /* Get lookbook carousel images */
+        $lookbook = $this->getDoctrine()
+            ->getRepository(IndexPageCarousel::class)
+            ->findOneBy(['slug' => IndexPageCarousel::LOOKBOOK_CAROUSEL_SLUG]);
+
+        $bespoke = $this->getDoctrine()
+            ->getRepository(IndexPageCarousel::class)
+            ->findOneBy(['slug' => IndexPageCarousel::BESPOKE_CAROUSEL_SLUG]);
+
+        return [
+            'data' => [
+                'collection' => [
+                    'slug' => $collection->getSlug(),
+                    'products' => $indexPageCollectionProducts
+                ],
+                'carousels' => [
+                    'bespoke' => $bespoke->getImages(),
+                    'lookbook' => $lookbook->getImages()
+                ]
+            ]
+        ];
+    }
+
+    /**
+     * @Rest\View(serializerGroups={"index"})
      * @Rest\Get("/collections/index")
      */
     public function getIndexPageCollectionAction()
@@ -36,13 +75,13 @@ class ApiController extends FOSRestController
         $collection = $collectionRepo
             ->findOneBy(['isDisplayedOnIndexPage' => true]);
 
-        $indexPageCollectionProductions = $collectionRepo
+        $indexPageCollectionProducts = $collectionRepo
             ->getCollectionOverviewWithProducts($collection);
 
         return $this->view([
             'data' => [
                 'slug' => $collection->getSlug(),
-                'products' => $indexPageCollectionProductions
+                'products' => $indexPageCollectionProducts
             ]
         ]);
     }

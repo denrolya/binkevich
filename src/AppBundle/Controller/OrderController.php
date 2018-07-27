@@ -48,27 +48,11 @@ class OrderController extends Controller
      * @Route("/order/{id}/order.zip", name="order_zip")
      * @Method({"GET"})
      */
-    public function downloadOrderFilesAsZipAction(Order $order)
+    public function downloadOrderFilesAsZipAction(Order $order, FileManager $fileManager)
     {
-        // TODO: Put to file manager
-        $zip = new \ZipArchive();
-        $zipName = 'order-'.time().".zip";
-        $zip->open($zipName,  \ZipArchive::CREATE);
+        $zip = $fileManager->generateOrderInvoicesArchive($order);
 
-        $finder = new Finder();
-        $finder
-            ->files()
-            ->in($this->container->getParameter('order_files_dir') . '/' . $order->getId(). '/invoices');
-
-        foreach ($finder as $file) {
-            /** @var \Symfony\Component\Finder\SplFileInfo $file */
-            if (strtolower($file->getExtension()) !== 'pdf') continue;
-            $zip->addFromString($file->getFilename(), $file->getContents());
-        }
-
-        $zip->close();
-
-        $response = new BinaryFileResponse("../web/".$zipName);
+        $response = new BinaryFileResponse($zip);
         $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);
 
         return $response;

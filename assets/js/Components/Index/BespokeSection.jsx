@@ -2,18 +2,6 @@ import React from 'react';
 import ImageCarousel from '../ImageCarousel';
 
 export default class BespokeSection extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            images: [{
-                src: require('../../../img/carousel-black-img.jpg')
-            }, {
-                src: require('../../../img/carousel-black-img2.jpg')
-            }]
-        };
-    }
-
     render() {
         return (
             <section className="home-black-carousel" id="section-bespoke">
@@ -27,7 +15,7 @@ export default class BespokeSection extends React.Component {
                             </p>
                             <div className="wrap-block d-flex">
                                 <div id="black-carousel">
-                                    <ImageCarousel items={ this.state.images } indicators={true}/>
+                                    <ImageCarousel items={ this.props.carouselImages } indicators={true}/>
                                 </div>
                                 <div className="wrap-info">
                                     <h3>Personal order</h3>
