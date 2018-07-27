@@ -5,6 +5,7 @@
         <title>{% block title %}Home{% endblock title %} | Binkevich</title>
 
         {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
             <link rel="stylesheet" href="{{ asset('build/common.css') }}" />
             <link rel="stylesheet" href="{{ asset('build/main.css') }}" />
         {% endblock stylesheets %}
@@ -16,9 +17,11 @@
     <body>
         <div id="content"></div>
 
-        <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
         {% block javascripts %}
+            <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+            <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
             <script type="text/javascript" src="{{ asset('build/common.js') }}"></script>
         {% endblock javascripts %}
     </body>
