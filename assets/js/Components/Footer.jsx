@@ -11,8 +11,8 @@ export default class Footer extends React.Component {
                         <div className="col d-flex align-items-center">
                             <img src={logo} alt="" className="marg-r-auto"/>
                             <p>Binkevich Jewellery London</p>
-                            <a href="#" className="fb-icon icon marg-l-auto"></a>
-                            <a href="#" className="inst-icon icon marg-l-15"></a>
+                            <a href="https://www.facebook.com/BINKEVICHJEWELLERY" className="fb-icon icon marg-l-auto"></a>
+                            <a href="https://www.instagram.com/binkevichjewellery" className="inst-icon icon marg-l-15"></a>
                         </div>
                     </div>
                 </div>

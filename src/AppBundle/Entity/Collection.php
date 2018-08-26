@@ -63,7 +63,7 @@ class Collection
 
     public function __toString()
     {
-        return $this->getName();
+        return ($this->name) ? $this->name : '';
     }
 
     /**
