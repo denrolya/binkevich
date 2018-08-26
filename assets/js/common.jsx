@@ -21,3 +21,19 @@ jQuery(document).ready(function($){
         $(this).next('ul').slideToggle();
     });
 });
+
+window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+        "palette": {
+            "popup": {
+                "background": "#ffffff",
+                "text": "#000000"
+            },
+            "button": {
+                "background": "#9fc6c6",
+                "text": "#ffffff"
+            }
+        },
+        "theme": "edgeless",
+        "position": "bottom-right"
+    })});
