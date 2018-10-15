@@ -11,11 +11,11 @@ Encore
 
     // will create web/build/app.js and web/build/app.css
     .addEntry('common', './assets/js/common.jsx')
-    .addEntry('index', './assets/js/indexPage.jsx')
-    .addEntry('contact', './assets/js/contactPage.jsx')
-    .addEntry('product_list', './assets/js/productListPage.jsx')
-    .addEntry('product_view', './assets/js/productViewPage.jsx')
-    .addEntry('collection', './assets/js/collectionViewPage.jsx')
+    .addEntry('index', './assets/js/Containers/Pages/Index.jsx')
+    .addEntry('contact', './assets/js/Containers/Pages/Contact.jsx')
+    .addEntry('product_list', './assets/js/Containers/Pages/ProductList.jsx')
+    .addEntry('product_view', './assets/js/Containers/Pages/ProductView.jsx')
+    .addEntry('collection', './assets/js/Containers/Pages/CollectionView.jsx')
     .addStyleEntry('invoice', './assets/css/invoice.scss')
     .addStyleEntry('main', './assets/css/main.scss')
 

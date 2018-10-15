@@ -35,6 +35,10 @@ class ApiController extends FOSRestController
         $collection = $collectionRepo
             ->findOneBy(['isDisplayedOnIndexPage' => true]);
 
+        if (!$collection) {
+            // TODO: Error handler
+        }
+
         $indexPageCollectionProducts = $collectionRepo
             ->getCollectionOverviewWithProducts($collection);
 

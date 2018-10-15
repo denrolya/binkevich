@@ -1,8 +1,9 @@
 import React from 'react';
-import Header from '../Components/Header';
-import ContactForm from '../Components/ContactForm.jsx';
-import Footer from '../Components/Footer';
-import { handleContactDataSubmit } from '../Actions/ContactFormActions';
+import ReactDOM from 'react-dom';
+import Header from '../../Components/Header';
+import ContactForm from '../../Components/ContactForm.jsx';
+import Footer from '../../Components/Footer';
+import { handleContactDataSubmit } from '../../Actions/ContactFormActions';
 
 export default class ContactPage extends React.Component {
 
@@ -22,3 +23,5 @@ export default class ContactPage extends React.Component {
         )
     }
 }
+
+ReactDOM.render(<ContactPage/>, document.getElementById('content'));

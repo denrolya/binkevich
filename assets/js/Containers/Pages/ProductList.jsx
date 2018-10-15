@@ -1,10 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import _ from 'lodash';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
-import ProductItem from '../Components/ProductItem';
-import { fetchCategories } from '../Actions/CategoryActions';
-import { fetchProductsInCategory, extractCategoryFromURI } from '../Actions/ProductActions';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
+import ProductItem from '../../Components/ProductItem';
+import { fetchCategories } from '../../Actions/CategoryActions';
+import { extractCategoryFromURI, fetchProductsInCategory } from '../../Actions/ProductActions';
 
 export default class ProductListPage extends React.Component {
     constructor(props) {
@@ -35,7 +36,7 @@ export default class ProductListPage extends React.Component {
         fetchCategories()
             .then(res => {
                 const categoryExtractedFromUrl = extractCategoryFromURI(),
-                    activeCategory = _.find(res.data.categories, {'slug': categoryExtractedFromUrl});
+                    activeCategory = _.find(res.data.categories, { 'slug': categoryExtractedFromUrl });
 
                 this.setState({
                     categories: res.data.categories,
@@ -50,10 +51,10 @@ export default class ProductListPage extends React.Component {
         const categoriesButtons = this.state.categories.map((category, i) => {
             return (
                 <a id={category.slug}
-                        href="#"
-                        className={'text-capitalize ' + ((category === this.state.activeCategory) ? 'active' : '')}
-                        key={i}
-                        onClick={this.switchCategory.bind(this, category)}>
+                   href="#"
+                   className={'text-capitalize ' + ((category === this.state.activeCategory) ? 'active' : '')}
+                   key={i}
+                   onClick={this.switchCategory.bind(this, category)}>
                     {category.name}
                 </a>
             );
@@ -81,3 +82,5 @@ export default class ProductListPage extends React.Component {
         );
     }
 }
+
+ReactDOM.render(<ProductListPage />, document.getElementById('content'));
