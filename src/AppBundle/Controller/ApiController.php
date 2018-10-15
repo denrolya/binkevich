@@ -43,14 +43,24 @@ class ApiController extends FOSRestController
             ->getCollectionOverviewWithProducts($collection);
 
 
+        $carousels = [];
+
         /* Get lookbook carousel images */
         $lookbook = $this->getDoctrine()
             ->getRepository(IndexPageCarousel::class)
             ->findOneBy(['slug' => IndexPageCarousel::LOOKBOOK_CAROUSEL_SLUG]);
 
+        if ($lookbook) {
+            $carousels[IndexPageCarousel::LOOKBOOK_CAROUSEL_SLUG] = $lookbook->getImages();
+        }
+
         $bespoke = $this->getDoctrine()
             ->getRepository(IndexPageCarousel::class)
             ->findOneBy(['slug' => IndexPageCarousel::BESPOKE_CAROUSEL_SLUG]);
+
+        if ($bespoke) {
+            $carousels[IndexPageCarousel::BESPOKE_CAROUSEL_SLUG] = $bespoke->getImages();
+        }
 
         return [
             'data' => [
@@ -58,10 +68,7 @@ class ApiController extends FOSRestController
                     'slug' => $collection->getSlug(),
                     'products' => $indexPageCollectionProducts
                 ],
-                'carousels' => [
-                    'bespoke' => $bespoke->getImages(),
-                    'lookbook' => $lookbook->getImages()
-                ]
+                'carousels' => $carousels
             ]
         ];
     }

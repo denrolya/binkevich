@@ -10,12 +10,12 @@ Encore
     .setPublicPath('/build')
 
     // will create web/build/app.js and web/build/app.css
-    .addEntry('common', './assets/js/common.jsx')
-    .addEntry('index', './assets/js/Containers/Pages/Index.jsx')
-    .addEntry('contact', './assets/js/Containers/Pages/Contact.jsx')
-    .addEntry('product_list', './assets/js/Containers/Pages/ProductList.jsx')
-    .addEntry('product_view', './assets/js/Containers/Pages/ProductView.jsx')
-    .addEntry('collection', './assets/js/Containers/Pages/CollectionView.jsx')
+    .addEntry('common', './assets/js/bundles/common/index.jsx')
+    .addEntry('home', './assets/js/bundles/home/index.jsx')
+    .addEntry('contact', './assets/js/bundles/contact/index.jsx')
+    .addEntry('product/list', './assets/js/bundles/product/list.jsx')
+    .addEntry('product/view', './assets/js/bundles/product/view.jsx')
+    .addEntry('product/collection', './assets/js/bundles/product/collection.jsx')
     .addStyleEntry('invoice', './assets/css/invoice.scss')
     .addStyleEntry('main', './assets/css/main.scss')
 
@@ -35,8 +35,8 @@ Encore
     // show OS notifications when builds finish/fail
     .enableBuildNotifications()
 
-// create hashed filenames (e.g. app.abc123.css)
-// .enableVersioning()
+    // create hashed filenames (e.g. app.abc123.css)
+    // .enableVersioning()
 ;
 
 // export the final configuration

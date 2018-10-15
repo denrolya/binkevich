@@ -54,22 +54,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/lookbook", name="contact_form")
-     */
-    public function lookbookFormAction()
-    {
-        return $this->render('AppBundle:Default:lookbook.html.twig');
-    }
-
-    /**
-     * @Route("/bespoke", name="contact_form")
-     */
-    public function bespokeFormAction()
-    {
-        return $this->render('AppBundle:Default:bespoke.html.twig');
-    }
-
-    /**
      * @Route("/contact", name="contact_form")
      */
     public function contactFormAction()
