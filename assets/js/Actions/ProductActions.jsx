@@ -1,21 +1,15 @@
 import axios from 'axios';
-import {parse} from 'url';
-
-export function fetchCategories() {
-    return axios
-        .get(Routing.generate(api_))
-        .then(res => res.data);
-}
+import { parse } from 'url';
 
 export function fetchProductsInCategory(slug) {
     return axios
-        .get(Routing.generate('api_product_get_category_products', {slug}))
+        .get(Routing.generate('api_product_get_category_products', { slug }))
         .then(res => res.data);
 }
 
 export function fetchProductById(id) {
     return axios
-        .get(Routing.generate('api_product_get_ring_by_id', {id}))
+        .get(Routing.generate('api_product_get_ring_by_id', { id }))
         .then(res => res.data);
 }
 
@@ -27,7 +21,7 @@ export function fetchCollectionOverviewProducts() {
 
 export function fetchCollectionBySlug(slug) {
     return axios
-        .get(Routing.generate('api_get_collection_products', {slug}))
+        .get(Routing.generate('api_get_collection_products', { slug }))
         .then(res => res.data);
 }
 
@@ -48,16 +42,13 @@ export function extractProductIdFromURI() {
 }
 
 export function extractCollectionSlugFromURI() {
-    let currentPath = new URL(window.location.href).pathname;
-    let collectionSlug = currentPath.substr(currentPath.lastIndexOf('/') + 1);
+    const currentPath = new URL(window.location.href).pathname;
 
-    return collectionSlug;
+    return currentPath.substr(currentPath.lastIndexOf('/') + 1);
 }
 
 export function extractCategoryFromURI() {
-    let currentPath = new URL(window.location.href).pathname;
-    let categorySlug = currentPath.substr(currentPath.lastIndexOf('/') + 1);
+    const currentPath = new URL(window.location.href).pathname;
 
-    return categorySlug;
+    return currentPath.substr(currentPath.lastIndexOf('/') + 1);
 }
-
